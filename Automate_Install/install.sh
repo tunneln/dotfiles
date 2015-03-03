@@ -14,7 +14,7 @@ files="bashrc bash_profile profile urxvt vim vimrc xbindkeysrc Xdefaults xinitrc
 
 #Do Work+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # A. Create dotfiles_old in homedir
-# B. ~ dotsfiles -> $olddir NEXT create link# ~ dotsfiles -> $olddir NEXT create links
+# B. ~ dotsfiles -> $olddir NEXT create soft links to dotfiles in $HOME 
 
 #A.
 echo "Creating $olddir for backup of any existing dotfiles in home directory"

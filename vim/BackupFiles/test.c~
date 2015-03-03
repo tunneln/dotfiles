@@ -1,9 +1,0 @@
-#include <stdio.h>
-
-int main(){
-	int a;
-	int sizeofint = ((&a)+1) - (&a);
-	printf("%d\n",sizeofint);
-	sizeofint = (int) ((&a)+1) - (int)(&a); 
-	printf("%d\n",sizeofint);
-} 

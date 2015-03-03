@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/noel/Dropbox/Computer Science/CS105/ClassCode'
-let g:netrw_dirhist_2='/home/noel/.mozilla/firefox/7wan7blz.default'
-let g:netrw_dirhist_3='/home/noel/Dropbox/Computer Science/CS439/NOTES'
-let g:netrw_dirhist_4='/usr/lib/kernel/install.d'
-let g:netrw_dirhist_5='/home/noel/Dropbox/Computer Science/CS105/ClassCode/lec5'

@@ -12,6 +12,7 @@ Currently these tools include:
 ALSO:
 - Miscellaneous scripts (for myself)
 
+
 The goal for this repo is to make it easier to setup a proper programming enviornment
 for myself, and help create a framework for others, on additional computers. 
 By storing my dotfiles in a Git repository, I can create a simple organized system 
@@ -59,24 +60,27 @@ The install script is located in `dotfiles/Automate_Install/link_dotfiles`
 **Next** the script will clean up any old symlinks/dotfiles by individually moving all of them (that you specified, see *Variable 3*) into the backup folder
 
 **Lastly** the script will create soft links in your home directory that point to the new dotfiles (see *Variable 1*)
+
 **NOTE**: The script will not affect any dotfile not specified by *Variable 3*.
 
 ###Customizing the Script
 The script has 3 variables, clearly marked, that you will **HAVE TO EDIT** to install the dotfiles.
 
-*NOTE*: They currently contain my personal settings
+*NOTE*: They currently contain my personal configuration
 
 1. Variable 1: **dir**
 	* Contains the directory of wherever you cloned/placed the repo, e.g.` dir=~/dotfiles `
 	
-	*NOTE*: This will be the directory where you store all of your dotfiles
+		*NOTE*: This will be the directory where you store all of your dotfiles
 2. Variable 2: **olddir**
 	* Contains the directory of your old dotfiles that the script will create for you. 
 	  This will be the backup of the current dot files in your home directory and will be a newly created folder, e.g.` olddir=~/dotfiles_old `
-	*NOTE*: The script will make the folder for you
+	
+		*NOTE*: The script will make the folder for you
 3. Variable 3: **files**
-	* Contains the list of files/folders in your dotfiles folder which you want to symlink in your homedirectory and backup, e.g.` files="bashrc vim vimrc etc" 
-	`*NOTE*: DO NOT ADD DOTS ('.') and be sure to divide each new addition with a space
+	* Contains the list of files/folders in your dotfiles folder which you want to symlink in your homedirectory and backup, e.g.` files="bashrc vim vimrc etc" `
+	
+		*NOTE*: DO NOT ADD DOTS ('.') and be sure to divide each new addition with a space
 
 ###Install
 Finally, to 'install' the dotfiles into your system
@@ -91,7 +95,7 @@ with the mv command.
 
 Then all you have to do is add the dotfile's name to the list of files in *Variable 3*
 
-e.g. change `files="bashrc vim vimrc"` TO `files="bashrc vim vimrc urxvt"`
+e.g. change `files="bashrc vim vimrc"` to `files="bashrc vim vimrc urxvt"`
 
 ####Enjoy!
 

@@ -1,5 +1,6 @@
 #!/bin/bash
 #########################################################################################
+# Noel Negusse
 # .setCorePath.sh
 # A very simple script to temporarily set my core dump (made by seg faults) destination
 # file as the current directory. 

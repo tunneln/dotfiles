@@ -4,8 +4,6 @@ These are my configuration files for my linux tools.
 Currently these tools include:
 - urxvt
 - vim
-	*Includes a number of plugins w/ plugin manager Vundle, comments should be 
-	sufficient enough to understand. You can comment out with quotations (")
 - X*
 - bash_profile
 - bashrc
@@ -25,12 +23,10 @@ and effecient dotfile configurations.
 # Getting Started 
 ##Quick Start
 Clone this repo to your local machine:
-'
-git clone https://github.com/tunneln/dotfiles.git
-'
+`git clone https://github.com/tunneln/dotfiles.git`
 preferably your home directory or where you store other git repos
 
-##Quick Start ####w/ Forks
+##Quick Start w/ Forks
 This is the preferred method if you want to contribute to my configurations with changes/additions
 or if you just want to keep up to date with my dotfiles.
 
@@ -39,20 +35,20 @@ This could also probably be seen as a simple introduction to using forks....
 **Step 1** Fork this repo
 
 **Step 2** Clone your forked repo into your local machine
-' $ git clone https://github.com/tunneln/dotfiles '
+` $ git clone https://github.com/tunneln/dotfiles `
 
 **Step 3** Add the upstream source to the cloned repo. In the folder type
-' $ git remote add upstream https://github.com/tunneln/dotfiles '
+` $ git remote add upstream https://github.com/tunneln/dotfiles `
 
 **Step 4** Lastly, any time you want to sync (update) your Forked repo w/ the upstream (tunneln/dotfiles). Type
-'''
+```
  $ git fetch upstream (download the upstream source)
  $ git checkout master (go int your local master branch)
  $ git merge upstream/master (merge the upstream's master branch with your own local master branch)
-'''
+```
 
 # The Installation Script
-The install script is located in 'dotfiles/Automate_Install/link_dotfiles'
+The install script is located in `dotfiles/Automate_Install/link_dotfiles`
 
 ##What it does
 First, the script will start off by making a backup directory (of your specifications, see Variable 2) to store your current - and subsequent - dotfiles in.
@@ -63,29 +59,29 @@ Lastly, the script will create soft links in your home directory that point to t
 **NOTE**: The script will not affect any dotfile not specified by variable 3.
 
 ##Customizing the Script
-The script has 3 variables, clearly marked, **that you will have to edit** to install the dotfiles.
+The script has 3 variables, clearly marked, **that you will HAVE to edit** to install the dotfiles.
 *NOTE*: They currently contain my personal settings
 
 1. Variable 1: **dir**
-	* Contains the directory of wherever you cloned/placed the repo, e.g.' dir=~/dotfiles '
+	* Contains the directory of wherever you cloned/placed the repo, e.g.` dir=~/dotfiles `
 	*NOTE*: This will be the directory where you store all of your dotfiles
 2. Variable 2: **olddir**
 	* Contains the directory of your old dotfiles that the script will create for you. 
-	  This will be the backup of the current dot files in your home directory and will be a newly created folder, e.g.' olddir=~/dotfiles_old '*NOTE*: The script will make the folder for you
+	  This will be the backup of the current dot files in your home directory and will be a newly created folder, e.g.` olddir=~/dotfiles_old `*NOTE*: The script will make the folder for you
 3. Variable 3: **files**
-	* Contains the list of files/folders in your dotfiles folder which you want to symlink in your homedirectory and backup, e.g.' files="bashrc vim vimrc etc" '*NOTE*: DO NOT ADD DOTS ('.') and be sure to divide each new addition with a space
+	* Contains the list of files/folders in your dotfiles folder which you want to symlink in your homedirectory and backup, e.g.` files="bashrc vim vimrc etc" `*NOTE*: DO NOT ADD DOTS ('.') and be sure to divide each new addition with a space
 
 ##INSTALL
 Finally, to 'install' the dotfiles into your system
-Go into /dotfiles/Automate_Install/ and type 'chmod +x install_dotfiles.sh'
-and './install_dotfiles.sh' to run the script
+Go into /dotfiles/Automate_Install/ and type `chmod +x install.sh`
+and then `./install.sh` to run the script
 
 #Adding dotfiles
 To add your own dot files simply move over any given dot file from your home directory into dotfiles/
 with the mv command. **Be sure to mv the file over without a dot**
-' e.g., mv ~/.urxvt ~/dotfiles/urxvt '
+` e.g., mv ~/.urxvt ~/dotfiles/urxvt `
 Then all you have to do is add the dotfile's name to the list of files in variable 3
-e.g. change' files="bashrc vim vimrc" 'TO' files="bashrc vim vimrc urxvt" '
+e.g. change `files="bashrc vim vimrc"` TO `files="bashrc vim vimrc urxvt"`
 
 ####Enjoy!
 

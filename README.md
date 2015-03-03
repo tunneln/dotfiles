@@ -13,6 +13,7 @@ ALSO:
 - Miscellaneous scripts (for myself)
 
 
+
 The goal for this repo is to make it easier to setup a proper programming enviornment
 for myself, and help create a framework for others, on additional computers. 
 By storing my dotfiles in a Git repository, I can create a simple organized system 
@@ -52,7 +53,7 @@ This could also probably be seen as a simple introduction to using forks....
 ```
 
 # The Installation Script
-The install script is located in `dotfiles/Automate_Install/link_dotfiles`
+The installation script is a bash file located in `dotfiles/Automate_Install/install.sh`
 
 ###What it does
 **First** The script will start off by making a backup directory (of your specifications, see *Variable 2*) to store your current - and subsequent - dotfiles in.
@@ -66,12 +67,11 @@ The install script is located in `dotfiles/Automate_Install/link_dotfiles`
 ###Customizing the Script
 The script has 3 variables, clearly marked, that you will **HAVE TO EDIT** to install the dotfiles.
 
-*NOTE*: They currently contain my personal configuration
+*NOTE*: install.sh currently contains my personal configuration
 
 1. Variable 1: **dir**
-	* Contains the directory of wherever you cloned/placed the repo, e.g.` dir=~/dotfiles `
-	
-		*NOTE*: This will be the directory where you store all of your dotfiles
+	* Contains the directory of wherever you cloned/placed the repo, e.g.` dir=~/dotfiles `. 
+		This will be the directory where you store all of your dotfiles
 2. Variable 2: **olddir**
 	* Contains the directory of your old dotfiles that the script will create for you. 
 	  This will be the backup of the current dot files in your home directory and will be a newly created folder, e.g.` olddir=~/dotfiles_old `
@@ -79,8 +79,7 @@ The script has 3 variables, clearly marked, that you will **HAVE TO EDIT** to in
 		*NOTE*: The script will make the folder for you
 3. Variable 3: **files**
 	* Contains the list of files/folders in your dotfiles folder which you want to symlink in your homedirectory and backup, e.g.` files="bashrc vim vimrc etc" `
-	
-		*NOTE*: DO NOT ADD DOTS ('.') and be sure to divide each new addition with a space
+				DO NOT ADD DOTS ('.')
 
 ###Install
 Finally, to 'install' the dotfiles into your system

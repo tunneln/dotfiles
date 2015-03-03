@@ -25,6 +25,7 @@ Plugin 'gmarik/Vundle.vim'
 " " Keep Plugin commands between vundle#begin/end
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'scrooloose/nerdtree'
+"Toogle nerd tree with CTRL+n
 map <C-n> :NERDTreeToggle<CR>
 
 "SYNTAX CODE CHECKER PLUGIN +++++++++++++++++++++++++++++++++++++++++++++++

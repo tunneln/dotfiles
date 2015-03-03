@@ -3,7 +3,9 @@
 These are my configuration files for my linux tools. 
 Currently these tools include:
 - urxvt
-- vim (including plugins & plugin manager Vundle)
+- vim
+	*Includes a number of plugins w/ plugin manager Vundle, comments should be 
+	sufficient enough to understand. You can comment out with quotations (")
 - X*
 - bash_profile
 - bashrc
@@ -12,8 +14,9 @@ ALSO:
 - Miscellaneous scripts (for myself)
 
 The goal of this repo is to make it easier to setup a proper programming enviornment
-for myself (and others) on additional computers by creating a simple organized 
-system to automate and sync my dotfiles from setup to setup. 
+for myself, and help create a framework for others, on additional computers. 
+By storing my dotfiles in a Git repository, I can create a simple organized system 
+to automate and sync my dotfiles from setup to setup.
 
 My secondary goal is to collaborate with others and share ideas for more interesting 
 and effecient dotfile configurations.

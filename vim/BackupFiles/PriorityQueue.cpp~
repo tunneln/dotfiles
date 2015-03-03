@@ -1,0 +1,50 @@
+#include "PriorityQueue.h" /// include the header file for the priority queue
+#include <iostream>
+
+PriorityQueue::PriorityQueue(){
+	s = 0;
+	path = NULL;
+	head = NULL;
+}
+
+void PriorityQueue::push(int x){
+	if(head == NULL && path == NULL && s == 0){
+		reset(x);
+	}
+	else{
+		node *restore = path; int count=1;
+		path = head;
+		while(count<=size()){
+			if(path->val > x && count==1){ //set as new head
+				head = new node;
+				head->val = x;
+				head->next = path;
+				path = restore;
+				break;
+			}
+
+			if(path->val < x && path->next == 0){ //set as new tail
+				path = restore;
+				path->next = new node;
+				path = path->next;
+				path->val = x;
+				path->next = NULL;
+				break;
+			}
+			
+			if(path->val < x && count!=size() && (path->next)->val > x){ //set in between nodes
+				node *temp = new node;
+				temp->val = x;
+				temp->next = path->next;
+				path->next = temp;
+				path = restore;
+				break;
+			}
+
+			path = path->next;
+			count++;
+		}
+	}
+	
+	s++;
+}

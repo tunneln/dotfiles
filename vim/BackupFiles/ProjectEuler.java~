@@ -1,0 +1,57 @@
+import java.util.*;
+import java.io.*;
+import java.math.*;
+import static java.lang.Math.*;
+
+public class ProjectEuler
+{
+    public static void main(String args[]){
+    //	BigInteger n = new BigInteger("");
+    	System.out.println(problem2(4000000));
+    }
+    public static int problem1(int foo){
+			int sum = 0;
+			for(int x = 0;x<foo;x++)
+			{
+				if(x%3 == 0)sum+=x;
+				else if(x%5 == 0)sum+=x;
+			}
+		return sum;
+	}
+	// // // // // // // // // // // // // // // // //
+    public static int problem2(int max){
+		ArrayList<Integer> foo = new ArrayList<Integer>();
+		foo.add(1); foo.add(2);
+		int x = 0, sum = 0;
+		while(foo.get(x) < max){
+			x++;
+			foo.add(foo.get(x) + foo.get(x-1));
+		}
+		for(int y : foo){
+			if(y%2 == 0)
+				sum += y;
+		}
+		return sum;
+    }
+    // // // // // // // // // // // // // // // // //
+    public static long problem3(long gpf){
+		for(long x = 2L;x<gpf;x++){
+			if(gpf%x == 0){gpf/=x;x = 2L;}
+		}
+		return gpf;
+    }
+    // // // // // // // // // // // // // // // // //
+    public static long problem4(long n){
+    	return 1111;
+    }
+    // // // // // // // // // // // // // // // // //
+    public static long problem5(long b){
+    	return 111111111;
+    }
+    // // // // // // // // // // // // // // // // //
+    public static long problem6(long c){
+    	return 111111111;
+    }
+    // // // // // // // // // // // // // // // // //
+
+}

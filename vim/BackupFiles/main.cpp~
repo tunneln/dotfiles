@@ -1,0 +1,40 @@
+/** 
+Name: Noel Negusse
+Eid: ntn443
+*/
+
+
+#include "PriorityQueue.h" /// make sure we include our PriorityQueue
+//#include "LinkedList.h"
+//#include <iostream> 
+//
+using std::cin;
+using std::cout;
+using std::endl;
+
+int main (int argc, char const **argv)
+{
+       LinkedList<int> fooA;
+	fooA.push(43);
+	fooA.push(23);
+	fooA.push(69);
+	fooA.pop();
+	LinkedList<double> fooB;
+	fooA.push(24);
+	fooA.push(666);
+	fooB = fooA;
+	fooA = fooA + 10;
+	fooA.print();
+	fooB.print();
+//	fooB = fooB - fooA;
+//     	fooB.print();
+	cout << fooA.path << " " << fooB.path << endl;
+	cout << (fooA.path>fooB.path)	
+		<< "\tValA:" << fooA.path->val << " ValB:" << fooB.path->val << endl;
+	cin >> fooA;
+	cout << fooA;
+       /* PriorityQueue<int> p;*/
+	//p = p + 4;
+	/*cout << p;*/
+	return 0;
+}

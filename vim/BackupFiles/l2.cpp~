@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+
+void handleIt1(int i, float x){
+	cout << "handleIt1 " << i << endl;
+}
+
+void handleIt2(int i, float x){
+	cout << "handleIt2 " << i << endl;	
+}
+
+void runner( void (*somename)(int,float), int x){
+	somename(x,x);
+}
+
+int main (int argc, char const *argv[])
+{
+	void (*ar[2])(int,float);
+	ar[0] = handleIt1;
+	ar[1] = handleIt2;
+	runner(handleIt1, 7);
+	runner(handleIt2, 7);
+	ar[0](5,5);
+	return 0;
+}

@@ -1,0 +1,50 @@
+when syncing to the repo you will get all changes made to the files BUT your work will be saved
+
+git add . OR git add filename
+	to add the file to the stack/list that you will later commit*
+
+git commit -m 'description of the commit'
+	this will commit your stack/list of files to your own repo
+	NOTE: a simple git commit, will you give you the option for a multiline message
+	SHORTCUT: git commit -a -m 'description' will commit all changes to files already being tracked by your git repo
+
+git push origin master
+	this will push your commit to the github repo
+
+git pull origin master
+	this pull (or sync) the files from the git repo to your own repo
+
+git fetch origin (master/somebranch)
+	this will download the branch or w/e BUT not sync your files
+
+git reset --soft HEAD^
+	this will revert your most recent commit (hence, the head) and go back to the old commit. NOTE that this just changes your own repo but not the actual files in your system.
+
+git reset --hard HEAD^
+	this will do the same thing as using --soft BUT reverts your source files in your system to the previous commit as well
+
+git status
+	this will show the differences between our repo and githubs repo
+
+NOTE: make a .gitignore file and put file names for git to ignore when adding and commiting to your repo
+
+
+git branch nameofbranch
+	crates new branch and branches you out of the main branch in the git repo
+
+git checkout nameofbranch
+	this will put you into the new branch, where you will not effect the main branch and the people working off of it
+
+git checkout master
+	this will put you back into the main branch, IT WILL ALWAYS BE CALLED MASTER
+
+git merge nameofbranch
+	this will merge the branch to the master branch NOTE: this will most likely cause merge conflicts
+
+
+GIT MERGE TOOLS CAN BE VERY HELPFULL DOWN THE LINE WHEN WORKING WITH BIGGER PROJECTS, KEEP THIS IN MIND.
+
+
+git stash AND git stash apply
+	these commands will 'stash' the tracked (added not commited) file changes not ready to be commited and stash them away. That way you don't have to commit changes you working on one branch and  are still able to
+       	SWITCH to another branch, make changes and then head back to the original branch and apply your stash to go back where you left, all while not having to commit yet

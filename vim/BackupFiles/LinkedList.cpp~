@@ -1,0 +1,97 @@
+#include "LinkedList.h" /// include the header file for the linked list
+#include <iostream>
+
+using std::cout;
+using std::endl;
+
+//constructor w/ no parameters
+LinkedList::LinkedList(){
+	s = 0;
+	path = NULL;
+	head = NULL;
+}
+
+// Note: I used 'this' in the constructor as an example of a safety convention but it does nothing in my use - i.e. there are no naming conflicts - I will exclude it, unless necessary, from here on out
+
+//constructor w/ parameters - set initial values and create initial node
+LinkedList::LinkedList(int x){ 
+	this->head = new node;
+	(this->head)->val = x;
+	(this->head)->next = NULL;
+	this->path = head;
+	this->s = 1;
+}
+
+//destructor - iterates through the remainder of nodes and deletes them (pops them)
+//eventually setting head to NULL
+LinkedList::~LinkedList(){
+	path = head;
+	if(path != NULL){
+		while(path->next != NULL){
+			this->pop();
+			path = path->next;
+		}
+		this->pop();
+		path = NULL;
+	}
+}
+
+//path will ALWAYS be pointing to the tail
+
+//create new tail node pointed to be pointed to by next
+//move path to new tail node and set val and next pointer
+
+//resets LinkedList or, more accurately, properly sets it
+void LinkedList::reset(int x){
+	this->head = new node;
+	(this->head)->val = x;
+	(this->head)->next = NULL;
+	this->path = head;
+	this->s = 1;
+}
+
+void LinkedList::push(int x){
+	if(head == NULL && path == NULL && s == 0){
+		reset(x);
+	}
+	else{
+		path->next = new node;
+		path = path->next;
+		path->val = x;
+		path->next = NULL;
+		s++;
+	}
+}
+
+//set head to next node and delete previous node
+int LinkedList::pop(){
+	node *temp = head;
+	head = head->next;
+	delete temp;
+	s--;
+	if(head != NULL)
+		return head->val;
+	return 0;
+}
+
+//set path to first node (head) and iterate through each node and return it's x
+//path ends and tail node, once again
+void LinkedList::print(){
+	path = head;
+	if(path != NULL){
+		while(path->next != NULL){
+			cout << path->val << " ";
+			path = path->next;
+		}
+		cout << path->val << endl;
+	}
+}
+
+//output size (# of nodes) of the linkedlist
+int LinkedList::size(){
+	return s;	
+}
+
+int LinkedList::peek(){
+	return head->val;
+}

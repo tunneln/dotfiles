@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include "threads.h"
+
+void f3(void *arg)
+{
+    int i;
+    while (i<15) {
+        printf("thread 3: %d\n", i++);
+        thread_yield();
+    }
+}
+
+void f2(void *arg)
+{
+    int i = 0;
+    while(i<30) {
+        printf("thread 2: %d\n",i++);
+       /* if (i == 10) {*/
+	    /*i = 0;*/
+	/*}*/
+        thread_yield();
+    }
+}
+
+void f1(void *arg)
+{   int b = 2; int c = 3; //example parameters (mainly for testing)
+    int i = 100;
+    struct thread *t2 = thread_create(f2, &b);
+    thread_add_runqueue(t2);
+    struct thread *t3 = thread_create(f3, &c);
+    thread_add_runqueue(t3); 
+    while(i<120) {
+        printf("thread 1: %d\n", i++);
+       /* if (i == 110) {*/
+	    /*i = 100;*/
+	/*}*/
+        thread_yield();
+    }
+}
+
+int main(int argc, char **argv)
+{   int a = 1; // example parameter (mainly for testing)
+    struct thread *t1 = thread_create(f1, &a);
+    thread_add_runqueue(t1);
+    thread_start_threading();
+    printf("\nexited\n");
+    return 0;
+}
+

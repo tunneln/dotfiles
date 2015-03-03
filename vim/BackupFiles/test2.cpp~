@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+
+class Festival{
+	public: 
+		Festival(): s(-1), val(3), p(9000){}
+		void printmeh(){
+			cout << "Base Class" << endl;
+		}
+	protected:
+		int val;
+		int p;
+	private:
+		int s;
+};
+
+class MusicFestival: public Festival{
+	public:
+		int val;
+		MusicFestival():val(2){}
+
+		void print(){
+			cout << s << endl;
+		}
+
+		int idk(){ return 2; }
+		void printmeh(){
+			cout << "Derived Class " << p << endl;
+		}
+
+		void PrintVal(int val){
+			cout << val << this->val << Festival::val << endl;
+		}
+};
+
+int main(){
+	MusicFestival MF;
+//	Festival* foo = &MF;
+//	Festival* foo = new MusicFestival();
+//	Festival* foo = new MusicFestival();
+//	foo->PrintVal(p);
+//	MF.printmeh();
+	MF.print();
+//	delete foo;
+	
+	return 0;
+}
+

@@ -1,0 +1,213 @@
+#ifndef __PRIORITY_QUEUE_CPP_9F4861BC
+#define __PRIORITY_QUEUE_CPP_9F4861BC
+
+//Name: Noel Negusse
+//UT EID: ntn443
+
+#include "LinkedList.h"
+
+
+template <class type>
+class PriorityQueue: public LinkedList<type>{
+	public:	
+       	        using LinkedList<type>::head;
+		using LinkedList<type>::path;
+		using LinkedList<type>::s;
+		using typename LinkedList<type>::node;		
+		
+		PriorityQueue(const LinkedList<type>& list) : LinkedList<type>(){
+			if(list==NULL)	LinkedList<type>::LinkedList();
+			else if(list.head == NULL || list.path == NULL){
+				LinkedList<type>::LinkedList();
+			}
+			else{
+				head = new node;
+				node* temp;
+				temp = list.head;
+				head->val = temp->val; 
+				head->next = temp->next;
+				path = head; s = 1;
+				while(temp->next != NULL){
+					temp = temp->next;
+					push(temp->val);
+				}
+				s = list.s; //Safety Measure	
+			}	
+		}
+		
+		virtual void push(type x){
+			if(head == NULL && path == NULL && s == 0){
+				this->reset(x);
+			 }
+
+			else{
+				node *restore = path; int count=1;
+				path = head;
+				while(count<=s){
+					if(path->val > x && count==1){ //set as new head
+						head = new node;
+						head->val = x;
+						head->next = path;
+						path = restore;
+						break;
+					}
+	
+					if(path->val < x && path->next == 0){ //set as new tail
+						path = restore;
+						path->next = new node;
+						path = path->next;
+						path->val = x;
+						path->next = NULL;
+						break;
+					}
+		
+					if(path->val < x && count!=s && (path->next)->val > x){ //set in between nodes
+						node *temp = new node;
+
+						temp->val = x;
+						temp->next = path->next;
+						path->next = temp;
+						path = restore;
+						break;
+					}
+
+					path = path->next;
+					count++;
+				}
+			}
+			s++;
+		}
+
+
+	PriorityQueue<type>& operator=(const PriorityQueue<type>& list){
+			if(this!=&list){	//Making sure they aren't the same Memory Address
+				path = head;
+				if(path != NULL){
+					while(path->next != NULL){
+						this->pop();
+						path = path->next;
+					} //Deallocate Path & Head	
+					this->pop();			
+					path = NULL;
+				}
+				if(list.head != NULL){
+					head = new node; 
+					node* temp;
+					temp = list.head;
+					head->val = temp->val; 
+					head->next = temp->next;
+					path = head; s = 1;
+					while(temp->next != NULL){
+						temp = temp->next;
+						push(temp->val);
+					}
+					s = list.s; //Safety Measure	
+				}
+			}
+			return *this;
+		}
+
+		
+//FRIEND FUNCTIONS++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		template<class R>
+		friend ostream& operator<<(ostream& out, PriorityQueue<type>& list){
+			string s = list.sprint();
+			out << s << endl;
+			return out;
+
+		}
+		template<class R>
+		friend istream& operator>>(istream& in, PriorityQueue<type>& list){
+			type newval;
+			in >> newval;
+			list.push(newval);
+			return in;
+		}
+
+//OPERATOR OVERLOADERS++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+		bool operator==(const PriorityQueue<type>& list) const{
+			if(list.head == NULL && this->head == NULL)
+				return true;
+			if(list.s  == s){
+			 	node* temp = list.head;
+				node* temp2 = head;
+				while(temp->next != NULL && temp2->next!=NULL){
+					if(temp->val != temp2->val)
+						return false;
+					temp = temp->next;
+					temp2 = temp2->next;
+				}
+				if(temp->val == temp2->val)
+					return true;
+			}
+			return false;
+		}
+
+		bool operator!=(const PriorityQueue<type>& list) const{
+			return !(*this == list);
+		}
+
+		PriorityQueue<type> operator+(const type v) const{
+			PriorityQueue<type> tempC = *this;
+			tempC.push(v);
+			return tempC;
+		}
+
+		PriorityQueue<type> operator+(const PriorityQueue<type>& list) const{
+			node* temp = list.head;
+			PriorityQueue<type> tempC = *this;
+			while(temp->next != NULL){
+				tempC = tempC + temp.val; //Using the previous operator overloader
+				temp = temp->next;
+			}
+			tempC = tempC + temp.val;
+			return tempC;
+		}
+
+		PriorityQueue<type> operator-(const type v) const{
+			if(head == NULL) { return NULL; }
+			PriorityQueue<type> tempC = *this;
+			node* temp = tempC.head;
+			while(temp->next != NULL){
+				if(temp->val == v)
+					tempC.popAnywhere(temp);
+				temp = temp->next;
+			}
+			if(temp->val == v)
+				tempC.popAnywhere(temp);
+			return tempC;
+		}
+
+		PriorityQueue<type> operator-(const PriorityQueue<type>& list) const{
+			PriorityQueue<type> tempC = *this;
+			if(tempC.head == NULL) return NULL;
+			node* temp = list.head;
+			while(temp->next != NULL){
+				tempC = tempC - (temp->val);
+				temp = temp->next;
+			}
+			tempC = tempC - (temp->val);
+			return tempC;
+		}
+
+		type& operator[](const type x) const{
+			try{
+				if(x >= s){
+					throw 10;
+				}
+				else{
+					node* temp = head;
+					for(int i = 0; i<x; i++){
+						temp = temp->next;
+					}
+					return temp->val;
+				}
+			}
+			catch(...){
+				cout << "Exception: Out of bounds" << endl;
+			}
+		}	
+		
+};
+
+#endif

@@ -1,0 +1,12 @@
+Step 1) FORK repo in github
+
+Step 2) Clone your forked repo into your local machine 
+e.g. $ git clone https://github.com/tunneln/forkedrepo
+
+Step 3) Add the source to your 'remote -v' list. Type 
+$ git remote add upstream (source repo http)
+
+Step 4) In order to sync your FORK repo w/ the UPSTREAM (up-to-date) repo. Type 
+$ git fetch upstream
+$ git checkout master (go into your local master branch)
+$ git merge upstream/master (merge from upstream/master into your local master)

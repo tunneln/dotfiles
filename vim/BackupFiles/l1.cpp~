@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+class Number{
+public:
+	friend Number operator+(int v, Number& s); 
+	int v;
+	Number(){};
+	Number(int v) : v(v){}
+	Number operator+(const Number& other){
+		return Number(this->v + other.v);
+	}
+	Number operator+(int v){
+		return Number(this->v + v);
+	}
+};
+
+Number operator+(int v, Number& s){
+	//return Number(v + s.v);
+}
+
+int main (int argc, char const *argv[])
+{
+	Number n1, n2;
+			
+	Number n3 = n1 + n2;
+	Number n4 = 4 + n1; //friend function
+	return 0;
+}
+
+

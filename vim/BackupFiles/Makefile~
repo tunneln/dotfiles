@@ -1,0 +1,32 @@
+# Makefile for CS 105
+# Assignment 4 and 5
+
+CC = g++
+CFLAGS = -Wall
+SOURCES = main.cpp
+HEADERS = LinkedList.h PriorityQueue.h
+OBJECTS = $(SOURCES: .cpp = .o)
+EXECUTABLE = Project5
+TEST = input1.txt
+
+CSUSERID = noel
+CSSERVER = marilith.cs.utexas.edu
+CSDIR = ~/CS105/Projects/Project5
+
+
+all: $(SOURCES) $(EXECUTABLE) Test
+
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(OBJECTS) -o $@
+
+.cpp.o: 
+	$(CC) $(CFLAGS) $< -o $@
+
+Test: $(EXECUTABLE)
+	./$(EXECUTABLE) < $(TEST)
+
+scp: 
+	scp ./Makefile $(SOURCES) $(HEADERS) $(TEST) $(CSUSERID)@$(CSSERVER):"$(CSDIR)"
+
+clean:
+	rm -rf *.o $(EXECUTABLE)

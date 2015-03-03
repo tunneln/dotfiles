@@ -1,6 +1,6 @@
-" ~/.vim/sessions/Ass6CS105.vim:
+" ~/GitHubRepos/dotfiles/vim/sessions/Ass6CS105.vim:
 " Vim session script.
-" Created by session.vim 2.9 on 02 March 2015 at 17:54:10.
+" Created by session.vim 2.9 on 03 March 2015 at 02:11:06.
 " Open this file in Vim and run :source % to restore your session.
 
 set guioptions=aegimrLtT
@@ -24,8 +24,8 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +0 main.cpp
-badd +0 ~/Dropbox/Computer\ Science/CS105/Projects/Project6/readgraph.h
+badd +1 main.cpp
+badd +1 ~/Dropbox/Computer\ Science/CS105/Projects/Project6/readgraph.h
 argglobal
 silent! argdel *
 argadd main.cpp
@@ -51,12 +51,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 57 - ((47 * winheight(0) + 27) / 55)
+let s:l = 4 - ((0 * winheight(0) + 27) / 55)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-57
-normal! 08|
+4
+normal! 042|
 wincmd w
 argglobal
 edit main.cpp

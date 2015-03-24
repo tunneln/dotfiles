@@ -94,13 +94,17 @@ endif
 " Redirect backup files from main dir to avoid clutter
 set backupdir=~/.vim/BackupFiles,~/tmp,.
 
+" Paste properly more than once over a line
+xnoremap p pgvy
+
+" Syntax highlighting
 syntax on
 
 " autosave when focus is lost from window
 :au FocusLost * :wa 
 
 " Turns on english dictionary spellcheck
-"setlocal spell spelllang=en_us
+" setlocal spell spelllang=en_us
 
 " Turn on C style indenting - chosen over set autoindent, which indents based
 " on previous line

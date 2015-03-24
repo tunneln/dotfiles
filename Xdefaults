@@ -1,7 +1,7 @@
 XTerm*Background: black
 XTerm*Foreground: white
 XTerm*transparent: true
-urxvt*shading: 110
+urxvt*shading: 30
 urxvt*transparent: true
 urxvt*foreground: white
 urxvt*scrollBar: false
@@ -23,6 +23,8 @@ urxvt*color7:    #f2f2f2
 ! color13    purple
 ! color14    cyan
 ! color15    white
+
+URxvt.urgentOnBell: True
 
 urxvt*color8:    #747474
 urxvt*color9:    #f99286

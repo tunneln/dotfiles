@@ -22,6 +22,7 @@ to automate and sync my dotfiles from setup to setup.
 My secondary goal is to collaborate with others and share ideas for more interesting 
 and effecient dotfile configurations.
 
+**NOTE: I am currently running Arch Linux x86, awesome windows manager & kernel version 3.18.6-1**
 
 # Getting Started 
 ###Quick Start

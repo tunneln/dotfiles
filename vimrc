@@ -97,7 +97,7 @@ set backupdir=~/.vim/BackupFiles,~/tmp,.
 " Paste properly more than once over a line
 xnoremap p pgvy
 
-" Syntax highlighting
+"Syntax highlighting
 syntax on
 
 " autosave when focus is lost from window
@@ -131,7 +131,13 @@ map <Down> <Nop>
 
 " Remap esc to jj
 imap jj <Esc>
-imap JJ <Esc>j
+imap JJ <Esc>
+
+" Added capital maps for save & quit
+:command WQ wq
+:command Wq wq
+:command W w
+:command Q q
   
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>

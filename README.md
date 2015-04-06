@@ -97,7 +97,7 @@ Then all you have to do is add the dotfile's name to the list of files in *Varia
 
 e.g. change `files="bashrc vim vimrc"` to `files="bashrc vim vimrc urxvt"`
 
-You can also use my dotfiles for your own by running ` cp somedotfile ~/.somedotfile ` in the dotfiles directory
+You can also use my dotfiles for your own by running ` cp (-r) somedotfile ~/.somedotfile ` in the dotfiles directory
 
 ####Enjoy!
 

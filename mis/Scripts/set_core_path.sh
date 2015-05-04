@@ -1,7 +1,7 @@
 #!/bin/bash
 #########################################################################################
 # Noel Negusse
-# .setCorePath.sh
+# set_core_path.sh
 # A very simple script to temporarily set my core dump (made by seg faults) destination
 # file as the current directory. 
 # Uses: debugging segementation faults by using core dumps with a debugger like gdb

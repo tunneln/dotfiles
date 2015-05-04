@@ -2,8 +2,8 @@
 
 #########################################################################################
 # Noel Negusse
-# .TPoff.sh
-# Turns off touchpad
-# My Laptop: X1 Carbon ThinkPad 
+# tp_off.sh
+# Turns on IBM touchpad 
+# My Laptop: X1 Carbon ThinkPad
 #########################################################################################
-synclient TouchpadOff=1
+synclient TouchpadOff=0

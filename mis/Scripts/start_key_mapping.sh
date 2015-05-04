@@ -1,8 +1,8 @@
-#!/bin/bash
+#/bin/bash
 
 #########################################################################################
 # Noel negusse
-# .startshit.sh 	sorry not very descriptive :p
+# start_key_mapping.sh 
 # Simple script to map IBM trackpads & buttons to their proper roles at startup
 # My Laptop: X1 Carbon ThinkPad
 #########################################################################################

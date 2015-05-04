@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #########################################################################################
-# .TPoff.sh
+# set_brightness.sh
 # Script to run at startup to map Fn+F8 and Fn+F9 to increase and decrease brightness, 
 # respectivelly on IBM laptops
 # My Laptop: X1 Carbon ThinkPad

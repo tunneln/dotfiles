@@ -2,7 +2,7 @@
 
 #########################################################################################
 # Noel negusse
-# start_key_mapping.sh 
+# set_key_maps.sh 
 # Simple script to map IBM trackpads & buttons to their proper roles at startup
 # My Laptop: X1 Carbon ThinkPad
 #########################################################################################

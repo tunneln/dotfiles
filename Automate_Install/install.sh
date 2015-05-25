@@ -8,7 +8,7 @@
 #Variables+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #CHANGE VARIABLES ACCORDINGLY
 
-dir=~/GitHubRepos/dotfiles         # dotfiles directory
+dir=~/GithubRepos/dotfiles         # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
 files="bashrc bash_profile profile urxvt vim vimrc xbindkeysrc Xdefaults xinitrc Xmodmap Xresources zshrc oh-my-zsh gitconfig"    # list of files/folders to symlink in homedir
 
@@ -32,16 +32,17 @@ for file in $files; do
 	echo "###############################NEXT FILE###############################"
 	echo "Attempting to backup ~/.$file to $olddir ..."
     	if [ -a ~/.$file ]; then #checks if to-be-backed-up file exists
-   		mv ~/.$file $olddir
+   		cp -r ~/.$file $olddir
+		rm ~/.$file
 	 	echo "...done"
 	else
-		echo "~/.$file does not exist
+		echo "~/.$file DOES NOT EXIST
 		"
 	fi
 	
 	if [ -a $dir/$file ]; then #checks if to-be-linked file exists
 		echo "Creating symlink of $file in $HOME as \".$file\"		
 		"
-    		ln -s $dir/$file ~/.$file
+    		ln -sf $dir/$file ~/.$file
 	fi
 done

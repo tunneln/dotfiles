@@ -39,6 +39,10 @@ let g:syntastic_c_compiler = '/usr/bin/gcc'
 let g:syntastic_c_check_header = 1
 "Java
 let g:syntastic_java_javac_executable = '/usr/bin/javac'
+"HTML
+let g:syntastic_html_checkers = ['w3']
+let g:syntastic_html_w3_exec = '/usr/bin/curl'
+
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Plugin 'xolox/vim-session'
@@ -90,6 +94,10 @@ if v:progname =~? "evim"
   finish
 endif
 
+set encoding=utf-8
+set fileencoding=utf-8
+
+let g:NERDTreeDirArrows=0
 
 " Redirect backup files from main dir to avoid clutter
 set backupdir=~/.vim/BackupFiles,~/tmp,.

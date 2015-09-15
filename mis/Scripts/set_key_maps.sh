@@ -17,8 +17,8 @@ synclient TouchpadOff=1
 
 ### temporary inelegant solution to alsa mute issue at boot
 amixer -c 0 sset Master playback unmute
-amixer -c 0 sset Headphone playback unmute
-amixer -c 0 sset Speaker playback unmute
+amixer -c 0 sset Headphone playback 0dB unmute
+amixer -c 0 sset Speaker playback 0dB unmute
 ###
 
 ### Mounting NAS at boot up when home

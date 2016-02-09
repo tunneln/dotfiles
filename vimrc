@@ -1,7 +1,3 @@
-" An example for a vimrc file.
-"
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2014 Feb 05
 "
 " To use it, copy it to
 "     for Unix and OS/2:  ~/.vimrc
@@ -52,6 +48,12 @@ let g:session_autoload = 'no'
 Plugin 'scrooloose/nerdcommenter'
 filetype plugin on
 
+Plugin 'lervag/vimtex'
+
+Plugin 'jiangmiao/auto-pairs'
+
+Plugin 'majutsushi/tagbar'
+
 " EXAMPLES ----------------------------------------------------------------
 
 " " plugin on GitHub repo
@@ -94,8 +96,11 @@ if v:progname =~? "evim"
   finish
 endif
 
-set encoding=utf-8
-set fileencoding=utf-8
+:nnoremap p ]p
+:nnoremap <c-p> p
+
+"set encoding=utf-8
+"set fileencoding=utf-8
 
 let g:NERDTreeDirArrows=0
 
@@ -118,6 +123,8 @@ syntax on
 " on previous line
 set cindent
 
+nmap <F8> :TagbarToggle<CR>
+
 " Adds BASED line numbers
 set nu
 
@@ -132,21 +139,22 @@ map <Left> <Nop>
 map <Right> <Nop>
 map <Up> <Nop>
 map <Down> <Nop>
-"imap <up> <nop> insert mode
-"imap <down> <nop>
-"imap <left> <nop>
-"imap <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
 
 " Remap esc to jj
 imap jj <Esc>
 imap JJ <Esc>
 
-" Added capital maps for save & quit
+" Added capital maps for save & quit & undo
 :command WQ wq
 :command Wq wq
 :command W w
 :command Q q
-  
+
+
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
@@ -191,7 +199,7 @@ if has("autocmd")
 
   " Enable file type detection.
   " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
+	  " 'c'indent' is on in C files, etc.
   " Also load indent files, to automatically do language-dependent indenting.
   filetype plugin indent on
 

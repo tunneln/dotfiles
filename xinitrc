@@ -8,3 +8,5 @@ xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Axes" 6 7 4 5
 xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Middle Button Emulation" 1
 xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Middle Button Timeout" 50
 synclient TouchpadOff=1
+
+xscreensaver -nosplash &

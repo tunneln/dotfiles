@@ -123,7 +123,11 @@ syntax on
 " on previous line
 set cindent
 
+" Hotkey for toggling the tagbar plugin
 nmap <F8> :TagbarToggle<CR>
+
+" Ignore searching type case
+:set ignorecase
 
 " Adds BASED line numbers
 set nu
@@ -131,7 +135,7 @@ set nu
 set timeoutlen=1000 ttimeoutlen=0
 " Map /<\ to ctrl f
 
-:map <C-f> /\<
+":map <C-f> /\<
 
 " Map arrow keys to nop in both esc & insert mode
 

@@ -27,7 +27,7 @@ and effecient dotfile configurations.
 # Getting Started 
 ###Quick Start
 Clone this repo to your local machine:
-`git clone https://github.com/tunneln/dotfiles.git`,
+`git clone --recursive https://github.com/tunneln/dotfiles.git`,
 preferably to your home directory or where you store other git repos
 
 ###Quick Start w/ Forks

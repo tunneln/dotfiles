@@ -1,10 +1,3 @@
-"
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
-" Set to Vim (instead of Vi) settings
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -15,7 +8,7 @@ call vundle#begin()
 " "call vundle#begin('~/some/path/here')
 "
 " " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " The following are examples of different formats supported.
 " " Keep Plugin commands between vundle#begin/end
@@ -42,9 +35,10 @@ let g:syntastic_html_w3_exec = '/usr/bin/curl'
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Plugin 'xolox/vim-session'
+
 Plugin 'xolox/vim-misc'
 let g:session_autoload = 'no'
-"Plugin 'Valloric/YouCompleteMe' fucks with syntastic
+
 Plugin 'scrooloose/nerdcommenter'
 filetype plugin on
 
@@ -75,7 +69,7 @@ Plugin 'majutsushi/tagbar'
 " EXAMPLES ----------------------------------------------------------------
 
 call vundle#end()            " required
-filetype plugin indent on    " require
+filetype plugin indent on    " required
 
 colorscheme Tomorrow-Night-Eighties
 " " To ignore plugin indent changes, instead use:

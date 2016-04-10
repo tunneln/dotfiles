@@ -123,6 +123,8 @@ syntax on
 " on previous line
 set cindent
 
+set pastetoggle=<F2>
+
 " Hotkey for toggling the tagbar plugin
 nmap <F8> :TagbarToggle<CR>
 

@@ -1,4 +1,3 @@
-
 # /etc/profile
 
 #Set our umask

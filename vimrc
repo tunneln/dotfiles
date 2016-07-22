@@ -35,6 +35,7 @@ let g:syntastic_html_w3_exec = '/usr/bin/curl'
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Plugin 'xolox/vim-session'
+let g:session_autosave = 'no'
 
 Plugin 'xolox/vim-misc'
 let g:session_autoload = 'no'
@@ -45,8 +46,17 @@ filetype plugin on
 Plugin 'lervag/vimtex'
 
 Plugin 'jiangmiao/auto-pairs'
+let g:AutoPairs = {'(':')', '[':']', '{':'}','"':'"', '`':'`'}
 
 Plugin 'majutsushi/tagbar'
+
+Plugin 'Yggdroot/indentLine' 
+let g:indentLine_char = '|'
+let g:indentLine_color_term = 239 " Vim
+let g:indentLine_color_gui = '#A4E57E' " GVim
+" none X terminal
+let g:indentLine_color_tty_light = 7 " (default: 4)
+let g:indentLine_color_dark = 1 " (default: 2)
 
 " EXAMPLES ----------------------------------------------------------------
 
@@ -93,13 +103,17 @@ endif
 :nnoremap p ]p
 :nnoremap <c-p> p
 
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
 "set encoding=utf-8
 "set fileencoding=utf-8
 
 let g:NERDTreeDirArrows=0
 
 " Redirect backup files from main dir to avoid clutter
-set backupdir=~/.vim/BackupFiles,~/tmp,.
+set backupdir=~/.vim/Backups,~/tmp
 
 " Paste properly more than once over a line
 xnoremap p pgvy
@@ -135,14 +149,14 @@ set timeoutlen=1000 ttimeoutlen=0
 
 " Map arrow keys to nop in both esc & insert mode
 
-map <Left> <Nop>
-map <Right> <Nop>
-map <Up> <Nop>
-map <Down> <Nop>
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
+"map <Left> <Nop>
+"map <Right> <Nop>
+"map <Up> <Nop>
+"map <Down> <Nop>
+"imap <up> <nop>
+"imap <down> <nop>
+"imap <left> <nop>
+"imap <right> <nop>
 
 " Remap esc to jj
 imap jj <Esc>
@@ -154,6 +168,7 @@ imap JJ <Esc>
 :command W w
 :command Q q
 
+set term=screen-256color
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>

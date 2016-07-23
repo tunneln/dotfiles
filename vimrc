@@ -115,7 +115,8 @@ syntax on
 
 " Turn on C style indenting - chosen over set autoindent, which indents based
 " on previous line
-set cindent
+" set cindent 
+
 
 set pastetoggle=<F2>
 

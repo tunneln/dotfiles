@@ -4,10 +4,8 @@ These are my configuration files for my linux tools.
 Currently these tools include:
 - urxvt
 - vim
-- X*
-- bash_profile
-- bashrc
 - gitconfig
+- tmux config
 
 ALSO:
 - Miscellaneous scripts (for myself)
@@ -54,7 +52,7 @@ This could also probably be seen as a simple introduction to using forks....
 ```
 
 # The Installation Script
-The installation script is a bash file located in `dotfiles/Automate_Install/`
+The installation script is a bash file called install.sh 
 
 ###What it does
 **First** The script will start off by making a backup directory (of your specifications, see *Variable 2*) to store your current - and subsequent - dotfiles in.
@@ -84,7 +82,7 @@ The script has 3 variables, clearly marked, that you will **HAVE TO EDIT** to in
 
 ###Install
 Finally, to 'install' the dotfiles into your system
-Go into /dotfiles/Automate_Install/ and type `chmod +x install.sh`
+Type `chmod +x install.sh`
 and then `./install.sh` to run the script
 
 #Adding your own dotfiles

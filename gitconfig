@@ -3,3 +3,5 @@
 	email = noel.blob@gmail.com
 [credential]
 	helper = cache
+[core]
+	editor = vim

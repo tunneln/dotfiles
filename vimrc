@@ -113,7 +113,7 @@ set expandtab
 let g:NERDTreeDirArrows=0
 
 " Redirect backup files from main dir to avoid clutter
-set backupdir=~/.vim/Backups,~/tmp
+set backupdir=~/.vim/backups,~/tmp
 
 " Paste properly more than once over a line
 xnoremap p pgvy

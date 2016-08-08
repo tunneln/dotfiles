@@ -11,13 +11,14 @@ My dotfiles currently include:
 - gitconfig
 - tmux config
 
-
-**NOTE: I am currently running Arch Linux x86 & Awesome WM**
-
 # Getting Started
 Clone this repo to your local machine:
 
 `git clone --recursive https://github.com/tunneln/dotfiles.git`
+
+If you just want to use these dotfiles on your system, simply type
+
+`cd dotfiles && sh install.sh`
 
 # The Installation Script
 The installation script is a bash sript called install.sh
@@ -35,6 +36,8 @@ Finally, to 'install' the dotfiles into your system
 Type `chmod +x install.sh`
 
 and then `./install.sh` to run the script
+
+or simply run `sh install.sh`
 
 #Adding your own dotfiles
 To add or modify the dot files, simply copy over any given dot file from your home directory into the dotfiles folder and run the install script. Your personal dotfiles should all now be updated and symlinked.

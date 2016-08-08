@@ -8,9 +8,9 @@
 #Variables+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #CHANGE VARIABLES ACCORDINGLY
 
-dir=$PWD                    # dotfiles directory
-olddir=$HOME/.old_dotfiles  # old dotfiles backup directory
-files=$dir/*
+dir="$( cd "$( dirname "${BASH_SOURCE[0]}"  )" && pwd  )"   # dotfiles directory
+olddir=$HOME/.old_dotfiles                                  # old dotfiles backup directory
+files=$dir/*                                                # retrieving given dotfiles
 
 #Do Work+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # A. Create backup dotfiles folder in homedir
@@ -28,32 +28,35 @@ echo "...done
 "
 
 #B.
-for file in $files; do
-    dotfi=~/.${file##*/}
+for file in $files; do 
     finame=${file##*/}
+    dotfi=$HOME/.$finame
+    if [ $finame == "README.md" -o $finame == "install.sh" ]; then
+        continue
+    fi
 	echo "############################### NEXT FILE ###############################"
 	echo "Attempting to backup $dotfi to $olddir ..."
-    # Checks if to-be-backed-up file exists
+    
+    # checks if to-be-backed-up file exists
     if [ -a $dotfi ]; then                                  
-   		cp -r $dotfi $olddir
-		rm $dotfi
+   		mv $dotfi $olddir/${finame#"."}
 	 	echo "...done"
-    elif [ -a $finame == "install.sh" ]; then
-        :
     else
 		echo "$dotfi DOES NOT EXIST
 		"
 	fi
 
-	#checks if to-be-linked file exists
-	if [ -a $dir/$finame -a "install.sh" != $finame ]; then 
+	# checks if to-be-linked file exists
+	if [ -a $dir/$finame ]; then 
 		echo "Creating symlink of $finame in your HOME directory as \".$finame\"	
 		"
     		ln -sf $file $dotfi
 	fi
    
-    # Checks if file is a vim file and if plugins can be installed
-    if [ $finame == "vimrc" -a $file/bundle ]; then              
+    # checks if file is a vim file and if plugins can be installed
+    if [ $finame == "vim" -a $file/bundle ]; then
+        echo "Updating and installing all vim plugins"
+        git submodule update --init --recursive
         vim +PluginInstall +qall
     fi
 

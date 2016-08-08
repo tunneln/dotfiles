@@ -8,12 +8,12 @@
 #Variables+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #CHANGE VARIABLES ACCORDINGLY
 
-dir=~/GithubRepos/dotfiles         # dotfiles directory
-olddir=~/.dotfiles_old             # old dotfiles backup directory
-files="vim vimrc gitconfig tmux.conf bashrc bash_profile profile"   # list of files/folders to symlink in homedir
+dir=$PWD                    # dotfiles directory
+olddir=$HOME/.old_dotfiles  # old dotfiles backup directory
+files=$dir/*
 
 #Do Work+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# A. Create dotfiles_old in homedir
+# A. Create backup dotfiles folder in homedir
 # B. ~ dotsfiles -> $olddir NEXT create soft links to dotfiles in $HOME 
 
 #A.
@@ -29,22 +29,33 @@ echo "...done
 
 #B.
 for file in $files; do
-	echo "###############################NEXT FILE###############################"
-	echo "Attempting to backup ~/.$file to $olddir ..."
-    	if [ -a ~/.$file ]; then #checks if to-be-backed-up file exists
-   		cp -r ~/.$file $olddir
-		rm ~/.$file
+    dotfi=~/.${file##*/}
+    finame=${file##*/}
+	echo "############################### NEXT FILE ###############################"
+	echo "Attempting to backup $dotfi to $olddir ..."
+    # Checks if to-be-backed-up file exists
+    if [ -a $dotfi ]; then                                  
+   		cp -r $dotfi $olddir
+		rm $dotfi
 	 	echo "...done"
-	else
-		echo "~/.$file DOES NOT EXIST
+    elif [ -a $finame == "install.sh" ]; then
+        :
+    else
+		echo "$dotfi DOES NOT EXIST
 		"
 	fi
-	
-	if [ -a $dir/$file ]; then #checks if to-be-linked file exists
-		echo "Creating symlink of $file in $HOME as \".$file\"		
+
+	#checks if to-be-linked file exists
+	if [ -a $dir/$finame -a "install.sh" != $finame ]; then 
+		echo "Creating symlink of $finame in your HOME directory as \".$finame\"	
 		"
-    		ln -sf $dir/$file ~/.$file
+    		ln -sf $file $dotfi
 	fi
+   
+    # Checks if file is a vim file and if plugins can be installed
+    if [ $finame == "vimrc" -a $file/bundle ]; then              
+        vim +PluginInstall +qall
+    fi
+
 done
 
-vim +PluginInstall +qall #installs vim plugins

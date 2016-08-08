@@ -1,60 +1,29 @@
-# My dotfiles
-# About
-These are my configuration files for my linux tools. 
-Currently these tools include:
-- urxvt
-- vim
-- gitconfig
-- tmux config
+# dotfiles
 
-ALSO:
-- Miscellaneous scripts (for myself)
-
-
-
-The goal for this repo is to make it easier to setup a proper programming enviornment
-for myself and help create a framework for others on additional computers. 
+The goal for this repo is to make it easier to setup a proper shell enviornment
+for myself and help create a framework for others. 
 By storing my dotfiles in a Git repository, I can create a simple organized system 
 to automate and sync my dotfiles from setup to setup.
 
-My secondary goal is to collaborate with others and share ideas for more interesting 
-and effecient dotfile configurations.
+My dotfiles currently include:
+- bashrc/bash_profile/profile
+- vim/vimrc
+- gitconfig
+- tmux config
+- Miscellaneous personal scripts
 
-**NOTE: I am currently running Arch Linux x86/awesome wm with kernel version 3.18.6-1**
 
-# Getting Started 
-###Quick Start
+**NOTE: I am currently running Arch Linux x86 & Awesome WM**
+
+# Getting Started
 Clone this repo to your local machine:
 `git clone --recursive https://github.com/tunneln/dotfiles.git`,
 preferably to your home directory or where you store other git repos
 
-###Quick Start w/ Forks
-This is the preferred method if you want to contribute to my configurations with changes/additions
-or if you just want to keep up to date with my dotfiles.
-
-This could also probably be seen as a simple introduction to using forks....
-
-**Step 1** Fork this repo
-
-**Step 2** Clone your forked repo into your local machine
-
-` $ git clone https://github.com/your-username/dotfiles `
-
-**Step 3** Add the upstream source to the cloned repo. In the folder type
-
-` $ git remote add upstream https://github.com/tunneln/dotfiles `
-
-**Step 4** Lastly, any time you want to sync/update your Forked repo w/ the upstream (tunneln/dotfiles). Type
-```
- $ git fetch upstream (download the upstream source)
- $ git checkout master (go into your local master branch)
- $ git merge upstream/master (merge the upstream's master branch with your own local master branch)
-```
-
 # The Installation Script
-The installation script is a bash file called install.sh 
+The installation script is a bash sript called install.sh
 
-###What it does
+##What it does
 **First** The script will start off by making a backup directory (of your specifications, see *Variable 2*) to store your current - and subsequent - dotfiles in.
 
 **Next** the script will clean up any old symlinks/dotfiles by individually moving all of them (that you specified, see *Variable 3*) into the backup folder
@@ -63,7 +32,7 @@ The installation script is a bash file called install.sh
 
 **NOTE**: The script will not affect any dotfile not specified by *Variable 3*.
 
-###Customizing the Script
+##Customizing the Script
 The script has 3 variables, clearly marked, that you will **HAVE TO EDIT** to install the dotfiles.
 
 *NOTE*: install.sh currently contains my personal configuration
@@ -94,8 +63,4 @@ with the mv command.
 Then all you have to do is add the dotfile's name to the list of files in *Variable 3*
 
 e.g. change `files="bashrc vim vimrc"` to `files="bashrc vim vimrc urxvt"`
-
-You can also use my dotfiles for your own by running ` cp (-r) somedotfile ~/.somedotfile ` in the dotfiles directory
-
-####Enjoy!
 

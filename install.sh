@@ -10,7 +10,7 @@
 
 dir=~/GithubRepos/dotfiles         # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
-files="vim vimrc gitconfig tmux.conf"    # list of files/folders to symlink in homedir
+files="vim vimrc gitconfig tmux.conf bashrc bash_profile profile"   # list of files/folders to symlink in homedir
 
 #Do Work+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # A. Create dotfiles_old in homedir

@@ -1,9 +1,9 @@
 # dotfiles
 
 The goal for this repo is to make it easier to setup a proper shell enviornment
-for myself and help create a framework for others. 
-By storing my dotfiles in a Git repository, I can create a simple organized system 
-to automate and sync my dotfiles from setup to setup.
+for myself and to help create a simple dotfile framework for others to use. 
+By storing my dotfiles in a Git repository, one can create a simple organized system 
+to automate and sync personalized dotfiles from setup to setup.
 
 My dotfiles currently include:
 - bashrc/bash_profile/profile
@@ -16,8 +16,8 @@ My dotfiles currently include:
 
 # Getting Started
 Clone this repo to your local machine:
-`git clone --recursive https://github.com/tunneln/dotfiles.git`,
-preferably to your home directory or where you store other git repos
+
+`git clone --recursive https://github.com/tunneln/dotfiles.git`
 
 # The Installation Script
 The installation script is a bash sript called install.sh
@@ -29,13 +29,16 @@ The installation script is a bash sript called install.sh
 
 **Lastly** the script will create soft links in your home directory that point to the new dotfiles folder
 
-###Run the script
+##Running the script
 Finally, to 'install' the dotfiles into your system
+
 Type `chmod +x install.sh`
+
 and then `./install.sh` to run the script
 
 #Adding your own dotfiles
 To add or modify the dot files, simply copy over any given dot file from your home directory into the dotfiles folder and run the install script. Your personal dotfiles should all now be updated and symlinked.
 
-**Be sure to cp the file over without a dot**  e.g.` cp ~/.urxvt ~/dotfiles/urxvt `
+**Be sure to cp the file over without a dot**  
+e.g.` cp ~/.urxvt ~/dotfiles/urxvt `
 

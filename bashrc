@@ -38,7 +38,7 @@ fi
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color) color_prompt=yes;;
-
+esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
@@ -56,11 +56,11 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-$dist=`lsb_release -i`
-$system=`uname -s`
+dist=$(lsb_release -i)
+system=$(uname -s)
 
-if [ $dist == "Distributor ID: Ubuntu" ]; then
-	if [ "$color_prompt" = yes ]; then
+if [ "$dist" = "Distributor ID: Ubuntu" ]; then
+	if [ "$color_prompt" = "yes" ]; then
 		PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 	else
 		PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
@@ -75,11 +75,13 @@ if [ $dist == "Distributor ID: Ubuntu" ]; then
 	*)
 		;;
 	esac
-elif [ $dist == "Distributor ID: ARCH" ]; then
+elif [ "$dist" = "Distributor ID: ARCH" ]; then
 	PS1='\[\e[0;34m\][\u@\h \W]\$\[\e[0m\] '
-elif [ $system == "Darwin" ]	
+elif [ "$system" = "Darwin" ]; then	
 	PS1='\h:\W \u\$ '
 	alias ls='ls -G'
+else
+	PS1='\[\e[0;34m\][\u@\h \W]\$\[\e[0m\] '
 fi
 
 # enable color support of ls and also add handy aliases
@@ -122,3 +124,4 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+

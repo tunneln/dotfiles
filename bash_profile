@@ -14,6 +14,6 @@ if test -d /etc/profile.d/; then
 fi
 
 # Run startup script if it exists
-if [-a $HOME/bin/startup]; then
+if [ -a $HOME/bin/startup ]; then
     startup.sh
 fi

@@ -58,15 +58,18 @@ for file in $files; do
    
     # checks if a vim file and if plugins can be installed
     if [ $finame == "vim" ] && [ -a $file/bundle ]; then
-        echo "Updating and installing all vim plugins"
+      	echo "Updating and installing all vim plugins and adding 'backups' folder"
         git submodule update --init --recursive
         vim +PluginInstall +qall
+		mkdir -p vim/backups
     fi
 
     # Applies tmux config if added 
     if [ $finame == "tmux.conf" ]; then
-        echo "Applying tmux config"
-        tmux source-file ~/.tmux.conf
+		if [ -a /usr/bin/tmux ] || [ -a /usr/local/bin/tmux ]; then
+        	echo "Applying tmux config"
+        	tmux source-file ~/.tmux.conf
+		fi
     fi 
 done
 

@@ -37,12 +37,14 @@ for file in $files; do
 	echo "############################### NEXT FILE ###############################"
 	echo "Attempting to backup $dotfi to $olddir ..."
     
-    # checks if to-be-backed-up file exists
-    if [ -a $dotfi ]; then                                  
-   		mv $dotfi $olddir/${finame#"."}
+    # checks if to-be-backed-up file exists and is not a symlink
+    if [ -a $dotfi ] && [ ! \( -L $dotfi \) ]; then            
+        rm -rf $olddir/$finame       
+   		mv $dotfi $olddir/$finame
 	 	echo "...done"
     else
-		echo "$dotfi DOES NOT EXIST
+		cp -rf $file $olddir
+		echo "$dotfi either doesn't exist or is a symlink
 		"
 	fi
 
@@ -50,15 +52,21 @@ for file in $files; do
 	if [ -a $dir/$finame ]; then 
 		echo "Creating symlink of $finame in your HOME directory as \".$finame\"	
 		"
+            rm -rf $dotfi
     		ln -sf $file $dotfi
 	fi
    
-    # checks if file is a vim file and if plugins can be installed
-    if [ $finame == "vim" -a $file/bundle ]; then
+    # checks if a vim file and if plugins can be installed
+    if [ $finame == "vim" ] && [ -a $file/bundle ]; then
         echo "Updating and installing all vim plugins"
         git submodule update --init --recursive
         vim +PluginInstall +qall
     fi
 
+    # Applies tmux config if added 
+    if [ $finame == "tmux.conf" ]; then
+        echo "Applying tmux config"
+        tmux source-file ~/.tmux.conf
+    fi 
 done
 

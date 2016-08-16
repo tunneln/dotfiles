@@ -17,7 +17,6 @@ Plugin 'scrooloose/nerdtree'
 "Toogle nerd tree with CTRL+n
 map <C-n> :NERDTreeToggle<CR>
 
-"SYNTAX CODE CHECKER PLUGIN +++++++++++++++++++++++++++++++++++++++++++++++
 Plugin 'scrooloose/syntastic'
 "C++
 let g:syntastic_cpp_compiler = '/usr/bin/g++'
@@ -31,8 +30,6 @@ let g:syntastic_java_javac_executable = '/usr/bin/javac'
 "HTML
 let g:syntastic_html_checkers = ['w3']
 let g:syntastic_html_w3_exec = '/usr/bin/curl'
-
-"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Plugin 'xolox/vim-session'
 let g:session_autosave = 'no'
@@ -58,25 +55,8 @@ let g:indentLine_color_gui = '#A4E57E' " GVim
 let g:indentLine_color_tty_light = 7 " (default: 4)
 let g:indentLine_color_dark = 1 " (default: 2)
 
-" EXAMPLES ----------------------------------------------------------------
+Plugin 'christoomey/vim-tmux-navigator'
 
-" " plugin on GitHub repo
-" Plugin 'tpope/vim-fugitive'
-" " plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" " Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" " git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" " The sparkup vim script is in a subdirectory of this repo called vim.
-" " Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" " Avoid a name conflict with L9
-" Plugin 'user/L9', {'name': 'newL9'}
-"
-" " All of your Plugins must be added before the following line
-
-" EXAMPLES ----------------------------------------------------------------
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -103,12 +83,13 @@ endif
 :nnoremap p ]p
 :nnoremap <c-p> p
 
+" Fix tabsize to 4
 set tabstop=4
 set shiftwidth=4
-"set expandtab
+"set expandtab "python convention
 
 " Display vertical lines for TABBED indent levels
-:set list lcs=tab:\|\ 
+set list lcs=tab:\|\ 
 
 "set encoding=utf-8
 "set fileencoding=utf-8
@@ -206,8 +187,10 @@ map <C-e> $
 inoremap <C-U> <C-G>u<C-U>
 
 " In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-  set mouse=a
+set mouse+=a
+if &term =~ '^screen'
+    " tmux knows the extended mouse mode
+    set ttymouse=xterm2
 endif
 
 " Switch syntax highlighting on, when the terminal has colors

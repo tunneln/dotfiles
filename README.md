@@ -6,7 +6,7 @@ By storing my dotfiles in a Git repository, one can create a simple organized sy
 to automate and sync personalized dotfiles from setup to setup.
 
 My dotfiles currently include:
-- bashrc/bash_profile/profile
+- bash_profile/bash_logout/profile/bashrc
 - vim/vimrc
 - gitconfig
 - tmux config
@@ -14,7 +14,9 @@ My dotfiles currently include:
 # Getting Started
 Clone this repo to your local machine:
 
-`git clone --recursive https://github.com/tunneln/dotfiles.git`
+`git clone https://github.com/tunneln/dotfiles.git`
+
+If you want to make use of the dotfiles framework and make additions/modifiactions to the dotfiles, read ahead
 
 If you just want to use these dotfiles on your system, simply type
 

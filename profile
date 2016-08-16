@@ -1,12 +1,24 @@
-
-# /etc/profile
-
 #Set our umask
 umask 022
 
-# Set our default path
-PATH="/usr/local/sbin:/usr/local/bin:/usr/bin"
+# Set our default paths
+export PATH=/usr/lib/ccache/:$PATH
 export PATH=$PATH:/usr/lib/gcc:/usr/bin/gcc:/usr/bin/g++
+export PATH=$PATH:/usr/lib/gcc:/usr/bin/gcc:/usr/bin/g++
+export PATH
+
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+    . "$HOME/.bashrc"
+    fi
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
 
 # Load profiles from /etc/profile.d
 if test -d /etc/profile.d/; then

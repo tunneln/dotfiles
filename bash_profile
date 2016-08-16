@@ -3,9 +3,17 @@
 #
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
+[[ -f ~/.profile ]] && . ~/.profile
 
-export PATH=/usr/lib/ccache/bin:$HOME/Scripts:$PATH
-export PATH=$PATH:/usr/lib/gcc:/usr/bin/gcc:/usr/bin/g++
-export PATH=$HOME/Desktop/idea-IC/bin:$PATH
-export PATH
-startup.sh
+# Load profiles from /etc/profile.d
+if test -d /etc/profile.d/; then
+	for profile in /etc/profile.d/*.sh; do
+		test -r "$profile" && . "$profile"
+	done
+	unset profile
+fi
+
+# Run startup script if it exists
+if [-a $HOME/bin/startup]; then
+    startup.sh
+fi

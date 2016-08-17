@@ -6,13 +6,11 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " " alternatively, pass a path where Vundle should install plugins
 " "call vundle#begin('~/some/path/here')
-"
-" " let Vundle manage Vundle, required
+
 Plugin 'VundleVim/Vundle.vim'
 
-" The following are examples of different formats supported.
-" " Keep Plugin commands between vundle#begin/end
 Plugin 'chriskempson/vim-tomorrow-theme'
+
 Plugin 'scrooloose/nerdtree'
 "Toogle nerd tree with CTRL+n
 map <C-n> :NERDTreeToggle<CR>
@@ -43,7 +41,7 @@ filetype plugin on
 Plugin 'lervag/vimtex'
 
 Plugin 'jiangmiao/auto-pairs'
-let g:AutoPairs = {'(':')', '[':']', '{':'}','"':'"', '`':'`'}
+let g:AutoPairs = {'(':')', '[':']', '{':'}', '`':'`'}
 
 Plugin 'majutsushi/tagbar'
 
@@ -62,6 +60,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 colorscheme Tomorrow-Night-Eighties
+
 " " To ignore plugin indent changes, instead use:
 " "filetype plugin on
 " "
@@ -113,8 +112,8 @@ syntax on
 
 " Turn on C style indenting - chosen over set autoindent, which indents based
 " on previous line
-" set cindent 
-
+set cindent 
+"set autoindent		
 
 set pastetoggle=<F2>
 
@@ -128,20 +127,6 @@ nmap <F8> :TagbarToggle<CR>
 set nu
 
 set timeoutlen=1000 ttimeoutlen=0
-" Map /<\ to ctrl f
-
-":map <C-f> /\<
-
-" Map arrow keys to nop in both esc & insert mode
-
-"map <Left> <Nop>
-"map <Right> <Nop>
-"map <Up> <Nop>
-"map <Down> <Nop>
-"imap <up> <nop>
-"imap <down> <nop>
-"imap <left> <nop>
-"imap <right> <nop>
 
 " Remap esc to jj
 imap jj <Esc>
@@ -230,7 +215,6 @@ if has("autocmd")
 
 else
 
-  set autoindent		" always set autoindenting on
 
 endif " has("autocmd")
 

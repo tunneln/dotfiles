@@ -4,4 +4,5 @@
 Session.vim
 .netrwhist
 .*~
-*~
+sessions/
+backups/

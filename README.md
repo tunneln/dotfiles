@@ -5,12 +5,6 @@ for myself and to help create a simple dotfile framework for others to use.
 By storing my dotfiles in a Git repository, one can create a simple organized system 
 to automate and sync personalized dotfiles from setup to setup.
 
-My dotfiles currently include:
-- bash_profile/bash_logout/profile/bashrc
-- vim/vimrc
-- gitconfig
-- tmux config
-
 # Getting Started
 Clone this repo to your local machine:
 

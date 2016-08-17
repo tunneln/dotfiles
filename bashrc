@@ -56,7 +56,12 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-dist=$(lsb_release -i)
+if [ -a /usr/bin/lsb_release ]; then
+	dist=$(lsb_release -i)
+else
+	dist=
+fi
+
 system=$(uname -s)
 
 if [ "$dist" = "Distributor ID: Ubuntu" ]; then

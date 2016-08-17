@@ -1,8 +1,9 @@
 #!/bin/bash
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Noel T. Negusse
-# .link_dotfiles.sh
-# A simple script to install and automate the process of updating dotfiles
+# install.sh
+# A simple script to setup a personalized UN*X enviornment in order to make migrating 
+# and updating shells more portable
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 #Variables+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -31,7 +32,7 @@ echo "...done
 for file in $files; do 
     finame=${file##*/}
     dotfi=$HOME/.$finame
-    if [ $finame == "README.md" -o $finame == "install.sh" ]; then
+    if [ "$finame" = "README.md" ] || [ "$finame" = "install.sh" ]; then
         continue
     fi
 	echo "############################### NEXT FILE ###############################"
@@ -57,7 +58,7 @@ for file in $files; do
 	fi
    
     # checks if a vim file and if plugins can be installed
-    if [ $finame == "vim" ] && [ -a $file/bundle ]; then
+    if [ "$finame" = "vim" ] && [ -a $file/bundle ]; then
       	echo "Updating and installing all vim plugins and adding 'backups' folder"
         git submodule update --init --recursive
         vim +PluginInstall +qall
@@ -65,9 +66,9 @@ for file in $files; do
     fi
 
     # Applies tmux config if added 
-    if [ $finame == "tmux.conf" ]; then
+    if [ "$finame" = "tmux.conf" ]; then
 		if [ -a /usr/bin/tmux ] || [ -a /usr/local/bin/tmux ]; then
-        	echo "Applying tmux config"
+        	echo "Applying tmux config:"
         	tmux source-file ~/.tmux.conf
 		fi
     fi 

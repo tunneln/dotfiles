@@ -72,5 +72,15 @@ for file in $files; do
         	tmux source-file ~/.tmux.conf
 		fi
     fi 
+
+	# Applies xmodmap changes if added 
+	if [ "$finame" = "Xmodmap" ]; then
+		xmodmap ~/.Xmodmap
+	fi 
+
+	# Applies Xresources changes to Xorg 
+	if [ "$finame" = "Xresources" ]; then
+		xrdb -merge -I$HOME ~/.Xresources
+	fi 
 done
 

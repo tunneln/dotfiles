@@ -141,7 +141,7 @@ imap JJ <Esc>
 set term=screen-256color
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
-nnoremap <silent> <C-l> :nohl<CR><C-l>
+nnoremap <silent> <C-c> :nohl<CR><C-c>
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start

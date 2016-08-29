@@ -14,7 +14,7 @@ If you want to make use of the dotfiles framework and make additions/modifiactio
 
 If you just want to use these dotfiles on your system, simply type
 
-`cd dotfiles && sh install.sh`
+`cd dotfiles && bash install.sh`
 
 # The Installation Script
 The installation script is a bash sript called install.sh
@@ -33,7 +33,7 @@ Type `chmod +x install.sh`
 
 and then `./install.sh` to run the script
 
-or simply run `sh install.sh`
+or simply run `bash install.sh`
 
 #Adding your own dotfiles
 To add or modify the dot files, simply copy over any given dot file from your home directory into the dotfiles folder and run the install script. Your personal dotfiles should all now be updated and symlinked.

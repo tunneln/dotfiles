@@ -15,5 +15,5 @@ fi
 
 # Run startup script if it exists
 if [ -a $HOME/bin/startup ]; then
-    startup.sh
+    startup
 fi

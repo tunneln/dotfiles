@@ -85,7 +85,7 @@ endif
 " Fix tabsize to 4
 set tabstop=4
 set shiftwidth=4
-"set expandtab "python convention
+autocmd BufNewFile,BufRead *.py set expandtab "python convention
 
 " Display vertical lines for TABBED indent levels
 set list lcs=tab:\|\ 
@@ -108,12 +108,12 @@ syntax on
 :au FocusLost * :wa 
 
 " Turns on english dictionary spellcheck
-" setlocal spell spelllang=en_us
+" autocmd BufNewFile,BufRead *.txt setlocal spell spelllang=en_us
 
-" Turn on C style indenting - chosen over set autoindent, which indents based
-" on previous line
+" Turn on C style indenting and smart indenting
+set autoindent
+set smartindent 
 set cindent 
-"set autoindent		
 
 set pastetoggle=<F2>
 

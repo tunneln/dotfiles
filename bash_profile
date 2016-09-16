@@ -12,8 +12,3 @@ if test -d /etc/profile.d/; then
 	done
 	unset profile
 fi
-
-# Run startup script if it exists
-if [ -a $HOME/bin/startup ]; then
-    startup
-fi

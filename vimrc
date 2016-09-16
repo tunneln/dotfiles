@@ -41,7 +41,7 @@ filetype plugin on
 Plugin 'lervag/vimtex'
 
 Plugin 'jiangmiao/auto-pairs'
-let g:AutoPairs = {'(':')', '[':']', '{':'}', '`':'`'}
+let g:AutoPairs = {'(':')', '[':']', '{':'}', '`':'`', '"':'"'}
 
 Plugin 'majutsushi/tagbar'
 

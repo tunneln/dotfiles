@@ -41,7 +41,7 @@ filetype plugin on
 Plugin 'lervag/vimtex'
 
 Plugin 'jiangmiao/auto-pairs'
-let g:AutoPairs = {'(':')', '[':']', '{':'}', '`':'`', '"':'"'}
+let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"'}
 
 Plugin 'majutsushi/tagbar'
 
@@ -137,6 +137,13 @@ imap JJ <Esc>
 :command Wq wq
 :command W w
 :command Q q
+
+" Set cursor line
+set cursorline
+hi CursorLine cterm=none ctermbg=darkgrey term=none
+hi Todo term=standout ctermbg=11 ctermfg=9 
+
+set autoread
 
 set term=screen-256color
 

@@ -11,6 +11,11 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'chriskempson/vim-tomorrow-theme'
 
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+Plugin 'tpope/vim-fugitive'
+
 Plugin 'scrooloose/nerdtree'
 "Toogle nerd tree with CTRL+n
 map <C-n> :NERDTreeToggle<CR>

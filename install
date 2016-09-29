@@ -28,6 +28,9 @@ cd $dir
 echo "...done
 "
 
+tmux=false
+vim=false
+
 #B.
 for file in $files; do 
     finame=${file##*/}
@@ -44,7 +47,7 @@ for file in $files; do
    		mv $dotfi $olddir/$finame
 	 	echo "...done"
     else
-		cp -rf $file $olddir
+		cp -rf $file $olddir 2>/dev/null || :
 		echo "$dotfi either doesn't exist or is a symlink
 		"
 	fi
@@ -59,17 +62,13 @@ for file in $files; do
    
     # checks if a vim file and if plugins can be installed
     if [ "$finame" = "vim" ] && [ -a $file/bundle ]; then
-      	echo "Updating and installing all vim plugins and adding 'backups' folder"
-        git submodule update --init --recursive
-        vim +PluginInstall +qall
-		mkdir -p vim/backups
+		vim=true
     fi
 
     # Applies tmux config if added 
-    if [ "$finame" = "tmux.conf" ]; then
+    if [ "$finame" = "tmux" ]; then
 		if [ -a /usr/bin/tmux ] || [ -a /usr/local/bin/tmux ]; then
-        	echo "Applying tmux config:"
-        	tmux source-file ~/.tmux.conf
+			tmux=true
 		fi
     fi 
 
@@ -84,3 +83,14 @@ for file in $files; do
 	fi 
 done
 
+if [ "$tmux" = true ]; then
+	git submodule update --init --recursive
+	echo "Applying tmux config:"
+	tmux source-file ~/.tmux.conf
+fi
+
+if [ "$vim" = true ]; then
+	echo "Updating and installing all vim plugins and adding 'backups' folder"
+	vim +PluginInstall +qall
+	mkdir -p vim/backups
+fi

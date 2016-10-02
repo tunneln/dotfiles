@@ -1,6 +1,6 @@
 #
 # ~/.bashrc
-# 
+#
 
 # If not running interactively, don't do anything
 case $- in
@@ -82,7 +82,7 @@ if [ "$dist" = "Distributor ID: Ubuntu" ]; then
 	esac
 elif [ "$dist" = "Distributor ID: ARCH" ]; then
 	PS1='\[\e[0;34m\][\u@\h \W]\$\[\e[0m\] '
-elif [ "$system" = "Darwin" ]; then	
+elif [ "$system" = "Darwin" ]; then
 	PS1='\h:\W \u\$ '
 	alias ls='ls -G'
 else

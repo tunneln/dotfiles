@@ -11,14 +11,14 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'chriskempson/vim-tomorrow-theme'
 
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-
 Plugin 'tpope/vim-fugitive'
 
 Plugin 'scrooloose/nerdtree'
 "Toogle nerd tree with CTRL+n
 map <C-n> :NERDTreeToggle<CR>
+
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 Plugin 'scrooloose/syntastic'
 "C++
@@ -50,7 +50,7 @@ let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"'}
 
 Plugin 'majutsushi/tagbar'
 
-Plugin 'Yggdroot/indentLine' 
+Plugin 'Yggdroot/indentLine'
 let g:indentLine_char = '|'
 let g:indentLine_color_term = 239 " Vim
 let g:indentLine_color_gui = '#A4E57E' " GVim
@@ -93,7 +93,11 @@ set shiftwidth=4
 autocmd BufNewFile,BufRead *.py set expandtab "python convention
 
 " Display vertical lines for TABBED indent levels
-set list lcs=tab:\|\ 
+set list          " Display unprintable characters f12 - switches
+set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
+
+" Remove trailing whitespace
+autocmd BufWritePre * %s/\s\+$//e
 
 "set encoding=utf-8
 "set fileencoding=utf-8
@@ -110,15 +114,15 @@ xnoremap p pgvy
 syntax on
 
 " autosave when focus is lost from window
-:au FocusLost * :wa 
+:au FocusLost * :wa
 
 " Turns on english dictionary spellcheck
 " autocmd BufNewFile,BufRead *.txt setlocal spell spelllang=en_us
 
 " Turn on C style indenting and smart indenting
 set autoindent
-set smartindent 
-set cindent 
+set smartindent
+set cindent
 
 set pastetoggle=<F2>
 
@@ -146,7 +150,7 @@ imap JJ <Esc>
 " Set cursor line
 set cursorline
 hi CursorLine cterm=none ctermbg=darkgrey term=none
-hi Todo term=standout ctermbg=11 ctermfg=9 
+hi Todo term=standout ctermbg=11 ctermfg=9
 
 set autoread
 

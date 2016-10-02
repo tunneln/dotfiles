@@ -7,3 +7,7 @@ Session.vim
 sessions/
 backups/
 resurrect/
+vim/bundle/*
+!vim/bundle/Vundle.vim
+tmux/plugins/*
+!tmux/plugins/tpm

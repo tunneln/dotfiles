@@ -2,7 +2,7 @@
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Noel T. Negusse
 # install.sh
-# A simple script to setup a personalized UN*X enviornment in order to make migrating 
+# A simple script to setup a personalized UN*X enviornment in order to make migrating
 # and updating shells more portable
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -15,7 +15,7 @@ files=$dir/*                                                # retrieving given d
 
 #Do Work+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # A. Create backup dotfiles folder in homedir
-# B. ~ dotsfiles -> $olddir NEXT create soft links to dotfiles in $HOME 
+# B. ~ dotsfiles -> $olddir NEXT create soft links to dotfiles in $HOME
 
 #A.
 echo "Creating $olddir for backup of any existing dotfiles in home directory"
@@ -32,7 +32,7 @@ tmux=false
 vim=false
 
 #B.
-for file in $files; do 
+for file in $files; do
     finame=${file##*/}
     dotfi=$HOME/.$finame
     if [ "$finame" = "README.md" ] || [ "$finame" = "install.sh" ]; then
@@ -40,10 +40,10 @@ for file in $files; do
     fi
 	echo "############################### NEXT FILE ###############################"
 	echo "Attempting to backup $dotfi to $olddir ..."
-    
+
     # checks if to-be-backed-up file exists and is not a symlink
-    if [ -a $dotfi ] && [ ! \( -L $dotfi \) ]; then            
-        rm -rf $olddir/$finame       
+    if [ -a $dotfi ] && [ ! \( -L $dotfi \) ]; then
+        rm -rf $olddir/$finame
    		mv $dotfi $olddir/$finame
 	 	echo "...done"
     else
@@ -53,34 +53,34 @@ for file in $files; do
 	fi
 
 	# checks if to-be-linked file exists
-	if [ -a $dir/$finame ]; then 
-		echo "Creating symlink of $finame in your HOME directory as \".$finame\"	
+	if [ -a $dir/$finame ]; then
+		echo "Creating symlink of $finame in your HOME directory as \".$finame\"
 		"
             rm -rf $dotfi
     		ln -sf $file $dotfi
 	fi
-   
+
     # checks if a vim file and if plugins can be installed
     if [ "$finame" = "vim" ] && [ -a $file/bundle ]; then
 		vim=true
     fi
 
-    # Applies tmux config if added 
+    # Applies tmux config if added
     if [ "$finame" = "tmux" ]; then
 		if [ -a /usr/bin/tmux ] || [ -a /usr/local/bin/tmux ]; then
 			tmux=true
 		fi
-    fi 
+    fi
 
-	# Applies xmodmap changes if added 
+	# Applies xmodmap changes if added
 	if [ "$finame" = "Xmodmap" ]; then
 		xmodmap ~/.Xmodmap
-	fi 
+	fi
 
-	# Applies Xresources changes to Xorg 
+	# Applies Xresources changes to Xorg
 	if [ "$finame" = "Xresources" ]; then
 		xrdb -merge -I$HOME ~/.Xresources
-	fi 
+	fi
 done
 
 if [ "$tmux" = true ]; then

@@ -20,6 +20,8 @@ map <C-n> :NERDTreeToggle<CR>
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
+Plugin 'jalcine/cmake.vim'
+
 Plugin 'scrooloose/syntastic'
 "C++
 let g:syntastic_cpp_compiler = '/usr/bin/g++'

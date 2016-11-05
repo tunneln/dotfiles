@@ -12,6 +12,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'chriskempson/vim-tomorrow-theme'
 
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-obsession'
 
 Plugin 'scrooloose/nerdtree'
 "Toogle nerd tree with CTRL + n
@@ -47,8 +48,8 @@ filetype plugin on
 
 Plugin 'lervag/vimtex'
 
-Plugin 'jiangmiao/auto-pairs'
-let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"'}
+" Plugin 'jiangmiao/auto-pairs'
+" let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"'}
 
 Plugin 'majutsushi/tagbar'
 

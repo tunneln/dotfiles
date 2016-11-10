@@ -48,7 +48,8 @@ filetype plugin on
 
 Plugin 'lervag/vimtex'
 
-" Plugin 'jiangmiao/auto-pairs'
+Plugin 'jiangmiao/auto-pairs'
+let g:AutoPairs = {'{':'}'}
 " let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"'}
 
 Plugin 'majutsushi/tagbar'
@@ -63,7 +64,6 @@ let g:indentLine_color_dark = 1 " (default: 2)
 
 Plugin 'christoomey/vim-tmux-navigator'
 
-
 call vundle#end()			" required
 filetype plugin indent on	" required
 
@@ -73,10 +73,14 @@ if v:progname =~? "evim"
 	finish
 endif
 
-:nnoremap p ]p
-:nnoremap <c-p> p
+:noremap p ]p
+:noremap <c-p> p
 
-" Fix tabsize to 4
+" Prevent d, x and dd from putting text into a register
+:nnoremap x "_x
+:noremap d "_d
+:noremap dd "_dd
+
 set tabstop=4
 set shiftwidth=4
 autocmd BufNewFile,BufRead *.py set expandtab "python convention
@@ -145,7 +149,7 @@ set autoread
 
 set term=screen-256color
 
-" <Ctrl-l> redraws the screen and removes any search highlighting.
+" <Ctrl-c> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-c> :nohl<CR><C-c>
 
 " allow backspacing over everything in insert mode

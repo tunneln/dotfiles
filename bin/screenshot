@@ -1,0 +1,12 @@
+ #!/bin/bash
+
+#########################################################################################
+# Noel Negusse
+# screenshot
+# Takes a screenshot of screen on my system (Arch Linux x86/Awesome WM)
+#########################################################################################
+
+filename="$(date +%Y-%m-%d_%H.%M.%S)"
+targetbase=~/Dropbox/Screenshots
+[ -d $targetbase  ] || exit 1
+import -window root $targetbase/laptop_$filename.png

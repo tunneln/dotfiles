@@ -10,7 +10,7 @@
 #CHANGE VARIABLES ACCORDINGLY
 
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}"  )" && pwd  )"   # dotfiles directory
-olddir=$HOME/.old_dotfiles								  # old dotfiles backup directory
+olddir=$HOME/.old_dotfiles								  	# old dotfiles backup directory
 files=$dir/*												# retrieving given dotfiles
 
 #Do Work+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -35,14 +35,14 @@ vim=false
 for file in $files; do
 	finame=${file##*/}
 	dotfi=$HOME/.$finame
-	if [ "$finame" = "README.md" ] || [ "$finame" = "install.sh" ]; then
+	if [ "$finame" = "README.md" ] || [ "$finame" = "install.sh" ] || [ "$finame" = "bin" ]; then
 		continue
 	fi
 	echo "############################### NEXT FILE ###############################"
-	echo "Attempting to backup $dotfi to $olddir ..."
 
 	# checks if to-be-backed-up file exists and is not a symlink
 	if [ -a $dotfi ] && [ ! \( -L $dotfi \) ]; then
+		echo "Attempting to backup $dotfi to $olddir ..."
 		rm -rf $olddir/$finame
 		mv $dotfi $olddir/$finame
 		echo "...done"
@@ -83,6 +83,20 @@ for file in $files; do
 	fi
 done
 
+echo "############################### NEXT FILE ###############################"
+if [ -a ~/bin ]; then
+	echo "Merging ~/bin and $dir/bin folders"
+	cp -r $dir/bin/* ~/bin/ 2> /dev/null
+	rm -r $dir/bin/	2> /dev/null
+	mv ~/bin $dir
+	echo "...done"
+fi
+
+echo "Creating symlink of bin in your HOME directory as \"bin\""
+ln -sf $dir/bin ~/bin
+mkdir -p ~/.trash
+
+
 if [ "$tmux" = true ]; then
 	git submodule update --init --recursive
 	echo "Applying tmux config:"
@@ -94,3 +108,4 @@ if [ "$vim" = true ]; then
 	vim +PluginInstall +qall
 	mkdir -p vim/backups
 fi
+

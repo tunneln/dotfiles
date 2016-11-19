@@ -130,9 +130,17 @@ set nu
 
 set timeoutlen=1000 ttimeoutlen=0
 
-" Remap esc to jj
+" Remap esc to jj and jf
 imap jj <Esc>
+imap jJ <Esc>
+imap Jj <Esc>
 imap JJ <Esc>
+
+imap jf <Esc>
+imap Jf <Esc>
+imap jF <Esc>
+imap JF <Esc>
+
 
 " Added capital maps for save & quit & undo
 :command WQ wq

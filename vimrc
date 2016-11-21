@@ -141,6 +141,8 @@ imap Jf <Esc>
 imap jF <Esc>
 imap JF <Esc>
 
+" cc without leaving normal mode
+nnoremap cc cc<Esc>
 
 " Added capital maps for save & quit & undo
 :command WQ wq

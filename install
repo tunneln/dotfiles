@@ -41,7 +41,7 @@ for file in $files; do
 	echo "############################### NEXT FILE ###############################"
 
 	# checks if to-be-backed-up file exists and is not a symlink
-	if [ -a $dotfi ] && [ ! \( -L $dotfi \) ]; then
+	if [ -e $dotfi ] && [ ! \( -L $dotfi \) ]; then
 		echo "Attempting to backup $dotfi to $olddir ..."
 		rm -rf $olddir/$finame
 		mv $dotfi $olddir/$finame
@@ -53,7 +53,7 @@ for file in $files; do
 	fi
 
 	# checks if to-be-linked file exists
-	if [ -a $dir/$finame ]; then
+	if [ -e $dir/$finame ]; then
 		echo "Creating symlink of $finame in your HOME directory as \".$finame\"
 		"
 			rm -rf $dotfi
@@ -84,12 +84,16 @@ for file in $files; do
 done
 
 echo "############################### NEXT FILE ###############################"
-if [ -a ~/bin ]; then
+if [ -e ~/bin ] && [!-L ~/bin]; then
 	echo "Merging ~/bin and $dir/bin folders"
 	cp -r $dir/bin/* ~/bin/ 2> /dev/null
-	rm -r $dir/bin/	2> /dev/null
+	rm -rf $dir/bin/	2> /dev/null
 	mv ~/bin $dir
 	echo "...done"
+fi
+
+if [ -e ~/bin ] && [-L ~/bin]; then
+	rm ~/bin 2> /dev/null
 fi
 
 echo "Creating symlink of bin in your HOME directory as \"bin\""

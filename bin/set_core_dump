@@ -3,7 +3,7 @@
 #########################################################################################
 # Noel Negusse
 # set_core_dump.sh
-# A very simple script to temporarily set my core dump (made by seg faults)
+# A very simple script to temporarily set the core dumps (for debugging)
 # destination file as the current directory.
 # Uses: debugging segementation faults by using core dumps with a debugger like gdb
 #########################################################################################

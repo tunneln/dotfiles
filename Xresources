@@ -7,6 +7,8 @@
 #define t_fg_highlight #B6B7BB
 #define t_fg_ceiling   #FEFFFF
 
+URxvt.perl-ext-common: selection-to-clipboard
+
 URxvt.scrollBar: false
 
 URxvt.background: t_background

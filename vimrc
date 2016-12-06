@@ -142,7 +142,7 @@ imap jF <Esc>
 imap JF <Esc>
 
 " cc without leaving normal mode and removing line
-nnoremap cc Vx
+nnoremap cd Vx
 
 " Added capital maps for save & quit & undo
 :command WQ wq

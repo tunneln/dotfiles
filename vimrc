@@ -15,7 +15,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-obsession'
 
 Plugin 'scrooloose/nerdtree'
-"Toogle nerd tree with CTRL + n
+"Toggle nerd tree with CTRL + n
 map <C-n> :NERDTreeToggle<CR>
 
 Plugin 'vim-airline/vim-airline'
@@ -73,8 +73,12 @@ if v:progname =~? "evim"
 	finish
 endif
 
-:noremap p ]p
-:noremap <c-p> p
+set pastetoggle=<F12>
+
+" Map Ctrl+c/C to copy text to clipboard/pimary buffers
+" Map Ctrl+p/P to paste text from clipboard/pimary buffers
+:noremap <C-c> "+y
+:noremap <C-p> "+p
 
 " Prevent d, x and dd from putting text into a register
 :nnoremap x "_x
@@ -86,8 +90,8 @@ set shiftwidth=4
 autocmd BufNewFile,BufRead *.py set expandtab "python convention
 
 " Display vertical lines for TABBED indent levels
-set list	" Display unprintable characters f12 - switches
-set listchars=tab:•\ ,trail:•,extends:»,precedes:«	" Unprintable chars mapping
+set list    " Display unprintable characters f12 - switches
+set listchars=tab:•\ ,trail:•,extends:»,precedes:«   " Unprintable chars mapping
 
 " Remove trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
@@ -117,8 +121,6 @@ set autoindent
 set smartindent
 set cindent
 
-set pastetoggle=<F2>
-
 " Hotkey for toggling the tagbar plugin
 nmap <F8> :TagbarToggle<CR>
 
@@ -136,10 +138,10 @@ imap jJ <Esc>
 imap Jj <Esc>
 imap JJ <Esc>
 
-imap jf <Esc>
-imap Jf <Esc>
-imap jF <Esc>
-imap JF <Esc>
+"imap jf <Esc>
+"imap Jf <Esc>
+"imap jF <Esc>
+"imap JF <Esc>
 
 " cc without leaving normal mode and removing line
 nnoremap cd Vx
@@ -159,22 +161,22 @@ set autoread
 
 set term=screen-256color
 
-" <Ctrl-c> redraws the screen and removes any search highlighting.
-nnoremap <silent> <C-c> :nohl<CR><C-c>
+" Ctrl + x redraws the screen and removes any search highlighting.
+noremap <silent><C-x> :noh<CR>
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
 if has("vms")
-	set nobackup		" do not keep a backup file, use versions instead
+	set nobackup        " do not keep a backup file, use versions instead
 else
-	set backup			" keep a backup file (restore to previous version)
-	set undofile		" keep an undo file (undo changes after closing)
+	set backup          " keep a backup file (restore to previous version)
+	set undofile        " keep an undo file (undo changes after closing)
 endif
-set history=50	" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch	" do incremental searching
+set history=50  " keep 50 lines of command line history
+set ruler       " show the cursor position all the time
+set showcmd     " display incomplete commands
+set incsearch   " do incremental searching
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")

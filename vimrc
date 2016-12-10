@@ -72,7 +72,18 @@ if v:progname =~? "evim"
 	finish
 endif
 
-set pastetoggle=<F12>
+" Fixing really weird issue with home, end keys and F keys
+noremap [7~ <HOME>
+noremap [8~ <END>
+noremap [11~ <F1>
+noremap [12~ <F2>
+noremap [13~ <F3>
+
+" Using insert mode, you can insert a single character by simply typing
+" <space> + char
+nnoremap <Space> i_<Esc>r
+
+set pastetoggle=<F2>
 
 " Map Ctrl+c/C to copy text to clipboard/pimary buffers
 " Map Ctrl+p/P to paste text from clipboard/pimary buffers

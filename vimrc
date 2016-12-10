@@ -12,7 +12,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'chriskempson/vim-tomorrow-theme'
 
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-obsession'
 
 Plugin 'scrooloose/nerdtree'
 "Toggle nerd tree with CTRL + n
@@ -38,7 +37,7 @@ let g:syntastic_html_checkers = ['w3']
 let g:syntastic_html_w3_exec = '/usr/bin/curl'
 
 Plugin 'xolox/vim-session'
-let g:session_autosave = 'no'
+let g:session_autosave = 'yes'
 
 Plugin 'xolox/vim-misc'
 let g:session_autoload = 'no'
@@ -121,6 +120,16 @@ set autoindent
 set smartindent
 set cindent
 
+" Defines folds automatically based on the languages syntax, if defined
+setlocal foldmethod=syntax
+setlocal foldnestmax=2
+
+" Maps F9 for toggling folds
+inoremap <F9> <C-O>za
+nnoremap <F9> za
+onoremap <F9> <C-C>za
+vnoremap <F9> zf
+
 " Hotkey for toggling the tagbar plugin
 nmap <F8> :TagbarToggle<CR>
 
@@ -137,11 +146,6 @@ imap jj <Esc>
 imap jJ <Esc>
 imap Jj <Esc>
 imap JJ <Esc>
-
-"imap jf <Esc>
-"imap Jf <Esc>
-"imap jF <Esc>
-"imap JF <Esc>
 
 " cc without leaving normal mode and removing line
 nnoremap cd Vx
@@ -161,8 +165,8 @@ set autoread
 
 set term=screen-256color
 
-" Ctrl + x redraws the screen and removes any search highlighting.
-noremap <silent><C-x> :noh<CR>
+" Ctrl + z redraws the screen and removes any search highlighting.
+noremap <silent><C-z> :noh<CR>
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -186,7 +190,7 @@ map Q gq
 
 " Map home and end to CTRL-a and CTRL-e, respectivelly
 map <C-a> ^
-map <C-e> $
+map <C-e> g_
 
 " CTRL-U in insert mode deletes a lot. Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.

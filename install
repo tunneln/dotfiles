@@ -84,15 +84,15 @@ for file in $files; do
 done
 
 echo "############################### NEXT FILE ###############################"
-if [ -e ~/bin ] && [!-L ~/bin]; then
+if [ -e ~/bin ] && [ ! -L ~/bin ]; then
 	echo "Merging ~/bin and $dir/bin folders"
 	cp -r $dir/bin/* ~/bin/ 2> /dev/null
-	rm -rf $dir/bin/	2> /dev/null
+	rm -rf $dir/bin/ 2> /dev/null
 	mv ~/bin $dir
 	echo "...done"
 fi
 
-if [ -e ~/bin ] && [-L ~/bin]; then
+if [ -e ~/bin ] && [ -L ~/bin ]; then
 	rm ~/bin 2> /dev/null
 fi
 

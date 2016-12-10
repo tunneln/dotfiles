@@ -33,8 +33,6 @@ if test "$PS1" && test "$BASH" && test -r /etc/bash.bashrc; then
 	. /etc/bash.bashrc
 fi
 
-xmodmap ~/.Xmodmap
-
 # Termcap is outdated, old, and crusty, kill it.
 unset TERMCAP
 

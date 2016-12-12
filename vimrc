@@ -72,12 +72,13 @@ if v:progname =~? "evim"
 	finish
 endif
 
-" Fixing really weird issue with home, end keys and F keys
-noremap [7~ <HOME>
-noremap [8~ <END>
-noremap [11~ <F1>
-noremap [12~ <F2>
-noremap [13~ <F3>
+" Fixing really weird issue with and home, end and F keys
+map [7~ <HOME>
+map [8~ <END>
+map [11~ <F1>
+map [12~ <F2>
+map [13~ <F3>
+
 
 " Using insert mode, you can insert a single character by simply typing
 " <space> + char
@@ -85,9 +86,9 @@ nnoremap <Space> i_<Esc>r
 
 set pastetoggle=<F2>
 
-" Map Ctrl+c/C to copy text to clipboard/pimary buffers
+" Map Ctrl+y/C to copy text to clipboard/pimary buffers
 " Map Ctrl+p/P to paste text from clipboard/pimary buffers
-:noremap <C-c> "+y
+:noremap <C-y> "+y
 :noremap <C-p> "+p
 
 " Prevent d, x and dd from putting text into a register
@@ -176,8 +177,8 @@ set autoread
 
 set term=screen-256color
 
-" Ctrl + z redraws the screen and removes any search highlighting.
-noremap <silent><C-z> :noh<CR>
+" Ctrl + c redraws the screen and removes any search highlighting.
+noremap <silent><C-c> :noh<CR>
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -200,8 +201,12 @@ set incsearch   " do incremental searching
 map Q gq
 
 " Map home and end to CTRL-a and CTRL-e, respectivelly
-map <C-a> ^
-map <C-e> g_
+"map <C-a> ^
+"map <C-e> g_
+
+" Simple visual mode map of a and e to go to beg and end
+vnoremap a ^
+vnoremap e g_
 
 " CTRL-U in insert mode deletes a lot. Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.

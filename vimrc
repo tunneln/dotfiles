@@ -79,7 +79,6 @@ map [11~ <F1>
 map [12~ <F2>
 map [13~ <F3>
 
-
 " Using insert mode, you can insert a single character by simply typing
 " <space> + char
 nnoremap <Space> i_<Esc>r
@@ -200,9 +199,13 @@ set incsearch   " do incremental searching
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
-" Map home and end to CTRL-a and CTRL-e, respectivelly
+" Map CTRL-a and CTRL-e to the first and last char of a line
 "map <C-a> ^
 "map <C-e> g_
+
+" Map home and end to the first and last char of a line
+map <HOME> ^
+map <END> g_
 
 " Simple visual mode map of a and e to go to beg and end
 vnoremap a ^

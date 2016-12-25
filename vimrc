@@ -121,7 +121,7 @@ xnoremap p pgvy
 syntax on
 
 " autosave when focus is lost from window
-:au FocusLost * :wa
+au FocusLost * :wa
 
 " Turns on english dictionary spellcheck
 " autocmd BufNewFile,BufRead *.txt setlocal spell spelllang=en_us
@@ -132,8 +132,10 @@ set smartindent
 set cindent
 
 " Defines folds automatically based on the languages syntax, if defined
-setlocal foldmethod=syntax
-setlocal foldnestmax=2
+au BufNewFile,BufRead *.c,*.h,*.cc,*.cpp,*.hpp,*.java setlocal foldmethod=syntax foldnestmax=2
+au BufNewFile,BufRead *.py,*.js setlocal foldmethod=indent foldnestmax=2
+au BufNewFile,BufRead *.vcd,*.html setlocal foldmethod=indent foldnestmax=3
+"let c_no_comment_fold = 2
 
 " Maps F9 for toggling folds
 inoremap <F9> <C-O>za
@@ -242,8 +244,8 @@ if has("autocmd")
 	augroup vimrcEx
 	au!
 
-" For all text files set 'textwidth' to 78 characters.
-	autocmd FileType text setlocal textwidth=78
+" For all text files set 'textwidth' to 80 characters.
+	autocmd FileType text setlocal textwidth=80
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler

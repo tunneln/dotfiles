@@ -9,6 +9,8 @@
 
 URxvt.perl-ext-common: selection-to-clipboard
 
+URxvt.urgentOnBell: true
+
 URxvt.scrollBar: false
 
 URxvt.background: t_background

@@ -24,17 +24,12 @@ Plugin 'jalcine/cmake.vim'
 
 Plugin 'scrooloose/syntastic'
 "C++
-let g:syntastic_cpp_compiler = '/usr/bin/g++'
+"let g:syntastic_cpp_remove_include_errors = 1
 let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_auto_refresh_includes = 1
 "C
-let g:syntastic_c_compiler = '/usr/bin/gcc'
 let g:syntastic_c_check_header = 1
-"Java
-let g:syntastic_java_javac_executable = '/usr/bin/javac'
-"HTML
-let g:syntastic_html_checkers = ['w3']
-let g:syntastic_html_w3_exec = '/usr/bin/curl'
+let g:syntastic_c_auto_refresh_includes = 1
 
 Plugin 'xolox/vim-session'
 let g:session_autosave = 'yes'

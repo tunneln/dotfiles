@@ -107,6 +107,9 @@ alias la='ls -A'
 alias l='ls -CF'
 alias vi='vim'
 alias sudo='sudo -E'
+#if [ -x /usr/bin/pacaur ]; then
+alias pacman='pacaur'
+#fi
 
 # Add an "alert" alias for long running commands.  Use like so:
 # sleep 10; alert

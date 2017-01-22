@@ -74,8 +74,10 @@ map [11~ <F1>
 map [12~ <F2>
 map [13~ <F3>
 
-" Using insert mode, you can insert a single character by simply typing
-" <space> + char
+" Insert a new line after the current line w/o entering insert mode
+nmap <CR> o<Esc>k
+
+" Using insert mode, you can insert a single character by simply typing <space> + char
 nnoremap <Space> i_<Esc>r
 
 set pastetoggle=<F2>
@@ -92,7 +94,7 @@ set pastetoggle=<F2>
 
 set tabstop=4
 set shiftwidth=4
-autocmd BufNewFile,BufRead *.py set expandtab "python convention
+autocmd BufNewFile,BufRead *.py setlocal expandtab "python convention
 
 " Display vertical lines for TABBED indent levels
 set list    " Display unprintable characters f12 - switches
@@ -118,8 +120,8 @@ syntax on
 " autosave when focus is lost from window
 au FocusLost * :wa
 
-" Turns on english dictionary spellcheck
-" autocmd BufNewFile,BufRead *.txt setlocal spell spelllang=en_us
+" Set utf-8 encoding for txt files for bigger character sets
+autocmd BufNewFile,BufRead *.txt setlocal encoding=utf-8 fileencoding=utf-8
 
 " Turn on C style indenting and smart indenting
 set autoindent

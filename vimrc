@@ -61,7 +61,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 call vundle#end()			" required
 filetype plugin indent on	" required
 
-colorscheme Tomorrow-Night-Eighties
+colorscheme Colorscheme
 
 if v:progname =~? "evim"
 	finish
@@ -75,7 +75,7 @@ map [12~ <F2>
 map [13~ <F3>
 
 " Insert a new line after the current line w/o entering insert mode
-nmap <CR> o<Esc>k
+nmap <CR> o<Esc>
 
 " Using insert mode, you can insert a single character by simply typing <space> + char
 nnoremap <Space> i_<Esc>r
@@ -103,9 +103,6 @@ set listchars=tab:•\ ,trail:•,extends:»,precedes:«   " Unprintable chars m
 " Remove trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
 
-"set encoding=utf-8
-"set fileencoding=utf-8
-
 let g:NERDTreeDirArrows=0
 
 " Redirect backup files from main dir to avoid clutter
@@ -129,16 +126,23 @@ set smartindent
 set cindent
 
 " Defines folds automatically based on the languages syntax, if defined
-au BufNewFile,BufRead *.c,*.h,*.cc,*.cpp,*.hpp,*.java setlocal foldmethod=syntax foldnestmax=2
+au BufNewFile,BufRead *.c,*.h,*.cc,*.cpp,*.hpp,*.java setlocal foldmethod=syntax foldnestmax=1
 au BufNewFile,BufRead *.py,*.js setlocal foldmethod=indent foldnestmax=2
-au BufNewFile,BufRead *.vcd,*.html setlocal foldmethod=indent foldnestmax=3
-"let c_no_comment_fold = 2
+au BufNewFile,BufRead *.html setlocal foldmethod=indent foldnestmax=2 foldlevel=2
 
-" Maps F9 for toggling folds
+" Small tweaks in C/C++ for what gets folded
+au BufNewFile,BufRead main.c,main.cc,main.cpp setlocal foldmethod=manual
+let c_no_comment_fold = 1
+
+
+" Maps F9 for toggling individual folds
 inoremap <F9> <C-O>za
 nnoremap <F9> za
 onoremap <F9> <C-C>za
 vnoremap <F9> zf
+
+" Maps F10 to open all folds
+nnoremap <F10> zR
 
 " Hotkey for toggling the tagbar plugin
 nmap <F8> :TagbarToggle<CR>
@@ -165,6 +169,11 @@ nnoremap cd Vx
 :command Wq wq
 :command W w
 :command Q q
+
+" TODO: Fix colorcolumn color despite colorshceme
+" Highlights character when line goes over 80-characters
+hi ColorColumn ctermfg=lightblue ctermbg=lightblue
+call matchadd('ColorColumn', '\%82v', 100)
 
 " Set cursor line
 set cursorline

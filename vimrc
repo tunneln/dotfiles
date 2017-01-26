@@ -49,7 +49,7 @@ let g:AutoPairs = {'{':'}'}
 Plugin 'majutsushi/tagbar'
 
 Plugin 'Yggdroot/indentLine'
-let g:indentLine_char = '|'
+let g:indentLine_char = '•'
 let g:indentLine_color_term = 239 " Vim
 let g:indentLine_color_gui = '#A4E57E' " GVim
 " none X terminal
@@ -117,8 +117,10 @@ syntax on
 " autosave when focus is lost from window
 au FocusLost * :wa
 
-" Set utf-8 encoding for txt files for bigger character sets
-autocmd BufNewFile,BufRead *.txt setlocal encoding=utf-8 fileencoding=utf-8
+" Set utf-8 encodings
+set encoding=utf-8
+set fileencoding=utf-8
+set termencoding=utf-8
 
 " Turn on C style indenting and smart indenting
 set autoindent
@@ -133,7 +135,6 @@ au BufNewFile,BufRead *.html setlocal foldmethod=indent foldnestmax=2 foldlevel=
 " Small tweaks in C/C++ for what gets folded
 au BufNewFile,BufRead main.c,main.cc,main.cpp setlocal foldmethod=manual
 let c_no_comment_fold = 1
-
 
 " Maps F9 for toggling individual folds
 inoremap <F9> <C-O>za

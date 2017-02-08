@@ -35,7 +35,7 @@ vim=false
 for file in $files; do
 	finame=${file##*/}
 	dotfi=$HOME/.$finame
-	if [ "$finame" = "README.md" ] || [ "$finame" = "install.sh" ] || [ "$finame" = "bin" ]; then
+	if [ "$finame" = "README.md" ] || [ "$finame" = "install" ] || [ "$finame" = "bin" ]; then
 		continue
 	fi
 	echo "############################### NEXT FILE ###############################"

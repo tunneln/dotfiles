@@ -14,7 +14,7 @@ If you want to make use of the dotfiles framework and make additions/modifiactio
 
 If you just want to use these dotfiles on your system, simply type
 
-`cd dotfiles && bash install`
+`cd dotfiles && ./install`
 
 # The Installation Script
 The installation script is a bash sript called 'install'

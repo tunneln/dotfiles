@@ -77,9 +77,6 @@ map [13~ <F3>
 " Insert a new line after the current line w/o entering insert mode
 nmap <CR> o<Esc>
 
-" Using insert mode, you can insert a single character by simply typing <space> + char
-nnoremap <Space> i_<Esc>r
-
 set pastetoggle=<F2>
 
 " Map Ctrl+y/C to copy text to clipboard/pimary buffers
@@ -110,6 +107,9 @@ set backupdir=~/.vim/backups,~/tmp
 
 " Paste properly more than once over a line
 xnoremap p pgvy
+
+" Spelling checker for txt files
+au BufNewFile,BufRead *.txt setlocal spelllang=en_us
 
 "Syntax highlighting
 syntax on

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#########################################################################################
+# Noel Negusse
+# find_pacman_orphans
+# Identify all files not oened by any package  (Arch Linux x86/Awesome WM)
+#########################################################################################
+
+sudo find /etc /opt /usr | sort > all_files.txt
+sudo pacman -Qlq | sed 's|/$||' | sort > owned_files.txt
+comm -23 all_files.txt owned_files.txt > orphans.txt
+rm all_files.txt
+rm owned_files.txt

@@ -21,4 +21,4 @@ amixer -c 0 sset Speaker playback 0dB unmute
 ###
 
 ### Mounting NAS at boot up when home
-sudo mount -t cifs //192.168.1.104/Volume_1 ~/NAS/Volume_1 -o guest,rw,uid=1000,gid=1000,nounix,iocharset=utf8,file_mode=0777,dir_mode=0777
+sudo mount -t cifs //192.168.1.104/Volume_1/ ~/NAS/Volume_1 -o guest,uid=1000,nounix,sec=ntlm,iocharset=utf8,file_mode=0777,dir_mode=0777

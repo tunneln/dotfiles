@@ -105,11 +105,16 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
 alias vi='vim'
+
 alias sudo='sudo -E'
-#if [ -x /usr/bin/pacaur ]; then
-alias pacman='pacaur'
-#fi
+if [ -x /usr/bin/pacaur ]; then
+	alias pacman='pacaur'
+fi
+
+alias gcc='gcc -Wall -g'
+alias g++='g++ -Wall -g'
 
 # Add an "alert" alias for long running commands.  Use like so:
 # sleep 10; alert

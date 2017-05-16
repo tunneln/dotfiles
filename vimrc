@@ -77,6 +77,9 @@ map [13~ <F3>
 " Insert a new line after the current line w/o entering insert mode
 nmap <CR> o<Esc>
 
+" Insert a space when <space> is pressed in normal mode
+nnoremap <Space> i<Space><Esc>
+
 set pastetoggle=<F2>
 
 " Map Ctrl+y/C to copy text to clipboard/pimary buffers
@@ -86,7 +89,7 @@ set pastetoggle=<F2>
 
 " Prevent d, x and dd from putting text into a register
 :nnoremap x "_x
-:noremap d "_d
+:noremap d "_d<ESC>
 :noremap dd "_dd
 
 set tabstop=4

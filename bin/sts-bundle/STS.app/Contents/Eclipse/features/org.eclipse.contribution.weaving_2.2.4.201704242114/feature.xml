@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.contribution.weaving"
+      label="%featureName"
+      version="2.2.4.201704242114"
+      provider-name="%providerName">
+
+   <description url="http://eclipse.org/ajdt">
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import plugin="org.eclipse.osgi" />
+      <import plugin="org.eclipse.core.runtime"  />
+      <import plugin="org.eclipse.jdt.core" />
+      <import plugin="org.eclipse.jdt.ui" />
+      <import plugin="org.eclipse.jface"  />
+      <import plugin="org.eclipse.ui"  />
+      <import plugin="org.eclipse.ui.browser"/>
+      <import plugin="org.eclipse.ui.forms" />
+   </requires>
+
+   <plugin
+         id="org.eclipse.contribution.weaving.jdt"
+         download-size="127"
+         install-size="365"
+         version="2.2.4.201704242114"
+         unpack="false"/>
+
+   <plugin
+         id="org.aspectj.runtime"
+         download-size="135"
+         install-size="251"
+         version="1.8.10.201704242114"
+         unpack="false"/>
+
+</feature>

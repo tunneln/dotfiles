@@ -1,0 +1,146 @@
+<div class="formcontainer">
+	<form name="pit2reviewPARes" class="form-horizontal" method="post">
+
+		<div class="thumbnail">
+			<div class="panel-heading text-center">
+				<span class="lead"><b>Review PARES Batch Test Case</b></span>
+			</div>
+			<ul ng-repeat="trandata in reviewtcData">
+				<div ng-if="trandata.MsgCode == 'CRes'">
+					<div class="row">
+
+						<div class="form-group col-md-12">
+							<label class="col-md-4 control-lable"> Test ID: </label>
+							<div class="col-md-7">
+								<output>{{trandata.TestId}}</output>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+
+						<div class="form-group col-md-12">
+							<label class="col-md-4 control-lable"> Time: </label>
+							<div class="col-md-7">
+								<output>{{trandata.Time}}</output>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+
+						<div class="form-group col-md-12">
+							<label class="col-md-4 control-lable"> Status: </label>
+							<div class="col-md-7">
+								<output  ng-if="trandata.Status.indexOf('Failed')==0"> <FONT COLOR="red">{{trandata.Status}}</FONT> </output>
+								<output  ng-if="trandata.Status.indexOf('Passed')==0"> <FONT COLOR="green">{{trandata.Status}}</FONT> </output>
+								<output  ng-if="trandata.Status.indexOf('Incomplete')==0"> <FONT COLOR="blue">{{trandata.Status}}</FONT> </output>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+
+						<div class="form-group col-md-12">
+							<label class="col-md-4 control-lable"> Tester: </label>
+							<div class="col-md-7">
+								<output>{{trandata.Tester}}</output>
+							</div>
+						</div>
+					</div>
+
+					<div class="thumbnail">
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> AReq Message: </label>
+
+								<div class="col-md-7">
+									<output>{{trandata.AReqMsg}}</output>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> ARes Message: </label>
+
+								<div class="col-md-7">
+									<output>{{trandata.AResMsg}}</output>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> CReq Message: </label>
+
+								<div class="col-md-7">
+									<output>{{trandata.CReqMsg}}</output>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> CRes Message:<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;format: 
+									<span><a  href ng-click="jsonFormat($index,trandata.CResMsg)" class="pointer underline">on</a></span><span>&nbsp;</span><span><a href ng-click="jsonUnformat($index,trandata.CResMsg)" class="pointer underline">off</a></span>
+									<!-- CAVV Encoded:<span><input type="checkbox" name="cavv" id="cav" ng-model="$parent.cavv_checked"  ng-click="cavv_Encode(cavv_checked)" ng-checked="cavv_checked"
+										></span> -->
+								</label>
+
+								<div class="col-md-7">
+									<textarea class="form-control input-sm" rows="15" cols="4"
+											 readonly="readonly">{{trandata.CResMsg}}
+						</textarea>
+						<span ng-model="decodedCavvCResMsg" hidden="hidden"></span>
+						<span ng-model="encodedCavvCResMsg" hidden="hidden"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="thumbnail">
+				<div ng-if="trandata.MsgCode == 'VIPRq'">
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-4 control-lable"> VIPReq Message: </label>
+
+							<div class="col-md-7">
+								<textarea class="form-control input-sm" rows="15" cols="4"
+									ng-bind = "trandata.VIPRequest | beautify" readonly="readonly">
+						</textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
+				<div class="thumbnail">
+				<div ng-if="trandata.MsgCode == 'VIPRs'">
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-4 control-lable"> VIPRes Message: </label>
+
+							<div class="col-md-7">
+								<textarea class="form-control input-sm" rows="15" cols="4"
+									ng-bind = "trandata.VIPResponse | beautify" readonly="readonly">
+						</textarea>
+							</div>
+						</div>
+					</div>
+					</div>
+				</div>
+			</ul>
+				<div class="row text-center">
+			 <input type="submit"
+				value="Run ACSTest" class="btn btn-primary btn-sm"
+				ng-click="showAcsScrn()" > 
+		</div>
+		<div class="row text-center" ng-show="loading">
+			<img ng-src="{{ajaxLoaderPath}}" name="loading" />
+		</div>
+		</div>
+	</form>
+</div>
+
+

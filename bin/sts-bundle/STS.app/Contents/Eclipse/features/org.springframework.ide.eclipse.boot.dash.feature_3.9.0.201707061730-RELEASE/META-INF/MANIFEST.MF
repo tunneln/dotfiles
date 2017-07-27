@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Source-Control-Identifier: fafbd4069ab5d4b46ab36a6a7db717879f72c7cb
+Archiver-Version: Plexus Archiver
+Built-By: bamboo
+Created-By: Apache Maven 3.3.9
+Build-Jdk: 1.8.0_121
+
+Name: epl-v10.html
+SHA-256-Digest: T9ZK7tNA1ipkqNpLNx7+D20NdF9NLb76y6hsZG02vHI=
+
+Name: feature.xml
+SHA-256-Digest: SMeIMpa7j+pVd0Nlqai1VdMiteimNBW542mUJY3KbG4=
+
+Name: feature.properties
+SHA-256-Digest: Kyl6b3466C14fIZrNUwnbWbdfWkmSUr7lAVFdxQXwQA=
+

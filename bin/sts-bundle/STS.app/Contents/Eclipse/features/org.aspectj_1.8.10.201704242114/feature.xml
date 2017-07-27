@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.aspectj"
+      label="%featureName"
+      version="1.8.10.201704242114"
+      provider-name="%providerName"
+      plugin="org.eclipse.aspectj">
+
+   <description url="http://eclipse.org/ajdt">
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.aspectj.runtime"
+         download-size="135"
+         install-size="251"
+         version="1.8.10.201704242114"
+         unpack="false"/>
+
+   <plugin
+         id="org.aspectj.ajde"
+         download-size="8315"
+         install-size="25018"
+         version="1.8.10.201704242114"
+         unpack="false"/>
+
+   <plugin
+         id="org.aspectj.weaver"
+         download-size="1850"
+         install-size="4038"
+         version="1.8.10.201704242114"
+         unpack="false"/>
+         
+</feature>

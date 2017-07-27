@@ -1,0 +1,1 @@
+"use strict";footerMod.service("FooterService",["$http","$rootScope",function(b,a){this.getCopyright=function(){return b.get(a.contextPath+"/pit2/buildNumber").then(function(c){return c})}}]);

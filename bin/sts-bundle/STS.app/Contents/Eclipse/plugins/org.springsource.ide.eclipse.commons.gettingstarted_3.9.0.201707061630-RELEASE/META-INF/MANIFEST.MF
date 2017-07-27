@@ -1,0 +1,306 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.springsource.ide.eclipse.commons.gettingstart
+ ed;singleton:=true
+Archiver-Version: Plexus Archiver
+Built-By: bamboo
+Require-Bundle: com.sun.syndication,org.apache.commons.io,org.apache.c
+ ommons.lang,org.apache.commons.codec,org.springframework.web,org.spri
+ ngframework.core,org.eclipse.core.resources,org.eclipse.core.net,org.
+ eclipse.core.expressions,org.eclipse.ui,org.eclipse.ui.ide,org.eclips
+ e.ui.browser,org.eclipse.ui.forms,org.eclipse.mylyn.commons.core,org.
+ eclipse.mylyn.commons.ui,org.eclipse.mylyn.discovery.core,org.eclipse
+ .mylyn.discovery.ui,org.springsource.ide.eclipse.commons.configurator
+ ,org.springsource.ide.eclipse.commons.core,org.springsource.ide.eclip
+ se.commons.ui,org.springsource.ide.eclipse.dashboard.ui,org.springsou
+ rce.ide.eclipse.commons.browser,org.springsource.ide.eclipse.commons.
+ frameworks.ui,org.eclipse.core.jobs,org.springsource.ide.eclipse.comm
+ ons.frameworks.core
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: Pivotal Software, Inc.
+Import-Package: org.eclipse.core.runtime,org.eclipse.osgi.service.data
+ location,org.eclipse.osgi.util,org.osgi.framework
+Source-Control-Identifier: 82d92c6a64940816635c0eb9859c5c5962d7780d
+Export-Package: org.springsource.ide.eclipse.commons.gettingstarted,or
+ g.springsource.ide.eclipse.commons.gettingstarted.dashboard
+Bundle-Name: Getting Started With Spring Integration
+Bundle-Version: 3.9.0.201707061630-RELEASE
+Bundle-Activator: org.springsource.ide.eclipse.commons.gettingstarted.
+ GettingStartedActivator
+Created-By: Apache Maven 3.3.9
+Build-Jdk: 1.8.0_121
+Eclipse-BundleShape: dir
+
+Name: resources/welcome/common/css/highlight.css
+SHA-256-Digest: qDXqDzVGV9dUpN4n231922CaZ1KKcsP10iLyHtxBVoA=
+
+Name: resources/welcome/common/bootstrap/js/bootstrap-datetimepicker/j
+ s/bootstrap-datetimepicker.min.js
+SHA-256-Digest: n96EOBzhEPX+Qy4bLhoHY7tpxJdWjfC49Iw/Od5PN9I=
+
+Name: org/springsource/ide/eclipse/commons/gettingstarted/dashboard/We
+ lcomeDashboard$2.class
+SHA-256-Digest: DgA/WuO+oKWSEbr/oTsGGQEQ/o5S5ieq+VVVWaF83O4=
+
+Name: org/springsource/ide/eclipse/commons/gettingstarted/dashboard/Bl
+ ogsProvider$1.class
+SHA-256-Digest: fcwaXhp6rNVcPuyCn/Pbf6fX/F1SfhcVs8KmXv3QGtQ=
+
+Name: plugin.xml
+SHA-256-Digest: PhLAFFfQIy+gtwRQa4+eAtUjMmT6lErJyPQ51EODxUI=
+
+Name: resources/welcome/common/css/docs.css
+SHA-256-Digest: n4qqd9ANJcbfP6noy1Es4ckZJgggdX7Ar8dBGwGR/gU=
+
+Name: resources/welcome/common/css/panes.css
+SHA-256-Digest: WYeiQ5FNxPWvnvHG9Rl8PbmIJgMEvE/ARzoKNOel9J8=
+
+Name: resources/welcome/common/img/new_32.png
+SHA-256-Digest: ZUpZFmJ8SXJ21vnLJJrGYse0IbbjIFVGr/JjRMlTrFA=
+
+Name: org/springsource/ide/eclipse/commons/gettingstarted/dashboard/Fe
+ edProvider.class
+SHA-256-Digest: pEoAbCv8JlWA5rpJLYxnp2hNpRo1DRwTOYNY+7oB8gQ=
+
+Name: resources/welcome/common/font-custom/fontcustom.woff
+SHA-256-Digest: wMFlQCB3WVJk3X5wxGpnCv4hG50IJUD4NJDfX/IDT3A=
+
+Name: resources/welcome/common/img/favicon.png
+SHA-256-Digest: 8fXMo2OwHA9Ibp5VE988IowHKFrQ9VlAhHmizKSmN7Q=
+
+Name: resources/welcome/common/font-awesome/css/font-awesome.css
+SHA-256-Digest: MIPo07Id3D8ObWXsNYCqbt+q3KXZc32cqifmojPhzPM=
+
+Name: org/springsource/ide/eclipse/commons/gettingstarted/dashboard/Ex
+ tensionsEditor$8.class
+SHA-256-Digest: GAQJdxyy0EOyrdJUU5IVOvLLdTB1vzQ9HPJezFs2hNg=
+
+Name: resources/welcome/common/img/forum_32.png
+SHA-256-Digest: MFJt181b2TW4bME/Ftqre8Mb9w5oDr/oFpRl5scZbM8=
+
+Name: org/springsource/ide/eclipse/commons/gettingstarted/dashboard/Bl
+ ogsProvider.class
+SHA-256-Digest: /9nfPmyyR6mSpxL/LrA2RD4qIQCEnYEB2raY/4HlVms=
+
+Name: resources/welcome/common/css/flexbox.css
+SHA-256-Digest: P+efoiJ2gj5kVliEws0jAhDlJqSk+JGYzH0rcS7Bl/Y=
+
+Name: resources/welcome/common/img/loading.gif
+SHA-256-Digest: Drav3d4Mhvqu1jNQ+MJ4lewpAUQPEE+KT8TStlnt7ik=
+
+Name: resources/welcome/common/img/blog.png
+SHA-256-Digest: 2NgRrIhKLb3zI7z9ewCJnJEc3US/scMAwqjSjLId9Ko=
+
+Name: org/springsource/ide/eclipse/commons/gettingstarted/dashboard/Da
+ shboardCopier.class
+SHA-256-Digest: FB9zD2WdJ9aZaTP2u54/pMwsBeIWyOg4HIXYmVZk2As=
+
+Name: org/springsource/ide/eclipse/commons/gettingstarted/dashboard/Ex
+ tensionsEditor$6$1.class
+SHA-256-Digest: 1GRTkdHiAcDjNl5jli4IkXkLj1GbK3EdO5bWbCl+YU4=
+
+Name: resources/welcome/common/css/fontcustom.css
+SHA-256-Digest: OecRm0jSr+fHOhdCHOvbGDL2rbtuH2GlRptOGD3XL50=
+
+Name: resources/welcome/common/img/compass_32.png
+SHA-256-Digest: +aBkkDhG7YkuAtjEBe18qeXYdUkCBtJrUg9wUtXWBOo=
+
+Name: resources/welcome/common/img/compass.png
+SHA-256-Digest: RFJoy/WI+dVq1l3DNoHe1As3A9D9VPaeg6wfwvPIr9Y=
+
+Name: resources/welcome/common/css/blog.css
+SHA-256-Digest: 4H/dwGb6gPcL3obYnjn9Yaa7VFhcNRfV+nQsIR+HZTI=
+
+Name: resources/welcome/common/img/question.png
+SHA-256-Digest: z9qYFrp6ysh/CtSIk8/x4ZPqqBED5/y3sJAAIPDGOvU=
+
+Name: resources/welcome/common/img/overlay-incoming.png
+SHA-256-Digest: 2Zu3HZ2G18M84OMFpEdDxUnl0YgGN13hPoPANhF45vg=
+
+Name: resources/welcome/common/img/spring-logo.png
+SHA-256-Digest: 6gP93HzAfkqyHdwT3NLFvunbZDx88JpyKPLrxuEOHTo=
+
+Name: resources/welcome/common/img/guides_32.png
+SHA-256-Digest: Tn57jPa7oZi39yD3U8TPrQhXnYPsScl/pxwk7iipFhc=
+
+Name: org/springsource/ide/eclipse/commons/gettingstarted/dashboard/Ex
+ tensionsEditor$1.class
+SHA-256-Digest: OdP5Iy1blai2E+G5wtvFBI0hSvByKVJOb+cMyAceUdY=
+
+Name: org/springsource/ide/eclipse/commons/gettingstarted/dashboard/Pr
+ ojectWizardProvider.class
+SHA-256-Digest: p/hafh+1R3Lnksb0freA6JNBPu2Qxn7CwZzCerx29QE=
+
+Name: org/springsource/ide/eclipse/commons/gettingstarted/dashboard/Ex
+ tensionsEditor$2.class
+SHA-256-Digest: 9pJJYg+XLv6s5voZ1Typ38QtiHivW89mTiT+0xdnhU4=
+
+Name: resources/welcome/common/css/markdown-content.css
+SHA-256-Digest: OXob7bxnuRoSFc6wTJ550Dkz6tOttNhxH3PYnmzM5Xk=
+
+Name: resources/welcome/common/css/tools.css
+SHA-256-Digest: fcF79LWANpvQFtva1lZN9ZmJww9JhJbiBcVw1z84lbs=
+
+Name: resources/welcome/common/bootstrap-datetimepicker/js/bootstrap-d
+ atetimepicker.min.js
+SHA-256-Digest: n96EOBzhEPX+Qy4bLhoHY7tpxJdWjfC49Iw/Od5PN9I=
+
+Name: resources/welcome/common/img/forum.png
+SHA-256-Digest: Djv0cIRT5Q1A+/JT5UALHBUQhWr2TPFNGtnzZknyDEc=
+
+Name: org/springsource/ide/eclipse/commons/gettingstarted/dashboard/Ex
+ tensionsEditor.class
+SHA-256-Digest: 2BkhCtcHJTr4wmRrJHowRKs1vxscRmAps1KKc3fFlOc=
+
+Name: resources/welcome/common/img/bug_32.png
+SHA-256-Digest: G3XRd9p/BVmu6xUtlhq4F6PC/bYcy07zFtvL22rH17E=
+
+Name: resources/welcome/common/css/font-awesome.css
+SHA-256-Digest: MIPo07Id3D8ObWXsNYCqbt+q3KXZc32cqifmojPhzPM=
+
+Name: resources/welcome/common/js/modernizer.flexbox.js
+SHA-256-Digest: B7xKiow98NghGnUvBro+OL9SwWxhHz9smZdvNUitYvA=
+
+Name: resources/welcome/common/img/springdocs_32.png
+SHA-256-Digest: SkErRFA2dXhR6xwzbbOc9kjvNVuibHtexO3WNCckBys=
+
+Name: resources/welcome/index.html
+SHA-256-Digest: fib2wxwz9O+v29zdHnJa4vwXNeexD1QQHR5jtSbd7c8=
+
+Name: org/springsource/ide/eclipse/commons/gettingstarted/dashboard/Fe
+ edProvider$2.class
+SHA-256-Digest: NGLNbOaipFbIL+nyYfx8W+lshjMOPpitSJpy/iPrNf8=
+
+Name: org/springsource/ide/eclipse/commons/gettingstarted/GettingStart
+ edActivator.class
+SHA-256-Digest: mu+s3HssbZX/LpjWczThw9qHY81j9sBdiYlYHkl1ho8=
+
+Name: resources/welcome/common/img/extension.png
+SHA-256-Digest: d0J2EDLCvL5N6s9mOcF1ApqFaw3U413QTSJOPRZkLJE=
+
+Name: org/springsource/ide/eclipse/commons/gettingstarted/dashboard/Ex
+ tensionsEditor$DashboardDiscoveryViewer.class
+SHA-256-Digest: pOtuqBf9ii6gAZQ+bWeG7kqTg5jJMkTlYoyFBtKH2ZM=
+
+Name: resources/welcome/common/js/jquery.js
+SHA-256-Digest: FnECsFF/xI71OkIvpCDSjs/CceIXnQuANgnrZLJsPgw=
+
+Name: org/springsource/ide/eclipse/commons/gettingstarted/dashboard/Ex
+ tensionsEditor$5.class
+SHA-256-Digest: zCsWXwoh+G1f+tpqz5t4i3Oj3y82gnG8dhXiacEky1g=
+
+Name: resources/welcome/common/js/application.js
+SHA-256-Digest: ugSHPNfeIbmMsZV5YY+mlW+4iJmURAc+8smz4+tDUac=
+
+Name: resources/welcome/common/css/homepage.css
+SHA-256-Digest: fxaZLnqWegxrJzFkY4lUZlRG9BsbEPhlnuZHOJ9uIbM=
+
+Name: org/springsource/ide/eclipse/commons/gettingstarted/dashboard/Ex
+ tensionsEditor$3.class
+SHA-256-Digest: Qt8ZEdWEZ+bZ8gfn1Ey47NMLrGkCMi+0iLTBopBpY1A=
+
+Name: resources/welcome/common/img/guides.png
+SHA-256-Digest: gZDT1GZekfd5KCnDH8M7adZY1T/OkeBKbkXtd4l1/r0=
+
+Name: resources/welcome/common/js/filter.js
+SHA-256-Digest: /q+elvW+mtRuk7vU8Ievt2xkeoIONvWWe+59OYcGsS0=
+
+Name: org/springsource/ide/eclipse/commons/gettingstarted/dashboard/Fe
+ edProvider$1.class
+SHA-256-Digest: coAJlmeBLdordz1FojdzUVqdgfn5MsLQZQoa5U5DvN8=
+
+Name: resources/welcome/common/bootstrap/css/bootstrap.css
+SHA-256-Digest: KaczpBXXa7IJXFNqnEV8rYLx2UYOsuspR0plexuv29w=
+
+Name: org/springsource/ide/eclipse/commons/gettingstarted/dashboard/Ex
+ tensionsEditor$6.class
+SHA-256-Digest: 6PkEbwiRiDxR26O27f3PdDSZV32B4TcMxGwqNkogN68=
+
+Name: resources/welcome/common/bootstrap/js/bootstrap.min.js
+SHA-256-Digest: smDQVu22w57u7QD/x7zN7ZFgu5wfA8Ytd6mRga6IoIs=
+
+Name: resources/welcome/common/css/main.css
+SHA-256-Digest: dCLQLXyNZvlHw3a9Go4XDI8JTkYSRN9FAr1WNwEtOo4=
+
+Name: icons/spring.png
+SHA-256-Digest: 8fXMo2OwHA9Ibp5VE988IowHKFrQ9VlAhHmizKSmN7Q=
+
+Name: icons/spring_ext.png
+SHA-256-Digest: kUYH90/02+yhypHG4o+gnYIxJrSS1Sj09/nicULTgTw=
+
+Name: org/springsource/ide/eclipse/commons/gettingstarted/dashboard/Up
+ datesProvider.class
+SHA-256-Digest: OnCurDykyQfHnf/nOjPjnw2jhVGZO648ULxma2X2v14=
+
+Name: org/springsource/ide/eclipse/commons/gettingstarted/dashboard/We
+ lcomeDashboard.class
+SHA-256-Digest: 78sa7gufCmBuxMJBHgWdYBuBRMfIB5WkRPiFwgtW/kE=
+
+Name: resources/welcome/common/img/blog_32.png
+SHA-256-Digest: PewJprBtWg83O+1Yqh7q3cQND/R2sNXSdLDt1eDjHTs=
+
+Name: resources/welcome/common/css/typography.css
+SHA-256-Digest: uZUFNb7FQ738tQV5uFSCqGPncokJJt8A7R2gCJFBobw=
+
+Name: resources/welcome/common/bootstrap/css/bootstrap.min.js
+SHA-256-Digest: smDQVu22w57u7QD/x7zN7ZFgu5wfA8Ytd6mRga6IoIs=
+
+Name: resources/welcome/common/img/logo_spring.png
+SHA-256-Digest: H//hz+dqj6YtVd/fKmIgPvfAXAaHv/cwXF3NXP56c5g=
+
+Name: resources/welcome/common/img/logo_sts.png
+SHA-256-Digest: to6rsBWxU6gM7gWJ3qX1ltOX4FSYN/bU6MJvetvQE5U=
+
+Name: resources/welcome/common/img/logo_bigleaf.png
+SHA-256-Digest: awaU99WDuxj2UJ536hXdhqZCRPHsyY0WG3tcWRKWAcs=
+
+Name: resources/welcome/common/js/guide.js
+SHA-256-Digest: 6W3H5TrNT0x19aqEudMlm+lxkklOGCu/vQyO0HovlQQ=
+
+Name: resources/welcome/common/img/comparison_32.png
+SHA-256-Digest: dh6q4VQmd9I/T3Y4vyD/mulePgtFeWnEUEZAfnKmJ5Q=
+
+Name: about.html
+SHA-256-Digest: 1kqI4+9IUKR3SlbzMyQBbNX8y95fMZAyHvpIiohXLJw=
+
+Name: resources/welcome/common/css/dashboard.css
+SHA-256-Digest: nOhPNZRuT9RqT1dXoMh5M2/JdCdEelOUDrd+tv2WhsA=
+
+Name: org/springsource/ide/eclipse/commons/gettingstarted/dashboard/Ex
+ tensionsEditor$4.class
+SHA-256-Digest: hINqhxgGo3tpCpKNCj7YXfGzyDhjyJwjxdlxo0kq2qc=
+
+Name: org/springsource/ide/eclipse/commons/gettingstarted/dashboard/We
+ lcomeDashboard$1.class
+SHA-256-Digest: FVa7D5F7ze9JTqzI0Xg7/tHJ6Ni+J9OCrxN7CYSpom8=
+
+Name: resources/welcome/common/css/buttons.css
+SHA-256-Digest: HWNXCD4C/nhwvDxbURYRrX2Qslwsi+/MYbuXxoNnctA=
+
+Name: org/springsource/ide/eclipse/commons/gettingstarted/dashboard/Ex
+ tensionsEditor$7.class
+SHA-256-Digest: IZRmtXhK3kCpmytIXUp4v2fcxmggA5Yz+5hJRyPO3/k=
+
+Name: resources/welcome/common/img/extension_32.png
+SHA-256-Digest: SU7sPniy5A8MvQAfRsX+YhdB5Ttxqm43ZCakRzKCRqw=
+
+Name: resources/welcome/common/css/application.css
+SHA-256-Digest: XjHuyNP4fEIJGX6JTik6n6JlbpGDcyM3LKRVdW1MQiE=
+
+Name: org/springsource/ide/eclipse/commons/gettingstarted/dashboard/Up
+ datesProvider$1.class
+SHA-256-Digest: bTWw11QR3lzi9VR/FntWd7pewJurRyTdj22m18Vmlm0=
+
+Name: resources/welcome/common/css/projects.css
+SHA-256-Digest: xF8IHcH4QbMEaO4/OubWWTJh81gcpzbQuL9ZDg6g12g=
+
+Name: resources/welcome/common/css/responsive.css
+SHA-256-Digest: JFLtEHg3zX/ILlU6V1uZHqZVP4ZALsa1cg34E3LNBEQ=
+
+Name: resources/welcome/common/css/icons.css
+SHA-256-Digest: Hhpum5tJrbMyd4wq4ei8XJHnvK0ToaNa17gFT3EFBSU=
+
+Name: resources/welcome/common/img/springdocs.png
+SHA-256-Digest: RYszkHnfG97S54/O7K0ud03O+hw1K1Rc9foCY2Fn5g8=
+

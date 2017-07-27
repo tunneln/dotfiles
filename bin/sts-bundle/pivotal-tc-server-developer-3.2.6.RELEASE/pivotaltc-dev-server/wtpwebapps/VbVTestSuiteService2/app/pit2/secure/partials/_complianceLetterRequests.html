@@ -1,0 +1,32 @@
+<div class="thumbnail">
+	<div class="panel-heading text-center">
+		<span class="lead"><b>Compliance Letters</b></span>
+	</div>
+	<div class="row text-center" ng-show = "isPageLoading">
+		<img ng-src="./app/images/acss_imgs/wait.gif" name="loading" alt="Loading..."/>
+	</div>
+	<div class="formcontainer" ng-show = "!isPageLoading">
+		<table class="table table-bordered table-condensed table-hover">
+			<thead>
+				<tr>
+					<th>Tracking Number</th>
+					<th>Date</th>
+					<th>User Name</th>
+					<th>Organization Name</th>
+					<th>Email Address</th>
+					<th>Compliance Letter</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="complLetterReq in complLetterReqs">
+					<td>{{complLetterReq.trackingNumber}}</td>
+					<td>{{complLetterReq.concludeTestingDate}}</td>
+					<td>{{complLetterReq.userDTO.usrNm}}</td>
+					<td>{{complLetterReq.userDTO.coNm}}</td>
+					<td>{{complLetterReq.userDTO.emailAddr}}</td>
+					<td><a ng-click="generateComplLetter($index);" class="pointer">Generate</a></td>
+				</tr>
+			</tbody>
+		</table>		
+	</div>
+</div>

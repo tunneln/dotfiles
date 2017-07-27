@@ -1,0 +1,1 @@
+"use strict";resetPwdMod.service("ResetPasswordService",["$http","$rootScope",function(b,a){this.submitResetPwdReq=function(c){return b.post(a.contextPath+"/user/forgotpwd",c)}}]);

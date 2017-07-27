@@ -1,0 +1,145 @@
+<div class="formcontainer">
+	<form name="pit2runACSTestReqForm" class="form-horizontal">
+		<div class="thumbnail">
+			<div class="panel-heading text-center">
+				<span class="lead"><b>ARes Response</b></span>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-lable"> Test Case: </label>
+					<div class="col-md-7">
+						<output>{{reqTestCase}}</output>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-lable"> ACS URL: </label>
+					<div class="col-md-7" style="word-wrap: break-word;">
+						<output>{{reqUrl}}</output>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-lable"> Response Info: </label>
+					<div class="col-md-7" style="word-wrap: break-word;">
+						<output id="respinfoId" style="font-size: 12px;">{{respInfo}}</output>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-lable"> </label>
+					<div class="col-md-7">
+						<div ng-if="aresErrorMsg!=null" style="font-size: 12px;word-wrap: break-word;">
+							<font color='red'> {{aresErrorMsg}}</font><br />
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-lable"> Response to AReq:<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;format: <span><a href
+							ng-click="jsonFormat('ARes')" class="pointer underline">on</a></span><span>&nbsp;</span><span><a href
+							ng-click="jsonUnformat('ARes')" class="pointer underline">off</a></span>
+					</label>
+
+					<div class="col-md-7">
+						<textarea class="form-control input-sm" rows="15" cols="4"
+							readonly="readonly">{{aResMessage}}
+						</textarea>
+					</div>
+				</div>
+			</div>
+			<div class="row" ng-if="expectedResponse!=null">
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-lable"> Expected Response:<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;format:<span><a href
+							ng-click="jsonFormat('expARes')"
+							class="pointer underline">on</a></span><span>&nbsp;</span><span><a href
+							ng-click="jsonUnformat('expARes')" class="pointer underline">off</a></span>
+					</label>
+
+					<div class="col-md-7">
+						<textarea class="form-control input-sm" rows="15" cols="4"
+							readonly="readonly">{{expectedResponse}}
+						</textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div ng-if="showCReqDiv">
+			<div class="thumbnail">
+				<div class="panel-heading text-center">
+					<span class="lead"><b>CReq Request</b></span><br>
+					<span class="requiredtext" ng-show="isMPITesting"><i>{{requiredText}}</i></span>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-4 control-lable"> ACS Challenge
+							Request URL: </label>
+						<div class="col-md-7"  style="word-wrap: break-word;">
+							<input type="text" ng-model="$parent.cRequrl" name="cRequrl"
+								 class="form-control input-sm" ng-disabled="true" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-4 control-lable"> CReq Test Case: </label>
+						<div class="col-md-7">
+							<input type="text" ng-model="$parent.cReqName" name="cReqName"
+								disabled="disabled" class="form-control input-sm" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-12" ng-class="{'required': isMPITesting}">
+						<label class="col-md-4 control-lable"> CReq Message:<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;format:<span><a href ng-click="jsonFormat('CReq')"
+								class="pointer underline">on</a></span>&nbsp;<span><a href
+								ng-click="jsonUnformat('CReq')" class="pointer underline">off</a></span>
+
+						</label>
+						<div class="col-md-7">
+							<textarea class="form-control input-sm" rows="15" cols="4" ng-readonly="!isMPITesting"
+								ng-model="$parent.cReqMessage" ng-required="isMPITesting" name="cReqMessage"> 
+							</textarea>
+							<div class="help-block"
+								ng-messages="pit2runACSTestReqForm.cReqMessage.$error"
+								ng-class="{ 'has-error':pit2runACSTestReqForm.cReqMessage.$touched && pit2runACSTestReqForm.cReqMessage.$invalid}"
+								ng-if="isMPITesting && pit2runACSTestReqForm.cReqMessage.$touched">
+								<span data-validation-message></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row text-center">
+			<input type="submit" value="Send CReq" ng-if="showCReqDiv"
+				class="btn btn-primary btn-sm" ng-click="submitCReq()"
+				ng-show="submitBtn" ng-disabled="pit2runACSTestReqForm.$invalid">
+				 <input type="submit"
+				value="Optional Test Cases" class="btn btn-primary btn-sm"
+				ng-click="showAcsScrn()" ng-show="runAcsBtn">
+			<input type="submit" value="Test Case Details"  ng-click="tcDetails()" 
+			class="btn btn-primary btn-sm" ng-show="tcBtn">
+		<!-- 	<input type="submit" value="Submit to VIP" 
+					class="btn btn-primary btn-sm" ng-click="submitToVip()" ng-show="showVIPBtn && isACS" >  -->
+		</div>
+		<div class="row text-center" ng-show="loading">
+			<img ng-src="{{ajaxLoaderPath}}" name="loading" />
+		</div>
+	</form>
+</div>

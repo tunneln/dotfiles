@@ -1,0 +1,102 @@
+# Copyright (c) 2016-2017 Pivotal Software, Inc.  All rights reserved.
+# version: 3.2.6.RELEASE
+# build date: 20170525022821
+
+ENCODE_OPTIONS=" \
+	--decode \
+	--help"
+
+GETTEMPLATE_OPTIONS=" \
+	--file \
+	--username \
+	--password \
+	--source-directory \
+	--templates-directory \
+	--list \
+	--no-overwrite \
+	--overwrite \
+	--url \
+	--help"
+
+GETRUNTIME_OPTIONS=" \
+	--list \
+	--help \
+	--version"
+
+_encode() {
+        local cur prev
+        _get_comp_words_by_ref -n : cur prev
+
+        OPTS=""
+        for word in $ENCODE_OPTIONS; do
+                _comp_word_contains "$word"
+                if [[ "$?" -eq 1 ]]; then
+                       OPTS="$word $OPTS"
+                fi
+        done
+        COMPREPLY=( $(compgen -W "$OPTS" -- $cur) )
+}
+
+_get_runtime() {
+        local cur prev
+        _get_comp_words_by_ref -n : cur prev
+
+        OPTS=""
+
+        for word in $GETRUNTIME_OPTIONS; do
+                _comp_word_contains "$word"
+                if [[ "$?" -eq 1 ]]; then
+                        OPTS="$word $OPTS"
+                fi
+        done
+        COMPREPLY=( $(compgen -W "$OPTS" -- $cur) )
+}
+
+_get_template() {
+        local cur prev
+
+        _get_comp_words_by_ref -n : cur prev
+
+	if [[ "--file" == $prev ]]; then
+                COMPREPLY=( $(compgen -f $cur) )
+	elif [[ "--username" == $prev ]]; then
+		COMPREPLY=( $(compgen $cur) )
+	elif [[ "--password" == $prev ]]; then
+		COMPREPLY=( $(compgen $cur) )
+	elif [[ "--source-directory" == $prev ]]; then
+		COMPREPLY=( $(compgen -d $cur) )
+	elif [[ "--templates-directory" == $prev ]]; then
+		COMPREPLY=( $(compgen -d $cur) )
+	elif [[ "--url" == $prev ]]; then
+		COMPREPLY=( $(compgen $cur) )
+	else
+                OPTS=""
+                for word in $GETTEMPLATE_OPTIONS; do
+                        _comp_word_contains "$word"
+                        if [[ "$?" -eq 1 ]]; then
+                                OPTS="$word $OPTS"
+                        fi
+                done
+
+                COMPREPLY=( $(compgen -W "$OPTS" -- $cur) )
+	fi
+}
+
+_tcruntime_admin() {
+        local cur
+        _get_comp_words_by_ref -n : cur
+
+        COMMAND=${COMP_WORDS[1]}
+
+        if [[ "encode" == $COMMAND ]]; then
+                _encode
+        elif [[ "get-template" == $COMMAND ]]; then
+                _get_template
+        elif [[ "get-runtime" == $COMMAND ]]; then
+                _get_runtime
+        else
+                COMPREPLY=( $(compgen -W "encode get-runtime get-template" -- $cur) )
+        fi
+}
+
+complete -F _tcruntime_admin tcruntime-admin.sh

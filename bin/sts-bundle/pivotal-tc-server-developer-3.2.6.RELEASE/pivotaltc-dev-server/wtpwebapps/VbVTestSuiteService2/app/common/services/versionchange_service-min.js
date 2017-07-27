@@ -1,0 +1,1 @@
+(function(){var a=function(){var b="";this.getVersion=function(){return b};this.setVersion=function(c){b=c}};a.$inject=[];angular.module("binApp").service("VersionChangeService",a)}());

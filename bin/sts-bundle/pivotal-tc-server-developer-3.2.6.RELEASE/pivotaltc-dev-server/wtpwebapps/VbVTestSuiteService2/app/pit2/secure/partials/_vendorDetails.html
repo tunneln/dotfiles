@@ -1,0 +1,186 @@
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="formcontainer">
+				<div>
+					<form method="post" name="approveEnrollmentForm"
+						class="form-horizontal">
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-5 control-lable"> First Name </label>
+								<div class="col-md-7">
+									<input class="form-control input-sm" ng-disabled="true"
+										ng-model="firstName">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-5 control-lable"> Last Name </label>
+								<div class="col-md-7">
+									<input class="form-control input-sm" ng-disabled="true"
+										ng-model="lastName">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-5 control-lable"> Email ID </label>
+								<div class="col-md-7">
+									<input class="form-control input-sm" ng-disabled="true"
+										ng-model="email">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-5 control-lable"> Company Name </label>
+								<div class="col-md-7">
+									<input class="form-control input-sm" ng-disabled="true"
+										ng-model="company">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-5 control-lable"> Street Address </label>
+								<div class="col-md-7">
+									<input class="form-control input-sm" ng-disabled="true"
+										ng-model="streetAddress">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-5 control-lable"> City/Locality </label>
+								<div class="col-md-7">
+									<input class="form-control input-sm" ng-disabled="true"
+										ng-model="city">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-5 control-lable"> State/Territory </label>
+								<div class="col-md-7">
+									<input class="form-control input-sm" ng-disabled="true"
+										ng-model="stateOrTerritory">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-5 control-lable"> Country </label>
+								<div class="col-md-7">
+									<select class="form-control input-sm" ng-model="country" name="country" ng-disabled="true"
+										ng-options="country.countryCode as country.countryName for country in countries">
+									</select>
+									<!-- <input class="form-control input-sm" ng-disabled="true"
+										ng-model="country"> -->
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-5 control-lable"> Postal Code </label>
+								<div class="col-md-7">
+									<input class="form-control input-sm" ng-disabled="true"
+										ng-model="postalCode">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-5 control-lable"> Phone # </label>
+								<div class="col-md-7">
+									<input class="form-control input-sm" ng-disabled="true"
+										ng-model="phone">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-5 control-lable"> Issuer BID </label>
+								<div class="col-md-7">
+									<input class="form-control input-sm" ng-disabled="true"
+										ng-model="bin">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-5 control-lable"> Acquirer BIN </label>
+								<div class="col-md-7">
+									<input class="form-control input-sm" ng-disabled="true"
+										ng-model="acquirerBin">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-5 control-lable"> Business ID </label>
+								<div class="col-md-7">
+									<input type="text" ng-model="businessId" disabled="true"
+										class="form-control input-sm"/>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-5 control-lable"> Components </label>
+								<div class="col-md-7">
+									<span ng-repeat="component in pit2components"> <input
+										ng-disabled="true" type="checkbox"
+										ng-checked="component.selected == true"
+										ng-hide="component.selected == false"><span
+										ng-hide="component.selected == false">&nbsp;{{component.id}}</span>&nbsp;
+									</span>
+								</div>
+							</div>
+						</div>
+						<div ng-show="isPIT2ACS">
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label class="col-md-5 control-lable"> ACS URL </label>
+									<div class="col-md-7">
+										<input class="form-control input-sm" ng-disabled="true"
+											ng-model="pit2ACSUrl">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label class="col-md-5 control-lable"> ACS Reference # </label>
+									<div class="col-md-7">
+										<input class="form-control input-sm" ng-disabled="true"
+											ng-model="acsReference">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div ng-show="isMerchant">
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label class="col-md-5 control-lable"> Merchant ID </label>
+									<div class="col-md-7">
+										<input class="form-control input-sm" ng-disabled="true"
+											ng-model="merchantId">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label class="col-md-5 control-lable"> 3DS Server Reference # </label>
+									<div class="col-md-7">
+										<input class="form-control input-sm" ng-disabled="true"
+											ng-model="merchantRefNum">
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+ 

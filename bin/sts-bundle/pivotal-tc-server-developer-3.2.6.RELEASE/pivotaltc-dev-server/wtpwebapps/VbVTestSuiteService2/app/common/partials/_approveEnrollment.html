@@ -1,0 +1,326 @@
+<div class="thumbnail">
+	<div class="panel-heading text-center">
+		<span class="lead"><b>User Enrollment Verification/Approval</b></span><br>
+		<span class="requiredtext"><i>{{requiredText}}</i></span>
+	</div>
+	<div data-error-message></div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="row text-center" ng-if="isPageLoading">
+				<img ng-src="./app/images/acss_imgs/wait.gif" name="loading"
+					alt="Loading..." />
+			</div>
+			<div class="formcontainer" ng-if="!isPageLoading">
+				<div ng-show="!isActive && !isRejected">
+					<form method="post" name="approveEnrollmentForm"
+						class="form-horizontal">
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> First Name </label>
+								<div class="col-md-7">
+									<input class="form-control input-sm" ng-disabled="true"
+										ng-model="firstName">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> Last Name </label>
+								<div class="col-md-7">
+									<input class="form-control input-sm" ng-disabled="true"
+										ng-model="lastName">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> Email ID </label>
+								<div class="col-md-7">
+									<input class="form-control input-sm" ng-disabled="true"
+										ng-model="userEmail">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> Company Name </label>
+								<div class="col-md-7">
+									<input class="form-control input-sm" ng-disabled="true"
+										ng-model="company">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> Street Address </label>
+								<div class="col-md-7">
+									<input class="form-control input-sm" ng-disabled="true"
+										ng-model="streetAddress">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> City/Locality </label>
+								<div class="col-md-7">
+									<input class="form-control input-sm" ng-disabled="true"
+										ng-model="city">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> State/Territory </label>
+								<div class="col-md-7">
+									<input class="form-control input-sm" ng-disabled="true"
+										ng-model="stateOrTerritory">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> Country </label>
+								<div class="col-md-7">
+									<select class="form-control input-sm" ng-model="country" name="country" ng-disabled="true"
+										ng-options="country.countryCode as country.countryName for country in countries">
+									</select>
+									<!-- <input class="form-control input-sm" ng-disabled="true"
+										ng-model="country"> -->
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> Postal Code </label>
+								<div class="col-md-7">
+									<input class="form-control input-sm" ng-disabled="true"
+										ng-model="postalCode">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> Phone # </label>
+								<div class="col-md-7">
+									<input class="form-control input-sm" ng-disabled="true"
+										ng-model="phone">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> Issuer BID </label>
+								<div class="col-md-7">
+									<input class="form-control input-sm" ng-disabled="true"
+										ng-model="bin">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> Acquirer BIN </label>
+								<div class="col-md-7">
+									<input class="form-control input-sm" ng-disabled="true"
+										ng-model="acquirerBin">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> Business ID </label>
+								<div class="col-md-7">
+									<input type="text" ng-model="businessId" disabled="true"
+										class="form-control input-sm"/>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> Components </label>
+								<div class="col-md-7">
+									<span ng-repeat="component in pit2components"> <input
+										ng-disabled="true" type="checkbox"
+										ng-checked="component.selected == true"
+										ng-hide="component.selected == false"><span
+										ng-hide="component.selected == false">&nbsp;{{component.id}}</span>&nbsp;
+									</span>
+								</div>
+							</div>
+						</div>
+						<div ng-show="isPIT2ACS">
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label class="col-md-4 control-lable"> ACS URL </label>
+									<div class="col-md-7">
+										<input class="form-control input-sm" ng-disabled="true"
+											ng-model="pit2ACSUrl">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label class="col-md-4 control-lable"> ACS Reference # </label>
+									<div class="col-md-7">
+										<input class="form-control input-sm" ng-disabled="true"
+											ng-model="acsReference">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12 required">
+									<label class="col-md-4 control-lable"> ACS EMVCo Certification Expiry Date </label>
+									<div class="col-md-7">
+										<input type="text" id="acsdatepicker" name="acsemvCoCertValidThru"
+											ng-model="$parent.acsEMVCoValidity" maxlength="10"
+											class="form-control input-sm clearable"
+											placeholder="yyyy-mm-dd" ng-required="isPIT2ACS && $parent.isApprove">
+										<span class="help-block"
+											ng-messages="approveEnrollmentForm.acsemvCoCertValidThru.$error"
+											ng-class="{ 'has-error':approveEnrollmentForm.acsemvCoCertValidThru.$invalid}"
+											ng-if="isPIT2ACS && $parent.isApprove">
+											<div ng-message="required">This field is required</div>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div ng-show="isMerchant">
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label class="col-md-4 control-lable"> Merchant ID </label>
+									<div class="col-md-7">
+										<input class="form-control input-sm" ng-disabled="true"
+											ng-model="merchantId">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label class="col-md-4 control-lable"> 3DS Server Reference # </label>
+									<div class="col-md-7">
+										<input class="form-control input-sm" ng-disabled="true"
+											ng-model="merchantRefNum">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12 required">
+									<label class="col-md-4 control-lable"> 3DS Server EMVCo Certification Expiry Date  </label>
+									<div class="col-md-7">
+										<input type="text" id="threedsdatepicker" name="threeDSEMVCoCertValidity"
+											ng-model="$parent.threeDSEMVCoValidity" maxlength="10"
+											class="form-control input-sm clearable"
+											placeholder="yyyy-mm-dd" ng-required="isMerchant && $parent.isApprove">
+										<span class="help-block"
+											ng-messages="approveEnrollmentForm.threeDSEMVCoCertValidity.$error"
+											ng-class="{ 'has-error':approveEnrollmentForm.threeDSEMVCoCertValidity.$invalid}"
+											ng-if="isMerchant && $parent.isApprove">
+											<div ng-message="required">This field is required</div>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- <div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> EMVCo Compliance
+									ID </label>
+								<div class="col-md-7">
+									<input class="form-control input-sm" ng-disabled="true"
+										ng-model="emvCertificate">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> Component ID </label>
+								<div class="col-md-7">
+									<input type="text" ng-model="componentID" name="componentID"
+										class="form-control input-sm" ng-disabled="true" />
+								</div>
+							</div>
+						</div> -->
+						<!-- <div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> EMVCo
+									Certification Validity </label>
+								<div class="col-md-7">
+									<input type="text" id="datepicker" name="emvCoCertValidThru"
+										ng-model="$parent.emvCoCertValidThru" maxlength="10"
+										class="form-control input-sm clearable" placeholder="yyyy-mm-dd" ng-required="$parent.isApprove">
+									<span class="help-block"
+										ng-messages="approveEnrollmentForm.emvCoCertValidThru.$error"
+										ng-class="{ 'has-error':approveEnrollmentForm.emvCoCertValidThru.$invalid}"
+										ng-if="$parent.isApprove">
+										<div ng-message="required">This field is required</div>
+									</span>
+								</div>
+							</div>
+						</div> -->
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> Notes </label>
+								<div class="col-md-7">
+									<textarea class="form-control input-sm" rows="10" cols="4"
+										ng-model="$parent.notes" 
+										name="notes" ng-maxlength="100" ng-required="$parent.isReject"> 
+									</textarea>
+									<span class="help-block"
+										ng-messages="approveEnrollmentForm.notes.$error"
+										ng-class="{ 'has-error':approveEnrollmentForm.notes.$invalid}"
+										ng-if="$parent.isReject">
+										<div ng-message="required">This field is required</div>
+										<div ng-message="maxlength">Field should not exceed
+											more than 100 characters length</div>
+									</span>
+								</div>	
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-8 col-md-offset-4" ng-if="!loading">
+								<input type="button" value="Approve"
+									class="btn btn-primary btn-sm" ng-click="confirmApproval();">
+								<input type="button" value="Deny" class="btn btn-default btn-sm"
+									ng-click="confirmRejection();">
+								<input type="button" value="Cancel" class="btn btn-default btn-sm"
+									ng-click="cancelApproval();">
+							</div>
+							<div class="col-md-8 col-md-offset-4" ng-if="loading">
+								<img ng-src="{{ajaxLoaderPath}}" name="loading" />
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="row" ng-if="isActive">
+					<div class="form-group col-md-7">
+						<div style="word-wrap:break-word;">
+							User with email <span style="color: blue;">{{userEmail}}</span>
+							is Approved.
+						</div>
+						<br>
+			<br>
+			<div class="row text-center">
+				<input type="button" class="btn btn-primary btn-sm" value="Back"
+					ng-click="backtoVendorLogScreen();">
+						</div>
+	
+					</div>
+				</div>
+				<div class="row" ng-if="isRejected">
+					<div class="form-group col-md-7">
+						<div style="word-wrap:break-word;">
+							User with email <span style="color: blue;">{{userEmail}}</span>
+							is Denied.
+						</div>
+						<br>
+			<br>
+			<div class="row text-center">
+				<input type="button" class="btn btn-primary btn-sm" value="Back"
+					ng-click="backtoVendorLogScreen();">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

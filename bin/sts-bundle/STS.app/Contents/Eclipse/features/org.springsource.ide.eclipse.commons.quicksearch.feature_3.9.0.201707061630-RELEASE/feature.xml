@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.springsource.ide.eclipse.commons.quicksearch.feature"
+      label="%featureName"
+      version="3.9.0.201707061630-RELEASE"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseUrl">
+      %license
+   </license>
+
+   <plugin
+         id="org.springsource.ide.eclipse.commons.quicksearch"
+         download-size="93"
+         install-size="184"
+         version="3.9.0.201707061630-RELEASE"
+         unpack="false"/>
+
+</feature>

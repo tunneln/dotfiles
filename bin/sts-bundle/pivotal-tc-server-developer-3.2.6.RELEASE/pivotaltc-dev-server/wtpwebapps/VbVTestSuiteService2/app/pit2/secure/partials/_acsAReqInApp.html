@@ -1,0 +1,177 @@
+<div class="thumbnail">
+	<div class="panel-heading text-center">
+		<span class="lead"><b>ACS AReq InApp</b></span><br>
+		<span class="requiredtext"><i>{{requiredText}}</i></span>
+	</div>
+	<div data-error-message></div>
+	<div ng-show="pageloaded">
+		<div class="row text-center">
+			<img ng-src="./app/images/acss_imgs/wait.gif" name="loading" />
+		</div>
+	</div>
+	<div class="formcontainer" ng-hide="pageloaded">
+		<form name="acsAReqForm" method="post"
+			class="form-horizontal">
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-lable"> Select Test Case: </label>
+					<div class="col-md-7">
+						<select class="form-control" ng-model="selectedTestCase"
+							ng-options="testCase.tcId as testCase.tcDesc for testCase in testCases"
+							ng-change="changeTCReqData(selectedTestCase)">
+							<option value="">New Test Case</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12 required">
+					<label class="col-md-4 control-lable"> Test Case Name: </label>
+					<div class="col-md-7">
+						<input type="text" name="testCaseName" autocomplete="off"
+							class="form-control input-sm" ng-model="testCaseName"
+							ng-maxlength="100" ng-required="true" />
+						<div class="help-block"
+							ng-messages="acsAReqForm.testCaseName.$error"
+							ng-class="{ 'has-error':acsAReqForm.testCaseName.$touched && acsAReqForm.testCaseName.$invalid }"
+							ng-if="acsAReqForm.testCaseName.$touched">
+							<div ng-message="required">This field is required</div>
+							<div ng-message="maxlength">Test Case Name should not
+								exceed more than 100 characters length</div>
+							<!--  <div data-validation-message></div>-->
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-lable"> Successor CReq Test
+						Case: </label>
+					<div class="col-md-7">
+						<span> <select name="successorId" id="successorId"
+							class="form-control" ng-model="successorCReqTC" multiple="true"
+							ng-options="testCase as testCase for testCase in cReqSuccessorIdTCs">
+								<option value="">None</option>
+						</select>
+						</span> <span><i>(Hold Ctrl key down and click mouse for
+								multiple selections)</i></span>
+						<!-- <div class="help-block" ng-messages="acsVEReqForm.successorId.$error"
+							ng-class="{ 'has-error':acsVEReqForm.successorId.$touched && acsVEReqForm.successorId.$invalid}"
+							ng-if="acsVEReqForm.successorId.$touched">
+							<div data-validation-message></div>
+						</div> -->
+					</div>
+				</div>
+			</div>
+			<!--  <div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-lable"> Required By Regions:
+					</label>
+					<div class="col-md-7">
+						<span ng-repeat="region in regions"> <input type="checkbox"
+							ng-click="selectedRegion(region.rgnCd)" ng-checked="region.flag">&nbsp;{{region.value}}&nbsp;
+						</span>
+					</div>
+				</div>
+			</div>-->
+			<div class="row">
+				<div class="form-group col-md-12 required">
+					<label class="col-md-4 control-lable"> Expected Test Case
+						Result: </label>
+					<div class="col-md-7">
+						<span> <select id="expectedRes" multiple="true"
+							ng-model="selectedExpResps"
+							ng-options="response.value as response.value for response in expectedResponses"></select>
+						</span> <span><i>(Hold Ctrl key down and click mouse for
+								multiple selections)</i></span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-lable"> Special V3DSTS Action:
+					</label>
+					<div class="col-md-7">
+						<span ng-repeat="action in pitActions"> <input type="radio"
+							value="{{action}}" ng-model="$parent.pitAction">&nbsp;{{action}}<br />
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12 required">
+					<label class="col-md-4 control-lable"> AReq Template: <br />
+						&nbsp;&nbsp;&nbsp;&nbsp;format: <span><a href
+							ng-click="jsonFormat('AReq')" class="pointer underline">on</a></span><span>&nbsp;</span><span><a href
+							ng-click="jsonUnformat('AReq')" class="pointer underline">off</a></span>
+					</label>
+					<div class="col-md-7">
+						<textarea name="aReqMessage" ng-model="aReqTemplate"
+							class="form-control input-sm" rows="15" cols="4"
+							ng-required="true">
+						</textarea>
+						<div class="help-block"
+							ng-messages="acsAReqForm.aReqMessage.$error"
+							ng-class="{ 'has-error':acsAReqForm.aReqMessage.$touched && acsAReqForm.aReqMessage.$invalid}"
+							ng-if="acsAReqForm.aReqMessage.$touched">
+							<div data-validation-message></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-lable"> Optional Expected
+						Response: <br>
+						<p style="text-align: right; padding-right: 5px;">
+							(3-D Secure Error Only)<br> <a href
+								ng-click="optionExpRes()">Use Template:</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;format: <a href
+								ng-click="expRespJsonFormat()" class="pointer underline">on</a>&nbsp;<a
+								href ng-click="expRespJsonUnformat()" class="pointer underline">off</a>
+						</p>
+					</label>
+
+					<!-- <div class="col-md-7">
+						<select>
+							<option>New Expected Response</option>
+						</select>
+						<a class="pointer">Save</a> selected response
+						<a class="pointer">Remove</a> selected response
+					</div> -->
+					<div class="col-md-7">
+						<textarea class="form-control input-sm" rows="8" cols="50"
+							name="expectedResMsg" ng-model="expectedResMsg"></textarea>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-lable"> Is Required
+						Testcase: </label>
+					<div class="col-md-7">
+						<input type="checkbox" name="Compliance" ng-model="compliance"
+							ng-checked="compliance.flag">
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="row text-center" ng-if="!loading">
+				<input type="button" value="Create" class="btn btn-default btn-sm"
+					ng-click="acsAReqSubmit('create',compliance)"
+					ng-disabled="acsAReqForm.$invalid || isExistingTC"> <input
+					type="button" value="Update" class="btn btn-primary btn-sm"
+					ng-click="acsAReqSubmit('update',compliance)"
+					ng-disabled="acsAReqForm.$invalid || !isExistingTC"> <input
+					type="button" value="Delete" class="btn btn-default btn-sm"
+					ng-click="deleteConfirm()"
+					ng-disabled="acsAReqForm.$invalid || !isExistingTC">
+			</div>
+			<div class="row text-center" ng-if="loading">
+				<img ng-src="{{ajaxLoaderPath}}" name="loading" />
+			</div>
+		</form>
+	</div>
+</div>

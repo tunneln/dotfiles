@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.ajdt"
+      label="%featureName"
+      version="2.2.4.201704242114"
+      provider-name="%providerName"
+      plugin="org.eclipse.aspectj">
+
+   <description url="http://eclipse.org/ajdt">
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <url>
+      <update label="%updateLabel" url="http://download.eclipse.org/tools/ajdt/35/update"/>
+   </url>
+
+   <includes
+         id="org.eclipse.equinox.weaving.sdk"
+         version="1.2.0.201704242114"
+         name="Equinox Weaving"
+         optional="true"/>
+
+   <includes
+         id="org.aspectj"
+         version="1.8.10.201704242114"/>
+
+   <requires>
+      <import plugin="org.apache.ant"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <!--
+      <import plugin="org.eclipse.core.runtime.compatibility"/>
+      -->
+      <import plugin="org.eclipse.text"/>
+      <import plugin="org.aspectj.weaver"/>
+      <import plugin="org.aspectj.runtime"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.jdt.core"/>
+      <import plugin="org.eclipse.text"/>
+      <import plugin="org.eclipse.ltk.core.refactoring"/>
+      <import plugin="org.aspectj.ajde"/>
+      <import plugin="org.eclipse.ant.core"/>
+      <import plugin="org.eclipse.jdt.core.manipulation"/>
+      <import plugin="org.eclipse.ui.workbench.texteditor"/>
+      <import plugin="org.eclipse.ui.editors"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.jdt.ui"/>
+      <import plugin="org.eclipse.jface.text"/>
+      <import plugin="org.eclipse.search"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.help"/>
+      <import plugin="org.eclipse.ui.forms"/>
+      <import plugin="org.eclipse.ui.workbench"/>
+      <import plugin="org.eclipse.jface"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.ui.views"/>
+      <import plugin="org.eclipse.jface.text"/>
+      <import plugin="org.eclipse.ui.workbench.texteditor"/>
+      <import plugin="org.eclipse.ui.editors"/>
+      <import plugin="org.eclipse.search"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.jdt.ui"/>
+      <import plugin="org.eclipse.debug.core"/>
+      <import plugin="org.eclipse.debug.ui"/>
+      <import plugin="org.eclipse.jdt.debug.ui"/>
+      <import plugin="org.eclipse.swt"/>
+      <import plugin="org.eclipse.jdt.launching"/>
+      <import plugin="org.eclipse.ui.console"/>
+      <import plugin="org.eclipse.ui.cheatsheets"/>
+      <import plugin="org.eclipse.jdt.debug"/>
+      <import plugin="org.eclipse.ui.intro"/>
+      <import plugin="org.eclipse.ant.core"/>
+      <import plugin="org.eclipse.ltk.core.refactoring"/>
+      <import plugin="org.eclipse.ajdt.core"/>
+      <import plugin="org.eclipse.help"/>
+      <import plugin="org.aspectj.weaver"/>
+      <import plugin="org.eclipse.core.filesystem"/>
+      <import plugin="org.eclipse.ui.navigator"/>
+      <import plugin="org.eclipse.contribution.weaving.jdt"/>
+      <import plugin="org.eclipse.ltk.ui.refactoring"/>
+      <import plugin="com.ibm.icu"/>
+      <import plugin="org.eclipse.ui.ide.application"/>
+      <import plugin="org.eclipse.osgi"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.jdt.core"/>
+      <import plugin="org.eclipse.jdt.ui"/>
+      <import plugin="org.eclipse.jface"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.ui.browser"/>
+      <import plugin="org.eclipse.ui.forms"/>
+      <import plugin="org.eclipse.ltk.core.refactoring"/>
+      <import plugin="org.eclipse.jdt.junit.core"/>
+      <import plugin="org.eclipse.equinox.simpleconfigurator.manipulator"/>
+      <import plugin="org.eclipse.equinox.frameworkadmin"/>
+      <import plugin="org.eclipse.jdt.debug"/>
+      <import plugin="org.eclipse.jdt.launching"/>
+      <import plugin="org.eclipse.core.commands"/>
+      <import plugin="org.eclipse.core.expressions"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.ajdt.core"
+         download-size="687"
+         install-size="1539"
+         version="2.2.4.201704242114"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.contribution.visualiser"
+         download-size="1306"
+         install-size="5538"
+         version="2.2.4.201704242114"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.ajdt.ui"
+         download-size="1330"
+         install-size="2990"
+         version="2.2.4.201704242114"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.ajdt.examples"
+         download-size="104"
+         install-size="134"
+         version="2.2.4.201704242114"/>
+
+   <plugin
+         id="org.eclipse.aspectj"
+         download-size="199"
+         install-size="239"
+         version="2.2.4.201704242114"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.ajdt.doc.user"
+         download-size="328"
+         install-size="448"
+         version="2.2.4.201704242114"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.contribution.weaving.jdt"
+         download-size="127"
+         install-size="365"
+         version="2.2.4.201704242114"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.contribution.xref.ui"
+         download-size="102"
+         install-size="203"
+         version="2.2.4.201704242114"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.contribution.xref.core"
+         download-size="55"
+         install-size="120"
+         version="2.2.4.201704242114"
+         unpack="false"/>
+
+</feature>

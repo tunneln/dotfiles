@@ -1,0 +1,134 @@
+<div class="thumbnail">
+	<div class="panel-heading text-center">
+		<span class="lead"><b>Validate CAVV </b></span><br>
+		<span class="requiredtext"><i>{{requiredText}}</i></span>
+	</div>
+	<!-- <div data-error-message></div> -->
+	<div class="alert alert-danger fade in"
+		ng-class="{'has-error':$error}" ng-if="isCAVVError">
+		<a class="close" ng-click="closeErr()">&times;</a> 
+		<strong>Error!&nbsp;</strong><p ng-bind-html="cavvErrorMessage | htmlvw"></p>
+	</div>
+	
+	<div class="formcontainer">
+		<form name="validateCavvForm" ng-submit="" method="post"
+			class="form-horizontal">
+			<div class="row">
+				<div class="form-group col-md-12 required">
+					<label class="col-md-4 control-lable" data-toggle="tooltip" data-placement="right" title="Please provide the CAVV in base64 format that is obtained from ARes/RReq message"> CAVV: </label>
+					<div class="col-md-7">
+						<span> <input type="text" name="cavv" ng-model="cavv"
+							class="form-control input-sm" ng-required="true"
+							ng-maxlength="28" />
+						</span>
+						<div class="help-block" ng-messages="validateCavvForm.cavv.$error"
+							ng-class="{ 'has-error':validateCavvForm.cavv.$touched && validateCavvForm.cavv.$invalid}"
+							ng-if="validateCavvForm.cavv.$touched">
+							<div ng-message="required">This field is required</div>
+							<div ng-message="maxlength">Maximum length of CAVV is 28</div>
+							<!-- <div data-validation-message></div> -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12 required">
+					<label class="col-md-4 control-lable" data-toggle="tooltip" data-placement="right" title="Please provide the ECI value(2 digit)"> ECI: </label>
+					<div class="col-md-7">
+						<span> <input type="text" name="eci" ng-model="eci"
+							class="form-control input-sm" ng-required="true" ng-maxlength="2"
+							ng-pattern="/^0[5-6]*$/" size="2"/>
+						</span>
+						<div class="help-block" ng-messages="validateCavvForm.eci.$error"
+							ng-class="{ 'has-error':validateCavvForm.eci.$touched && validateCavvForm.eci.$invalid}"
+							ng-if="validateCavvForm.eci.$touched">
+							<div ng-message="required">This field is required</div>
+							<div ng-message="maxlength">ECI should be of length 2
+								digits</div>
+							<div ng-message="pattern">ECI value should be either 05 or
+								06</div>
+							<!-- <div data-validation-message></div> -->
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="form-group col-md-12 required">
+					<label class="col-md-4 control-lable"> Account #: </label>
+					<div class="col-md-7">
+						<input type="text" name="panNum" ng-model="pan"
+							class="form-control input-sm" ng-required="true"
+							ng-minlength="13" ng-maxlength="19" ng-pattern="/^[0-9]*$/">
+						<div class="help-block"
+							ng-messages="validateCavvForm.panNum.$error"
+							ng-class="{ 'has-error':validateCavvForm.panNum.$touched && validateCavvForm.panNum.$invalid}"
+							ng-if="validateCavvForm.panNum.$touched">
+							<div ng-message="required">This field is required</div>
+							<div ng-message="pattern">Invalid Account #</div>
+							<div ng-message="minlength,maxlength">Account # should be between 13 and 19 digits</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="row">
+				<div class="form-group col-md-12 required">
+					<label class="col-md-4 control-lable"> XID: </label>
+					<div class="col-md-7">
+						<input type="text" name="xid" ng-model="xid"
+							class="form-control input-sm" ng-required="true"
+							ng-maxlength="28">
+						<div class="help-block" ng-messages="validateCavvForm.xid.$error"
+							ng-class="{ 'has-error':validateCavvForm.xid.$touched && validateCavvForm.xid.$invalid}"
+							ng-if="validateCavvForm.panNum.$touched">
+							<div ng-message="required">This field is required</div>
+							<div ng-message="maxlength">XID should be of maximum length
+								28</div>
+						</div>
+					</div>
+				</div>
+			</div> -->
+			<div class="row">
+				<div class="form-group col-md-12 required">
+					<label class="col-md-4 control-lable"> Expiry Date: </label>
+					<div class="col-md-7">
+						<input type="text" class="form-control input-sm" placeholder="YYMM" ng-model="expiry"
+							name="expiration" maxlength="4"
+							ng-pattern="/^([0-9][0-9]{1})(0[1-9]|1[0-2])$/" ng-required="true" />
+						<div class="help-block"
+							ng-messages="validateCavvForm.expiration.$error"
+							ng-class="{ 'has-error':validateCavvForm.expiration.$touched && validateCavvForm.expiration.$invalid}"
+							ng-if="validateCavvForm.expiration.$touched">
+							<div ng-message="required">This field is required</div>
+							<div ng-message="pattern">Expiry Date must be in the form YYMM</div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="row">
+				<div class="form-group col-md-12 required">
+					<label class="col-md-4 control-lable"> Authentication Method: </label>
+					<div class="col-md-7">
+						<span>
+							<select id="authMethod" class="form-control" 
+						ng-model="authMthd" ng-required="true">
+						<option ng-repeat="auth in authMethod" value="{{auth.code}}">{{auth.name}}</option>
+					</select>
+						</span>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="row text-center" ng-if="!loading">
+				<input type="button" value="Submit" class="btn btn-primary btn-sm"
+					ng-click="submitToVIP()" ng-disabled="validateCavvForm.$invalid">
+				<input type="button" value="Reset" class="btn btn-default btn-sm"
+					ng-click="resetForm()">
+			</div>
+			<div class="row text-center" ng-if="loading">
+				<img ng-src="{{ajaxLoaderPath}}" name="loading" />
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd 
+		http://www.springframework.org/schema/tx  http://www.springframework.org/schema/tx/spring-tx.xsd">
+		
+    <!-- Enables the Annotations based Configuration -->
+	<context:annotation-config/>
+	<mvc:annotation-driven />
+    <context:component-scan  base-package="com.visa"/>
+    <!-- Root Context: defines shared resources visible to all other web components -->
+ 
+	<import resource="classpath:spring/testsuite-security.xml"/>
+	<!-- <import resource="classpath:config/datasource.xml"/> -->
+	
+	<!-- This property is added to enable Spring Multipart form data uploads -->
+	<bean id="multipartResolver" 
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	</bean>
+	
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename">
+			<value>messages/messages</value>
+		</property>
+	</bean>
+    
+	 
+   <bean id="initController" class="com.visa.vbv.testsuite.controller.InitController" scope="singleton" lazy-init="false" init-method="loadCache"/>
+    
+	
+    
+    <!-- Start Http Client Injection -->
+	<bean id="basicHttpContext" class="org.apache.http.protocol.BasicHttpContext" />
+
+	<bean id="requestConfigBuilder" class="org.apache.http.client.config.RequestConfig"
+		factory-method="custom">
+		<property name="socketTimeout" value="${socketTimeoutInMillis}" />
+		<property name="connectTimeout" value="${connectionTimeoutInMillis}" />
+	</bean>
+
+	<bean id="requestConfig" factory-bean="requestConfigBuilder" factory-method="build" />
+	
+	<bean id="httpClientBuilder" class="org.apache.http.impl.client.HttpClientBuilder"
+		factory-method="create" >
+		<property name="defaultRequestConfig" ref="requestConfig" />
+		<property name="maxConnTotal" value="${maxConnTotal}"></property>
+		<property name="maxConnPerRoute" value="${maxConnPerRoute}"></property>
+		<property name="hostnameVerifier">
+			<bean class="org.apache.http.conn.ssl.AllowAllHostnameVerifier" />
+		</property>
+	</bean>
+	
+	<bean id="httpClientBuilder1" factory-bean="httpClientBuilder" factory-method="useSystemProperties" />
+	
+	<bean id="httpClient" factory-bean="httpClientBuilder1" factory-method="build" />
+	
+	<bean id="requestFactory"
+		class="com.visa.vbv.testsuite.invoker.util.VBVTestSuiteHttpComponentsClientHttpRequestFactory" >
+		<constructor-arg ref="httpClient"></constructor-arg>
+		<constructor-arg ref="basicHttpContext"></constructor-arg>
+		<property name="readTimeout" value="${socketTimeoutInMillis}" />
+		<property name="connectTimeout" value="${connectionTimeoutInMillis}" />
+	</bean>
+
+	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate"   >
+		<constructor-arg ref="requestFactory" />
+	</bean>
+	
+	
+	<!-- End Http Client Injection -->	
+    
+    <bean id="propertyConfigurer" 
+ 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">	
+		<property name="locations">
+            <list>
+                <value>classpath:junit/vbvtestsuite-config.properties</value>
+            </list>
+        </property>
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="valueSeparator" value="?" />
+	</bean> 
+	
+	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+      <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+      <property name="url" value="jdbc:oracle:thin:@sl73rac1-scan.visa.com:1521/VBVDSDEV.visa.com" />
+      <property name="username" value="VbVTestSuite" />
+      <property name="password" value="kTizWqFV" />
+      
+   </bean> -->
+	
+	<!-- JPA Configuration Start -->
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+	
+      <property name="dataSource" ref="dataSource" />
+      <property name="packagesToScan" value="com.visa.vbv.testsuite" />
+      <property name="jpaVendorAdapter">
+         <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+      </property>
+      <property name="jpaProperties">
+         <props>
+            <!-- <prop key="hibernate.hbm2ddl.auto">create-drop</prop> -->
+            <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
+            <prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
+            <prop key="hibernate.show_sql">false</prop>
+         </props>
+      </property>
+      </bean>
+      
+	    
+   <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+      <property name="entityManagerFactory" ref="entityManagerFactory" />
+   </bean>
+   <tx:annotation-driven  proxy-target-class="true" />
+	<!-- JPA Configuration End -->
+	
+	
+	<!-- Jaxb2Marshaller for Marshalling and UnMarshalling -->
+	<bean id="jaxb2Marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+        <property name="contextPath" value="com.visa.vbv.testsuite.common.object.schema"/>
+        <property name="marshallerProperties">
+       <map>
+      	 <entry key="jaxb.formatted.output"><value type="boolean">true</value></entry>
+ 		</map>
+	</property>
+    </bean>
+    
+    
+     <!-- <import resource="classpath:/config/fieldValidationRules.xml" /> -->
+	<!-- 
+	<bean id="vereqBusinessValidator"
+		class="com.visa.vbv.testsuite.business.validators.impl.VEReqBusinessValidatorImpl">
+		<property name="validationRules" ref="rulesMap"></property>
+	</bean> -->
+    
+		
+	<!-- 	<bean id="paReqNpaResBusinessValidator"
+		class="com.visa.vbv.testsuite.business.validators.impl.PAReqNPAResBusinessValidatorImpl">
+		<property name="validationRules" ref="rulesMap"></property>
+	</bean> -->
+    
+	 <!--  
+	 <bean id="propertyConfig"
+		class="com.visa.vbvtestsuite.util.VBVTestSuitePropertyDecrypter">
+		
+		<property name="locations"> 
+			<list>
+				<value>classpath:vbvtestsuite-password.properties</value>
+			
+			</list>
+		</property>
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="valueSeparator" value="?" />
+	</bean>	
+	
+	-->
+	
+	
+	<!--This bean sets keystore and trust store system properties --> 
+	
+	<!--  
+	
+	 <bean id="systemUtil" class="com.visa.vbvtestsuite.util.VBVTestSuiteSystemUtil" init-method="init" 
+	 		depends-on="propertyConfig" >
+	 </bean>
+	 
+	 
+	 -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">  
+	  <property name="host" value="${host}"/>  
+	    <property name="javaMailProperties">  
+	       <props>  
+	              <prop key="mail.smtp.auth">${mail.smtp.auth}</prop>  
+	              <prop key="mail.smtp.socketFactory.port">${mail.smtp.socketFactory.port}</prop> 
+	              <prop key="mail.smtp.socketFactory.class">${mail.smtp.socketFactory.class}</prop>  
+	              <prop key="mail.smtp.port">${mail.smtp.port}</prop>  
+	        </props>  
+	    </property>  
+	</bean>
+	  
+	<bean id="emailService" class="com.visa.vbv.testsuite.business.service.impl.EmailServiceImpl">  
+	    <property name="mailSender" ref="mailSender" />  
+	</bean> 
+	
+	
+	<!-- Soap Configurations here 
+	<import resource="classpath:spring/soap-config.xml"/>
+	-->
+	
+	<!-- Configurations for SOAP Message Integration with VIP Start -->
+	
+
+	<!-- <bean id="vipinvoker" class="com.visa.vbv.testsuite.invoker.impl.VIPInvokerImpl" init-method="init"/> -->
+		
+	<bean id="vipHttpClientBuilder"
+		class="com.visa.vbv.testsuite.invoker.util.VIPHttpClientBuilder"
+		factory-method="create">
+		<property name="defaultRequestConfig" ref="requestConfig" />
+		<property name="maxConnTotal" value="${maxConnTotal}"></property>
+		<property name="maxConnPerRoute" value="${maxConnPerRoute}"></property>
+		<property name="hostnameVerifier">
+			<bean class="org.apache.http.conn.ssl.AllowAllHostnameVerifier" />
+		</property>
+	</bean>
+
+	<bean id="vipHttpClientBuilder1" factory-bean="vipHttpClientBuilder"
+		factory-method="useSystemProperties" />
+
+	<bean id="vipHttpClient" factory-bean="vipHttpClientBuilder1"
+		factory-method="build" />
+
+	
+	<bean id="vipJaxb2Marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+		<property name="contextPath" value="com.visa.vbv.testsuite.common.object.schema.vip" />
+		<property name="marshallerProperties">
+			<map>
+				<entry key="jaxb.formatted.output">
+					<value type="boolean">true</value>
+				</entry>
+				<entry key="jaxb.schemaLocation">
+					<value>http://services.visa.com/ts/vip/v2.5 Messages.xsd</value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+
+
+	<bean id="messageFactory" class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory" />
+
+	<bean id="webServiceTemplate" class="org.springframework.ws.client.core.WebServiceTemplate">
+		<property name="marshaller" ref="vipJaxb2Marshaller" />
+		<property name="unmarshaller" ref="vipJaxb2Marshaller" />
+		<constructor-arg ref="messageFactory" />
+		<property name="messageSender">
+			<bean
+				class="org.springframework.ws.transport.http.HttpComponentsMessageSender">
+				<constructor-arg ref="vipHttpClient"></constructor-arg>
+			</bean>
+		</property>
+		<property name="defaultUri"
+			value="http://services.visa.com/ts/vip/services/v2.5" />
+	</bean>
+
+	<!-- <mvc:annotation-driven>
+	  <mvc:message-converters>
+	    <bean id="jackson" class=
+	"org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+	    <bean id="string"
+	      class="org.springframework.http.converter.StringHttpMessageConverter"/>
+	    <bean id="form"
+	      class="org.springframework.http.converter.FormHttpMessageConverter"/>
+	  </mvc:message-converters>
+	</mvc:annotation-driven> -->
+	
+	
+	<bean id="jacksonMapper" class="com.fasterxml.jackson.databind.ObjectMapper"></bean>
+
+	<!-- <bean id="contentNegotiationManager" 
+	  class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+	  <property name="defaultContentType" value="application/json" />
+	  <property name="mediaTypes">
+	    <value>
+	      json=application/json
+	      xml=application/xml
+	    </value>
+	  </property>
+	</bean> -->
+	<!-- Configurations for SOAP Message Integration with VIP End -->
+	
+	
+	
+
+</beans>

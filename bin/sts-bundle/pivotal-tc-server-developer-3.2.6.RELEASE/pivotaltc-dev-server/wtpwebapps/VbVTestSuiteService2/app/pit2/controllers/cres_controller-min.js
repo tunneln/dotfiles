@@ -1,0 +1,1 @@
+"use strict";var cResCtrlMod=angular.module("CResControllerModule",[]);cResCtrlMod.controller("CResController",["$scope","$state","CResService",function(b,c,a){c.go("PIT2.cRes")}]);

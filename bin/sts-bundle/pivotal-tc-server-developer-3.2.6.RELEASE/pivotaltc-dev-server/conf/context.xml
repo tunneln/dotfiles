@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <!-- Default set of monitored resources -->
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+    <!-- Uncomment this to disable session persistence across Tomcat restarts -->
+    <!--
+            <Manager pathname="" />
+            -->
+    <!-- Uncomment this to enable Comet connection tacking (provides events
+                 on session expiration as well as webapp lifecycle) -->
+    <!--
+            <Valve className="org.apache.catalina.valves.CometConnectionManagerValve" />
+            -->
+    <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
+	<Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" initialSize="10" jdbcInterceptors="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState; org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer; org.apache.tomcat.jdbc.pool.interceptor.SlowQueryReportJmx(threshold=10000)" jmxEnabled="true" logAbandoned="true" maxActive="25" maxIdle="10" maxWait="10000" minEvictableIdleTimeMillis="30000" minIdle="5" name="jdbc/VBVTestSuiteDataSource" numTestsPerEvictionRun="3" password="VbvTestSuitePIT2" removeAbandoned="true" removeAbandonedTimeout="60" testOnBorrow="true" testOnReturn="false" testWhileIdle="true" timeBetweenEvictionRunsMillis="300000" type="javax.sql.DataSource" url="jdbc:oracle:thin:@//sl733ds2dbd004.visa.com:1521/VPITED" username="VBVTESTSUITEPIT2" validationInterval="30000" validationQuery="SELECT 1 FROM DUAL"/>
+</Context>

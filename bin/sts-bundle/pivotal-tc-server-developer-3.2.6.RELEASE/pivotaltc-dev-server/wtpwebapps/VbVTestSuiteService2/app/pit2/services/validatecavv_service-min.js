@@ -1,0 +1,1 @@
+"use strict";validateCavvMod.service("ValidateCAVVService",["$http","$rootScope",function(c,a){var b={};this.submitVIPRequest=function(d){return c.post(a.contextPath+"/pit2/submitVIPReq",d)}}]);

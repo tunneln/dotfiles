@@ -1,0 +1,32 @@
+<div class="thumbnail">
+	<div class="panel-heading text-center">
+		<span class="lead"><b>CAVV Results</b></span><br>
+	</div>
+
+	<div class="formcontainer">
+		<form name="VIPResultsForm" class="form-horizontal">
+			<div class="row">
+				<label class="col-md-4 control-lable"> Response Source: </label>
+				<div class="col-md-7">
+					<span><output>{{responseSource}}</output> </span>
+				</div>
+			</div>
+			<div class="row">
+				<label class="col-md-4 control-lable"> Action Code: </label>
+				<div class="col-md-7">
+					<span> <output>{{actionCode}}</output>
+					</span>
+				</div>
+			</div>
+			<div class="row">
+				<label class="col-md-4 control-lable"> CAVV Result Code:<i
+					class="glyphicon glyphicon-question-sign" data-toggle="tooltip"
+					data-placement="bottom" title="Please refer to the CAVV guide for details on the CAVV verification and the result codes"></i>
+				</label>
+				<div class="col-md-7">
+					<output>{{cavvResultCode}}</output>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

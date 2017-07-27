@@ -1,0 +1,5 @@
+#encoding=UTF-8
+#version=1
+org.eclipse.lsp4j.generator.source,0.2.0.v20170518-0647,plugins/org.eclipse.lsp4j.generator.source_0.2.0.v20170518-0647.jar,-1,false
+org.eclipse.lsp4j.jsonrpc.source,0.2.0.v20170518-0647,plugins/org.eclipse.lsp4j.jsonrpc.source_0.2.0.v20170518-0647.jar,-1,false
+org.eclipse.lsp4j.source,0.2.0.v20170518-0647,plugins/org.eclipse.lsp4j.source_0.2.0.v20170518-0647.jar,-1,false

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.lsp4j.sdk"
+      label="LSP4J SDK"
+      version="0.2.0.v20170518-0647"
+      provider-name="Eclipse LSP4J">
+
+   <description>
+      Java binding for the Language Server Protocol.
+   </description>
+
+   <copyright>
+      Copyright (c) 2016 TypeFox GmbH (http://www.typefox.io) and others.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import plugin="com.google.gson" version="2.7.0" match="equivalent"/>
+      <import plugin="org.eclipse.xtend.lib" version="2.10.0" match="compatible"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.lsp4j"
+         download-size="241"
+         install-size="586"
+         version="0.2.0.v20170518-0647"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.lsp4j.source"
+         download-size="206"
+         install-size="524"
+         version="0.2.0.v20170518-0647"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.lsp4j.jsonrpc"
+         download-size="72"
+         install-size="144"
+         version="0.2.0.v20170518-0647"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.lsp4j.jsonrpc.source"
+         download-size="42"
+         install-size="104"
+         version="0.2.0.v20170518-0647"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.lsp4j.generator"
+         download-size="17"
+         install-size="49"
+         version="0.2.0.v20170518-0647"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.lsp4j.generator.source"
+         download-size="27"
+         install-size="74"
+         version="0.2.0.v20170518-0647"
+         unpack="false"/>
+
+</feature>

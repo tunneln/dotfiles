@@ -1,0 +1,378 @@
+<div class="formcontainer">
+	<form name="pit2reviewACS" class="form-horizontal" method="post">
+
+		<div class="thumbnail">
+			<div class="panel-heading text-center">
+				<span class="lead" ng-if="dispRUNAcsBtn"><b>Review ACS Optional Test Case</b></span>
+				<span class="lead" ng-if="dispCthRUNAcsBtn"><b>Review ACS Required Test Case</b></span>
+				<span class="lead" ng-if="dispVIPReqHead"><b>Review VIP Test Case</b></span>
+			</div>
+			<ul ng-repeat="trandata in reviewtcData">
+				<div ng-if="trandata.MsgCode == 'AReq' || trandata.MsgCode == 'VIPReq'">
+					<div class="row">
+
+						<div class="form-group col-md-12">
+							<label class="col-md-4 control-lable"> Test ID: </label>
+							<div class="col-md-8">
+								<output>{{trandata.TesterId}}</output>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+
+						<div class="form-group col-md-12">
+							<label class="col-md-4 control-lable"> Time: </label>
+							<div class="col-md-8">
+								<output>{{trandata.Time}}</output>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+
+						<div class="form-group col-md-12">
+							<label class="col-md-4 control-lable"> Status: </label>
+							<div class="col-md-8">
+								<output ng-if="trandata.Status.indexOf('Failed')==0">
+									<FONT COLOR="red">{{trandata.Status}}</FONT>
+								</output>
+								<output ng-if="trandata.Status.indexOf('Passed')==0">
+									<FONT COLOR="green">{{trandata.Status}}</FONT>
+								</output>
+								<output ng-if="trandata.Status.indexOf('Incomplete')==0">
+									<FONT COLOR="blue">{{trandata.Status}}</FONT>
+								</output>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+
+						<div class="form-group col-md-12">
+							<label class="col-md-4 control-lable"> Tester: </label>
+							<div class="col-md-8">
+								<output>{{trandata.Tester}}</output>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="thumbnail">
+					<div ng-if="trandata.MsgCode == 'AReq'">
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> AReq Test Case:
+								</label>
+								<div class="col-md-8">
+									<output>{{trandata.ReqTestCase}}</output>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> ACS URL: </label>
+								<div class="col-md-8">
+									<output style="word-wrap: break-word;">{{trandata.Url}}</output>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> AReq Message:<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;format:
+									<span><a href ng-click="jsonFormat($index,trandata.AReqMsg)" class="pointer underline">on</a></span><span>&nbsp;</span><span><a href ng-click="jsonUnformat($index,trandata.AReqMsg)" class="pointer underline">off</a></span>
+								</label>
+
+								<div class="col-md-8">
+									<textarea class="form-control input-sm" rows="15" cols="4"
+										 readonly="readonly">{{trandata.AReqMsg}}
+						</textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div ng-if="trandata.MsgCode == 'ARes'">
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable" >Response Info: </label>
+
+								<div class="col-md-8 pull-right"
+									ng-repeat="info in trandata.RespInfo track by $index">
+									<div ng-if="info.indexOf('Failure:')==0" style="word-wrap: break-word;">
+										<FONT COLOR="red" style="font-size:small;"> {{info}}</FONT><BR>
+									</div>
+									<div ng-if="info.indexOf('Success:')==0" style="word-wrap: break-word;">
+										<FONT COLOR="green" style="font-size:small;"> {{info}}</FONT><BR>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> ARes Message:<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;format: 
+									<span><a href ng-click="jsonFormat($index,trandata.AResMsg)" class="pointer underline">on</a></span><span>&nbsp;</span><span><a href ng-click="jsonUnformat($index,trandata.AResMsg)" class="pointer underline">off</a></span>
+								<div ng-if="isDecodeCavvARes">CAVV Encoded:<span><input type="checkbox" name="cavv" id="cav" ng-model="$parent.cavv_checked"  ng-click="cavv_Encode($index,cavv_checked)" ng-checked="cavv_checked"
+										></span></div>
+								</label>
+
+								<div class="col-md-8">
+									<textarea class="form-control input-sm" rows="15" cols="4"
+										 readonly="readonly">{{trandata.AResMsg}}
+						</textarea>
+								</div>
+							</div>
+						</div>
+						<div class="row" ng-if='expctedResACS!=null'>
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> Expected Response(s):<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;format: 
+								<span><a href ng-click="jsonFormat($index,trandata.ExpctesResACS)" class="pointer underline">on</a></span><span>&nbsp;</span><span><a href ng-click="jsonUnformat($index,trandata.ExpctesResACS)" class="pointer underline">off</a></span>
+								</label>
+
+								<div class="col-md-8">
+									<textarea class="form-control input-sm" rows="15" cols="4"
+										readonly="readonly">{{trandata.ExpctesResACS}}
+						</textarea>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					
+						<div ng-if="trandata.MsgCode == 'CReq'">
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label class="col-md-4 control-lable"> CReq Test Case:
+									</label>
+									<div class="col-md-8">
+										<output>{{trandata.CReqTestCase}}</output>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label class="col-md-4 control-lable"> ACS URL: </label>
+									<div class="col-md-8">
+										<output style="word-wrap: break-word;">{{trandata.CReqUrl}}</output>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label class="col-md-4 control-lable"> CReq Message:<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;format: 
+										<span><a href ng-click="jsonFormat($index,trandata.CReqMsg)" class="pointer underline">on</a></span><span>&nbsp;</span><span><a href ng-click="jsonUnformat($index,trandata.CReqMsg)" class="pointer underline">off</a></span>
+									</label>
+
+									<div class="col-md-8">
+										<textarea class="form-control input-sm" rows="15" cols="4"
+											 readonly="readonly">{{trandata.CReqMsg}}
+						</textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div ng-if="trandata.MsgCode == 'CRes'">
+
+							<div class="row">
+								<div class="form-group col-md-12">
+								
+									<label class="col-md-4 control-lable">Response Info: </label>
+
+									<div class="col-md-8 pull-right"
+										ng-repeat="info in trandata.RespInfo track by $index">
+										<div ng-if="info.indexOf('Failure:')==0" style="word-wrap: break-word;">
+											<FONT COLOR="red" style="font-size:small;"> {{info}}</FONT><BR>
+										</div>
+										<div ng-if="info.indexOf('Success:')==0" style="word-wrap: break-word;">
+											<FONT COLOR="green" style="font-size:small;"> {{info}}</FONT><BR>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label class="col-md-4 control-lable"> CRes message:<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;format: 
+										<span><a  href ng-click="jsonFormat($index,trandata.CResMsg)" class="pointer underline">on</a></span><span>&nbsp;</span><span><a href ng-click="jsonUnformat($index,trandata.CResMsg)" class="pointer underline">off</a></span><br>
+									<!-- <div ng-if="ca && cavvSuccess">CAVV Encoded:<span><input type="checkbox" name="cavv" id="cav" ng-model="$parent.cavv_checked"  ng-click="cavv_Encode(cavv_checked)" ng-checked="cavv_checked"
+										></span></div> -->
+									</label>
+									<div class="col-md-8">
+										<textarea class="form-control input-sm" rows="15" cols="4"
+											 readonly="readonly">{{trandata.CResMsg}}
+						</textarea>
+						<span ng-model="decodedCavvCResMsg" hidden="hidden"></span>
+						<span ng-model="encodedCavvCResMsg" hidden="hidden"></span>
+									</div>
+								</div>
+							</div>
+							<div class="row" ng-if='expctedPAResACS!=null'>
+								<div class="form-group col-md-12">
+									<label class="col-md-4 control-lable"> Expected Response(s):<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;format: 
+										<span><a href ng-click="jsonFormat($index,trandata.ExpctesResACS)" class="pointer underline">on</a></span><span>&nbsp;</span><span><a href ng-click="jsonUnformat($index,trandata.ExpctesResACS)" class="pointer underline">off</a></span>
+									</label>
+
+									<div class="col-md-8">
+										<textarea class="form-control input-sm" rows="15" cols="4"
+											ng-model="expctedPAResACS"
+											readonly="readonly">{{trandata.ExpctesResACS}}
+						</textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div ng-if="trandata.MsgCode == 'RReq'">
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> RReq Test Case: </label>
+								<div class="col-md-8">
+									<output>{{trandata.TestCaseName}}</output>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> RReq Message:<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;format: <span><a href
+										ng-click="jsonFormat($index,trandata.RReqMsg)"
+										class="pointer underline">on</a></span><span>&nbsp;</span><span><a
+										href ng-click="jsonUnformat($index,trandata.RReqMsg)"
+										class="pointer underline">off</a></span>
+										<div ng-if="isDecodeCavvRReq">CAVV Encoded:<span><input type="checkbox" name="cavv" id="cav" ng-model="$parent.cavv_checked"  ng-click="cavv_Encode($index,cavv_checked)" ng-checked="cavv_checked"
+										></span></div>
+								</label>
+
+								<div class="col-md-8">
+									<textarea class="form-control input-sm" rows="15" cols="4"
+										readonly="readonly">{{trandata.RReqMsg}}
+						</textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+						<div ng-if="trandata.MsgCode == 'RRes'">
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> RRes Test Case: </label>
+								<div class="col-md-8">
+									<output>{{trandata.TestCaseName}}</output>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> RRes Message:<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;format: <span><a href
+										ng-click="jsonFormat($index,trandata.RResMsg)"
+										class="pointer underline">on</a></span><span>&nbsp;</span><span><a
+										href ng-click="jsonUnformat($index,trandata.RResMsg)"
+										class="pointer underline">off</a></span>
+								</label>
+
+								<div class="col-md-8">
+									<textarea class="form-control input-sm" rows="15" cols="4"
+										readonly="readonly">{{trandata.RResMsg}}
+						</textarea>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					
+					<div ng-if="trandata.MsgCode == 'VIPReq'">
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> VIPReq Test Case: </label>
+								<div class="col-md-8">
+									<output>{{trandata.VipReqTestCase}}</output>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> VIPReq Message:<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;format: <span><a href
+										ng-click="jsonFormat($index,trandata.VipReqMsg)"
+										class="pointer underline">on</a></span><span>&nbsp;</span><span><a
+										href ng-click="jsonUnformat($index,trandata.VipReqMsg)"
+										class="pointer underline">off</a></span>
+								</label>
+
+								<div class="col-md-8">
+									<textarea class="form-control input-sm" rows="15" cols="4"
+										readonly="readonly">{{trandata.VipReqMsg}}
+						</textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div ng-if="trandata.MsgCode == 'VIPResp'">
+					
+						<!-- <div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> VIPResp Test Case: </label>
+								<div class="col-md-8">
+									<output>{{trandata.VipResTestCase}}</output>
+								</div>
+							</div>
+						</div> -->
+						<div class="row">
+							<div class="form-group col-md-12" ng-if="trandata.RespInfo.length>0">
+								<label class="col-md-4 control-lable" >Response Info: </label>
+
+								<div class="col-md-8 pull-right"
+									ng-repeat="info in trandata.RespInfo track by $index">
+									<div ng-if="info.indexOf('Failure:')==0" style="word-wrap: break-word;">
+										<FONT COLOR="red" style="font-size:small;"> {{info}}</FONT><BR>
+									</div>
+									<div ng-if="info.indexOf('Success:')==0" style="word-wrap: break-word;">
+										<FONT COLOR="green" style="font-size:small;"> {{info}}</FONT><BR>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> VIPResp Message:<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;format: <span><a href
+										ng-click="jsonFormat($index,trandata.VipResMsg)"
+										class="pointer underline">on</a></span><span>&nbsp;</span><span><a
+										href ng-click="jsonUnformat($index,trandata.VipResMsg)"
+										class="pointer underline">off</a></span>
+								</label>
+
+								<div class="col-md-8">
+									<textarea class="form-control input-sm" rows="15" cols="4"
+										readonly="readonly">{{trandata.VipResMsg}}
+						</textarea>
+								</div>
+							</div>
+						</div>
+
+					</div>
+			</ul>
+			
+			<div class="row text-center">
+			<input type="button"
+				value="Back" class="btn btn-primary btn-sm"
+				ng-click="back()" ng-if="!isRunACSTCD && !isCthBckBtn">
+			 <input type="submit"
+				value="Optional Test Cases" class="btn btn-primary btn-sm"
+				ng-click="showAcsScrn()" ng-if="dispRUNAcsBtn"> 
+				<input type="submit"
+				value="Required Test Cases" class="btn btn-primary btn-sm"
+				ng-click="showCthAcsScrn()" ng-if="dispCthRUNAcsBtn">
+		</div>
+		<div class="row text-center" ng-show="loading">
+			<img ng-src="{{ajaxLoaderPath}}" name="loading" />
+		</div>
+		</div>
+		
+</div>
+
+</form>
+</div>
+

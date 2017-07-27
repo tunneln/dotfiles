@@ -1,0 +1,8 @@
+/**
+ *	@author vkallada 
+ */
+var APPLICATIONS = {"PTI1":"PTI1","PTI2":"PIT2"};
+var COMPONENTS = {"ACS":"ACS","MRCH":"MRCH"};
+var Status_OK = "OK";
+
+var ROLE_PIT1_ACS = "PIT1_ACS", ROLE_PIT2_ACS = "PIT2_ACS", ROLE_PIT1_MRCH = "PIT1_MRCH", ROLE_PIT2_MRCH = "PIT2_MRCH";

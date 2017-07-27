@@ -1,0 +1,1 @@
+(function(){var a=function(c,b){this.getReviewReqTestResutls=function(d){return c.post(b.contextPath+"/pit2/reviewTCresults",d).then(function(e){return e.data})};this.reviewTestCase=function(d){return c.post(b.contextPath+"/pit2/reviewACS",d)}};a.$inject=["$http","$rootScope"];angular.module("binApp").service("ReviewReqTestDataPIT2",a)}());

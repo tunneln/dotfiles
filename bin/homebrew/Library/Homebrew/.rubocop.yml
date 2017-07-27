@@ -1,0 +1,53 @@
+inherit_from:
+  - ../.rubocop.yml
+  - .rubocop_todo.yml
+
+AllCops:
+  Include:
+    - '**/.simplecov'
+  Exclude:
+    - '**/Casks/**/*'
+    - '**/vendor/**/*'
+
+Layout/MultilineMethodCallIndentation:
+  Exclude:
+    - '**/*_spec.rb'
+
+# so many of these in formulae but none in here
+Lint/AmbiguousRegexpLiteral:
+  Enabled: true
+
+# `formula do` uses nested method definitions
+Lint/NestedMethodDefinition:
+  Exclude:
+    - 'test/**/*'
+
+# so many of these in formulae but none in here
+Lint/ParenthesesAsGroupedExpression:
+  Enabled: true
+
+Metrics/ParameterLists:
+  CountKeywordArgs: false
+
+Style/BlockDelimiters:
+  Exclude:
+    - '**/*_spec.rb'
+
+# so many of these in formulae but none in here
+Style/GuardClause:
+  Enabled: true
+
+# hash-rockets preferred for formulae, a: 1 preferred elsewhere
+Style/HashSyntax:
+  EnforcedStyle: ruby19_no_mixed_keys
+
+# we won't change backward compatible method names
+Style/MethodName:
+  Exclude:
+    - 'compat/**/*'
+
+# we won't change backward compatible predicate names
+Style/PredicateName:
+  Exclude:
+    - 'compat/**/*'
+  NameWhitelist: is_32_bit?, is_64_bit?

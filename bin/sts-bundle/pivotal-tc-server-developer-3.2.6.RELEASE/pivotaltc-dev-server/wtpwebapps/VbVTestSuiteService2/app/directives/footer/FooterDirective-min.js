@@ -1,0 +1,1 @@
+"use strict";var footerMod=angular.module("FooterModule",[]);footerMod.directive("footer",[function(){return{restrict:"A",templateUrl:"./app/directives/footer/footer.html",link:function(b,a){},controller:"FooterCtrl"}}]);

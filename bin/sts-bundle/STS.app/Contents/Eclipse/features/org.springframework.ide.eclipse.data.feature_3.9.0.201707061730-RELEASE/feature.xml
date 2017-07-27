@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.springframework.ide.eclipse.data.feature"
+      label="%featureName"
+      version="3.9.0.201707061730-RELEASE"
+      provider-name="%providerName"
+      plugin="org.springframework.ide.eclipse">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseUrl">
+      %license
+   </license>
+
+   <requires>
+      <import feature="org.springframework.ide.eclipse.feature" version="3.9.0" />
+   </requires>
+
+   <plugin
+         id="org.springframework.ide.eclipse.data.core"
+         download-size="86"
+         install-size="182"
+         version="3.9.0.201707061730-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.data.core"
+         download-size="660"
+         install-size="1499"
+         version="1.11.4.20160223-RELEASE"
+         unpack="false"/>
+
+</feature>

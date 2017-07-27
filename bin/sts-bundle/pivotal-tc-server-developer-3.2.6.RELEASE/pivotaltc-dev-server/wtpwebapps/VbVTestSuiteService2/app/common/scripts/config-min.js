@@ -1,0 +1,1 @@
+var appConfig={useAuthTokenHeader:true};var commonRootPath="./app/common/partials/";var secureRootPath="./app/pit2/secure/partials/";var path="/VbVTestSuiteService2";var loadingImgPath="./app/images/loader.gif";

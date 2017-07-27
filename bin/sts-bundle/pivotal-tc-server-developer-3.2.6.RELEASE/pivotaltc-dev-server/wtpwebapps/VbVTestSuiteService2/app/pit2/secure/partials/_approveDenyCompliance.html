@@ -1,0 +1,94 @@
+<div class="thumbnail">
+	<div class="panel-heading text-center">
+		<span class="lead"><b>Approve/Deny Compliance Request</b></span>
+	</div>
+	<div data-error-message></div>
+	<!-- Compliance letter Approve / Deny from -->
+	<div ng-if="!isPageLoading">
+		<form name="reqComplLetterForm"
+			ng-show="!showDenialForm && !showApprovedSuccess && !showDeniayedSuccess">
+			<div>
+				<h5>The vendor ({{vendorData.vendorFirstName}}
+					{{vendorData.vendorLastName}}) has completed all the required test
+					cases. Click below to approve the compliance letter for the vendor.
+					Once approved, the letter shall be available for the vendor to
+					download from their V3DSTS account.</h5>
+			</div>
+			<hr>
+			<div class="row text-center" ng-if="!loading">
+				<input type="button" value="Approve" name="btn1"
+					ng-disabled="reqComplLetterForm.$invalid"
+					class="btn btn-primary btn-sm" ng-click="approveComplLetterReq();">
+				<input type="button" value="Deny" name="btn1"
+					ng-disabled="reqComplLetterForm.$invalid"
+					class="btn btn-primary btn-sm" ng-click="confirmDeny();"> <input
+					type="button" class="btn btn-default btn-sm" value="Cancel"
+					ng-click="backtoVendorLogScreen();">
+			</div>
+			<div class="row text-center" ng-if="loading">
+				<img ng-src="{{ajaxLoaderPath}}" name="loading" alt="Loading..." />
+			</div>
+		</form>
+
+		<!-- Compliance letter denial notes from -->
+		<form name="complDenialForm"
+			ng-show="showDenialForm && !showApprovedSuccess && !showDeniayedSuccess">
+			<div class="row">
+				<div class="form-group col-md-12 required">
+					<label class="col-md-4 control-lable"> Denial Reason: </label>
+					<div class="col-md-7">
+						<textarea name="denialMessage" class="form-control input-sm"
+							ng-required="true" rows="6" cols="4"
+							ng-model="vendorData.denialNotes">
+					</textarea>
+						<span class="help-block"
+							ng-messages="complDenialForm.denialMessage.$error"
+							ng-class="{ 'has-error':complDenialForm.denialMessage.$touched && complDenialForm.denialMessage.$invalid}"
+							ng-if="complDenialForm.denialMessage.$touched">
+							<div ng-message="required">This field is required</div>
+						</span>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="row text-center" ng-if="!denyLoading">
+				<input type="button" value="Cancel" class="btn btn-primary btn-sm"
+					ng-click="cancelDeny();"> <input type="button"
+					value="Submit" ng-disabled="complDenialForm.$invalid"
+					class="btn btn-primary btn-sm" ng-click="denyComplLetterReq();">
+			</div>
+			<div class="row text-center" ng-if="denyLoading">
+				<img ng-src="{{ajaxLoaderPath}}" name="loading" alt="Loading..." />
+			</div>
+		</form>
+		<div ng-show="showApprovedSuccess">
+			<div style="color: green; font-weight: bold;">You have approved
+				the compliance request for the vendor
+				({{vendorData.vendorFirstName}}) successfully. An email is sent to
+				the vendor with a compliance letter attachment.</div>
+			<br>
+			<br>
+			<div class="row text-center">
+				<input type="button" class="btn btn-primary btn-sm" value="Back"
+					ng-click="backtoVendorLogScreen();">
+			</div>
+		</div>
+		<div ng-show="showDeniayedSuccess">
+			<div style="color: green; font-weight: bold;">Your comments for
+				denying the vendor is recorded. An email is sent to the vendor to
+				notify the denial.</div>
+			<br>
+			<br>
+			<div class="row text-center">
+				<input type="button" class="btn btn-primary btn-sm" value="Back"
+					ng-click="backtoVendorLogScreen();">
+			</div>
+		</div>
+	</div>
+	<div ng-show="isPageloading">
+		<div class="row text-center">
+			<img ng-src="./app/images/acss_imgs/wait.gif" alt="Loading..."
+				name="loading" />
+		</div>
+	</div>
+</div>

@@ -1,0 +1,59 @@
+//General
+$link-color: #034ea2;
+$body-text-color: #231f20;
+$jump-to-text-color: #949698;
+$background-gray: #f1f1f1;
+$white-text: #fff;
+
+//Button Colors
+	$button-primary-color: #222159;
+	$button-primary-border-color: #263b8e;
+	$button-primary-disabled-color: #504a94;
+	$button-primary-focus-color: #263b8e;
+
+//Dashboard
+	$test-module-border: #e7e7e7;
+
+//Bottom Controls Bar
+	$controls-gradient-left: #222159;
+	$controls-gradient-right: #263b8e;
+	$controls-gradient-solid: #262f74;
+
+//Progress Indicators
+	$indicator-cirlces-color: #0c4da2;
+
+//Nav Bar
+	$nav-gradient-left: #222159;
+	$nav-gradient-right: #263b8e;
+	$nav-gradient-solid: #262f74;
+	$nav-item-text-color: #fff;
+	$nav-selected-item: #0c4da2;
+
+//Left Nav
+	$left-nav-background: #e7e7e7;
+	$left-nav-arrow-color: $link-color;
+
+//Web / iOS / Android links
+	$imaginary-radios: #0c4da2;
+
+//Requirements Table
+	$reqs-bg-color: #f3f3f3;
+	$reqs-border-color: #ffc50c;
+
+//Test Table
+	$test-bg-color: #e7e7e7;
+	$test-border-color: #f7941e;
+
+//Get Started 
+	//BG Images
+		$get-started-home: 'getStartedHome.jpg';
+	//Learn More btn
+		$get-started-learn-btn-bg: #232561;
+	//fonts
+		$get-started-main-text-color: #25337d;
+	//position marker circles
+		$get-started-position-marker-inactive: #d1d3d4;
+		$get-started-position-marker-active: $get-started-learn-btn-bg;
+
+//Search title-text-color
+	$search-title-text-color: #203a7e;

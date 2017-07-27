@@ -1,0 +1,1 @@
+"use strict";loginCtrlMod.service("LoginService",["$http","$log","$rootScope",function(c,b,a){this.submitLogin=function(d){return c.post(a.contextPath+"/user/authenticate",d)};this.submitLogout=function(d){return c.post(a.contextPath+"/user/logout",d)}}]);

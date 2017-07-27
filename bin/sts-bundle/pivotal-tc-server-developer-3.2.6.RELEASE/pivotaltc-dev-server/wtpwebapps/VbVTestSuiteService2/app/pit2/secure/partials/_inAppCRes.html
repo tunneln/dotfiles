@@ -1,0 +1,271 @@
+<div class="formcontainer">
+	<form name="pit2inAppCReqForm" class="form-horizontal">
+		<div class="thumbnail">
+			<div class="panel-heading text-center">
+				<span class="lead"><b>CRes Response</b></span>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-lable"> Test Case: </label>
+					<div class="col-md-7">
+						<output>{{reqTestCase}}</output>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-lable"> ACS Challenge
+						Request URL: </label>
+					<div class="col-md-7" style="word-wrap: break-word;">
+						<output>{{reqUrl}}</output>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-lable"> Response Info: </label>
+					<div class="col-md-7">
+						<output id="respinfoId"
+							style="font-size: 12px; word-wrap: break-word;">{{respInfo}}</output>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-lable"> </label>
+					<div class="col-md-7">
+						<div ng-if="cresErrorMsg!=null"
+							style="font-size: 12px; word-wrap: break-word;">
+							<font color='red'> {{cresErrorMsg}}</font><br />
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-lable"> Response to CReq:<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;format: <span><a
+							ng-click="jsonFormat('CRes')" class="pointer underline">on</a></span><span>&nbsp;</span><span><a
+							ng-click="jsonUnformat('CRes')" class="pointer underline">off</a></span>
+							<br> <span ng-show="showACSHtmlDecode">Decode ACS
+							Html&nbsp;&nbsp;<input type="checkbox" data-toggle="modal"
+								data-target="#acsHtmlModal" ng-checked="isDecode"
+							ng-click="encodeOrDecodeACSHtml();" ng-model="isDecode">
+					</span>
+					</label>
+
+					<div class="col-md-7">
+						<textarea class="form-control input-sm" rows="15" cols="4"
+							readonly="readonly">{{cResMessage}}
+						</textarea>
+					</div>
+				</div>
+			</div>
+
+
+
+
+			<div class="row" ng-if="expectedResponse!=null">
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-lable"> Expected Response:
+						format:<span><a ng-click="jsonFormat('expCRes')"
+							class="pointer">on</a></span><span>&nbsp;</span><span><a
+							ng-click="jsonUnformat('expCRes')" class="pointer">off</a></span>
+					</label>
+
+					<div class="col-md-7">
+						<textarea class="form-control input-sm" rows="15" cols="4"
+							readonly="readonly">{{expectedResponse}}
+						</textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div ng-if="showCReqDiv">
+			<div class="thumbnail">
+				<div class="panel-heading text-center">
+					<span class="lead"><b>CReq Request</b></span>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-4 control-lable"> ACS Challenge
+							Request URL: </label>
+						<div class="col-md-7" style="word-wrap: break-word;">
+							<input type="text" ng-model="$parent.cRequrl" name="cRequrl"
+								disabled="disabled" class="form-control input-sm" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-4 control-lable"> CReq Test Case: </label>
+						<div class="col-md-7">
+							<input type="text" ng-model="$parent.cReqName" name="cReqName"
+								disabled="disabled" class="form-control input-sm" />
+						</div>
+					</div>
+				</div>
+				<!-- Challenge data entry should be shown only in the In App flow -->
+				<div class="well"
+					ng-show="showChallengeDataEntryEditable && !$parent.isCTHMPITesting">
+					<div ng-show="challengeDataEntryField">
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-11 control-lable"> ACS tester may
+									either use the V3DSTS default Challenge Data Entry, as provided
+									in the User's Guide Or to substitute the ACS tester's own
+									Challenge Data Entry for the V3DSTS default Challenge Data
+									Entry, the tester may edit the <challengeDataEntry>
+									field below, click Update CReq Message and Send CReq. 
+								</label>
+							</div>
+						</div>
+						<div align="center" style="color: green;">{{updateSuccMsg}}</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> Challenge Data
+									Entry: </label>
+								<div class="col-md-7">
+									<input type="text" ng-model="$parent.challengeDataEntry"
+										ng-maxlength="45" name="challengeDataEntry"
+										class="form-control input-sm" autocomplete="off" /> <span
+										class="help-block"
+										ng-messages="pit2inAppCReqForm.challengeDataEntry.$error"
+										ng-class="{ 'has-error':pit2inAppCReqForm.challengeDataEntry.$invalid}"
+										ng-if="pit2inAppCReqForm.challengeDataEntry.$invalid">
+										<div ng-message="maxlength">Challenge Data Entry should
+											not exceed 45 characters length</div>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div ng-show="challengeHTMLDataEntryField">
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-11 control-lable"> ACS tester may
+									either use the V3DSTS default Challenge HTML Data Entry as
+									provided in the User's Guide Or to substitute the ACS tester's
+									own Challenge HTML Data Entry for the V3DSTS default Challenge HTML Data
+									Entry, the tester may edit the <challengeHTMLDataEntry>
+									field below, click Update CReq Message and Send CReq. 
+								</label>
+							</div>
+						</div>
+						<div align="center" style="color: green;">{{updateSuccMsg}}</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-4 control-lable"> Challenge HTML
+									Data Entry: </label>
+								<div class="col-md-7">
+									<input type="text" ng-model="$parent.challengeHtmlDataEntry"
+										ng-maxlength="256" name="challengeHtmlDataEntry"
+										class="form-control input-sm" autocomplete="off" /> <span
+										class="help-block"
+										ng-messages="pit2inAppCReqForm.challengeHtmlDataEntry.$error"
+										ng-class="{ 'has-error':pit2inAppCReqForm.challengeHtmlDataEntry.$invalid}"
+										ng-if="pit2inAppCReqForm.challengeHtmlDataEntry.$invalid">
+										<div ng-message="maxlength">Challenge HTML Data Entry
+											should not exceed 256 characters length</div>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row text-center">
+						<input type="button" value="Update CReq Message"
+							name="templUpdatebtn" class="btn btn-primary btn-sm"
+							ng-click="updateTemplateMessage($parent.challengeDataEntry,$parent.challengeHtmlDataEntry);"
+							ng-disabled="pit2inAppCReqForm.challengeDataEntry.$invalid || pit2inAppCReqForm.challengeHtmlDataEntry.$invalid">
+
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-12" ng-class="{'required':isMPITesting}">
+						<label class="col-md-4 control-lable"> CReq Message:<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;format:<span><a ng-click="jsonFormat('CReq')"
+								class="pointer underline">on</a></span><span>&nbsp;</span><span><a
+								ng-click="jsonUnformat('CReq')" class="pointer underline">off</a></span>
+
+						</label>
+						<div class="col-md-7">
+							<textarea ng-disabled="!isMPITesting" ng-required="isMPITesting"
+								class="form-control input-sm" rows="15" cols="4"
+								ng-model="$parent.cReqMessage" name="cReqMessage"> 
+							</textarea>
+							<div class="help-block"
+								ng-messages="pit2inAppCReqForm.cReqMessage.$error"
+								ng-class="{ 'has-error':pit2inAppCReqForm.cReqMessage.$touched && pit2inAppCReqForm.cReqMessage.$invalid}"
+								ng-if="isMPITesting && pit2inAppCReqForm.cReqMessage.$touched">
+								<span data-validation-message></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row text-center">
+			<input type="submit" value="Send CReq" ng-if="showCReqDiv"
+				class="btn btn-primary btn-sm" ng-click="submitCReq()"
+				ng-show="submitBtn"> <input type="submit"
+				value="Optional Test Cases" class="btn btn-primary btn-sm"
+				ng-click="showAcsScrn()" ng-show="runAcsBtn"> <input
+				type="submit" value="Test Case Details" ng-click="tcDetails()"
+				class="btn btn-primary btn-sm" ng-show="tcBtn">
+			<!-- <input type="submit" value="Submit to VIP" 
+					class="btn btn-primary btn-sm" ng-click="submitToVip()" ng-show="showVIPBtn && isACS"> -->
+		</div>
+		<div class="row text-center" ng-show="loading">
+			<img ng-src="{{ajaxLoaderPath}}" name="loading" />
+		</div>
+	</form>
+</div>
+
+<!-- Modal to show ACS Html decoded value -->
+<div class="modal fade" id="acsHtmlModal" tabindex="-1" role="dialog"
+	data-keyboard="false" data-backdrop="static"
+	aria-labelledby="acsHtmlLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close" ng-click="closeModal();">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title text-center" id="acsHtmlLabel">ACS HTML</h4>
+			</div>
+			<div class="formcontainer">
+				<div class="form-group">
+					<div class="col-md-offset-1">
+						<form class="form-horizontal"
+							name="acsHtmlForm">
+							<br>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<div class="col-md-10">
+										<output ng-bind-html="acsHtmlVal"></output>
+									</div>
+								</div>
+							</div>
+							<br>
+							<div class="row text-center">
+								<button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" ng-click="closeModal();">OK</button>
+								<!-- <button type="button" class="btn btn-default btn-sm"
+									data-dismiss="modal" ng-click="closeModal();">Close</button> -->
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

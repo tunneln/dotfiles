@@ -1,0 +1,159 @@
+<div class="thumbnail">
+	<div class="panel-heading text-center">
+		<span class="lead"><b>3DS Server ARes Browser</b></span><br>
+		<span class="requiredtext"><i>{{requiredText}}</i></span>
+	</div>
+	<div data-error-message></div>
+	<div ng-show="pageloaded">
+	<div class="row text-center" ><img ng-src="./app/images/acss_imgs/wait.gif" name="loading" /></div>
+	</div>
+	<div class="formcontainer" ng-hide="pageloaded">
+		<form name="mpiAResForm" method="post" class="form-horizontal">
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-lable"> Select Test Case: </label>
+					<div class="col-md-7">
+						<select class="form-control" ng-model="selectedTestCase"
+							ng-options="testCase.tcId as testCase.tcDesc for testCase in testCases" ng-change="changeTCResData(selectedTestCase)">
+							<option value="">New Test Case</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12 required">
+					<label class="col-md-4 control-lable"> Test Case Name: </label>
+					<div class="col-md-7">
+						<input type="text" name="tesCase" ng-model="testCaseName" autocomplete="off"
+							class="form-control input-sm" ng-maxlength="100" ng-required="true"/>
+						<div class="help-block" ng-messages="mpiAResForm.tesCase.$error"
+							ng-class="{ 'has-error':mpiAResForm.tesCase.$touched && mpiAResForm.tesCase.$invalid && mpiAResForm.$invalid}"
+							ng-if="mpiAResForm.tesCase.$touched">
+							<div ng-message="required">This field is required</div>
+							<div ng-message="maxlength">Test Case name should not exceed more than 100 characters length</div>
+							<!--  <div data-validation-message></div>-->
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-lable"> Successor CRes Test Case: </label>
+					<div class="col-md-7">
+						<select name="successorId" class="form-control" ng-model="successorCResTC"
+							ng-options="testCase as testCase for testCase in cResSuccessorIdTCs">
+							<option value="">None</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-lable"> Required By Region: </label>
+					<div class="col-md-7">
+						<span ng-repeat="region in regions">
+							<input type="checkbox" ng-click="selectedRegion(region.rgnCd)" ng-checked="region.flag">&nbsp;{{region.value}}&nbsp;
+						</span>
+					</div>
+				</div>
+			</div> -->
+			<div class="row">
+				<div class="form-group col-md-12 required">
+					<label class="col-md-4 control-lable"> Account #: </label>
+					<div class="col-md-7">
+						<input type="text" name="panNum" ng-model="pan" autocomplete="off"
+							class="form-control input-sm" ng-required="true"
+							ng-minlength="13" ng-maxlength="19" ng-pattern="/^[0-9]*$/">
+						<div class="help-block" ng-messages="mpiAResForm.panNum.$error"
+							ng-class="{ 'has-error':mpiAResForm.panNum.$touched && mpiAResForm.panNum.$invalid}"
+							ng-if="mpiAResForm.panNum.$touched">
+							<div ng-message="required">This field is required</div>
+							<div ng-message="pattern">Invalid Account #</div>
+							<div ng-message="minlength,maxlength">Account # should be between 13 and 19 digits</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- <div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-lable"> Expected Test Case Result: </label>
+					<div class="col-md-7">
+						<span>
+							<select id="expectedRes" multiple="true" ng-model="selectedExpResps"
+							ng-options="response.value as response.value for response in expectedResponses"></select>
+						</span>
+						<span><i>(Hold Ctrl key down and click mouse for multiple selections)</i></span>
+					</div>
+				</div>
+			</div> -->
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-lable"> Special V3DSTS Action: </label>
+					<div class="col-md-7">
+						<span ng-repeat="action in pitActions">
+							<input type="radio" value="{{action}}" ng-model="$parent.pitAction">&nbsp;{{action}}<br/>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12 required">
+					<label class="col-md-4 control-lable"> ARes Template:<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;format:
+						<span><a href ng-click="jsonFormat('ARes')" class="pointer underline">on</a></span><span>&nbsp;</span><span><a href ng-click="jsonUnformat('ARes')" class="pointer underline">off</a></span>
+					</label>
+					<div class="col-md-7">
+						<textarea name="aResMessage" ng-model="aResTemplate" 
+							class="form-control input-sm" rows="15" cols="4" ng-required="true">
+					</textarea>
+					<div class="help-block" ng-messages="mpiAResForm.aResMessage.$error"
+						ng-class="{ 'has-error':mpiAResForm.aResMessage.$touched && mpiAResForm.aResMessage.$invalid}"
+						ng-if="mpiAResForm.aResMessage.$touched">
+						<div data-validation-message></div>
+					</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+			<div class="form-group col-md-12">
+				<label class="col-md-4 control-lable"> AReq Template <br/>
+				Required Fields:
+				</label>
+				<div class="col-md-7">
+						<textarea name="aReqMandField" ng-model="aReqMandFields" 
+							class="form-control input-sm" rows="5" cols="4">
+					</textarea>
+					<!-- <span style="color: red;"><i>(Please enter fields with comma(,) separated)</i></span> -->
+					<div class="help-block" ng-messages="mpiAResForm.aReqMandField.$error"
+						ng-class="{ 'has-error':mpiAResForm.aReqMandField.$touched && mpiAResForm.aReqMandField.$invalid}"
+						ng-if="mpiAResForm.aReqMandField.$touched">
+						<div data-validation-message></div>
+					</div>
+					</div>
+			</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-lable"> Is Required Testcase: </label>
+					<div class="col-md-7">
+							<input type="checkbox" name="Compliance" ng-model="compliance" ng-checked="compliance.flag">
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="row text-center" ng-if="!loading">
+				<input type="button"
+					ng-click="mpiAResSubmit('create',compliance)"
+					value="Create" class="btn btn-default btn-sm"
+					ng-disabled="mpiAResForm.$invalid || isExistingTC">
+				<input type="submit" value="Update"
+					ng-click="mpiAResSubmit('update',compliance)" class="btn btn-primary btn-sm"
+					ng-disabled="mpiAResForm.$invalid || !isExistingTC">
+				<input type="submit" value="Delete" class="btn btn-default btn-sm"
+					ng-click="deleteConfirm()"
+					ng-disabled="mpiAResForm.$invalid || !isExistingTC">
+			</div>
+			<div class="row text-center" ng-if="loading"><img ng-src="{{ajaxLoaderPath}}" name="loading" /></div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,1 @@
+(function(){var a=function(c,b){this.submitchangePswd=function(d){return c.post(b.contextPath+"/user/changepwd",d).success(function(e){}).error(function(e){})}};a.$inject=["$http","$rootScope"];angular.module("binApp").service("ChangePwdService",a)}());

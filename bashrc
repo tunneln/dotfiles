@@ -140,3 +140,8 @@ if ! shopt -oq posix; then
 	fi
 fi
 
+# Visa Proxy Settings
+export http_proxy='http://nnegusse:Visa501980@internet.visa.com:80/'
+export https_proxy='http://nnegusse:Visa501980@internet.visa.com:443/'
+export ftp_proxy='http://nnegusse:Visa501980@internet.visa.com:21/'
+

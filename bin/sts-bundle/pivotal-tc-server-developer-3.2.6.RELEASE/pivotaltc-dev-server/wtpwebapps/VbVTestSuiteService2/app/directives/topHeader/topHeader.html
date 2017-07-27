@@ -1,0 +1,19 @@
+<div class="header clearfix">
+	<div class="container">
+		<div class="pull-left">
+			<!-- <a class="pointer">
+	        	<img data-ng-src="{{logo}}" alt="visa logo" />
+	    	</a> -->
+			<span><b>{{productName}}</b></span>
+		</div>
+		<div class="pull-right">
+			<div id="header_title">
+				<span class="colorblack"><b>For Authorized Use Only -</b>
+					{{getDatetime() | date:'EEE, dd MMM yyyy hh:mm:ss'}}</span><span
+					ng-if="authenticated">&nbsp;|&nbsp;Welcome <b
+					class="colorblack">{{loggedInUser}}</b>&nbsp;|&nbsp; <a
+					data-ui-sref="manageProfile" class="pointer">Manage Profile</a></span>
+			</div>
+		</div>
+	</div>
+</div>

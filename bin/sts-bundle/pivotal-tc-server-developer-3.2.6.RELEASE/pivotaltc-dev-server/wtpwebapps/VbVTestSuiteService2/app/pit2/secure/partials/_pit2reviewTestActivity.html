@@ -1,0 +1,218 @@
+<div class="thumbnail">
+	<div class="panel-heading text-center">
+		<span class="lead"><b>View Testing History</b></span><br>
+		<span class="requiredtext" ng-show="isAdmin || isRegnAdmin"><i>{{requiredText}}</i></span>
+	</div>
+	<div data-error-message></div>
+	<div class="formcontainer">
+		<form name="reviewTestActivityform" method="post">
+			<!-- <div data-error-message></div> -->
+			<table id="review_table">
+				<tr>
+					<td align="left">
+						<h5>
+							<label class="control-lable">Filter Parameters : </label>
+						</h5>
+					</td>
+				</tr>
+				<tr>
+					<td><span><div ng-class="{'required': (isAdmin || isRegnAdmin)}">
+								<label>Tester:</label>
+							</div></span></td>
+					<td><input type="text" name="email" ng-model="testerId"
+						style="width: 95%;" ng-disabled="(!isAdmin && !isRegnAdmin)"
+						class="form-control input-sm" ng-maxlength="255"
+						ng-pattern="/^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,4})$/"
+						ng-required="true" autocomplete="off"> <span
+						ng-messages="reviewTestActivityform.email.$error"
+						ng-class="{ 'has-error':reviewTestActivityform.email.$touched && reviewTestActivityform.email.$invalid}"
+						ng-if="reviewTestActivityform.email.$touched">
+							<div ng-message="required">This field is required</div>
+							<div ng-message="pattern">Invalid Tester Email ID</div>
+							<div ng-message="maxlength">Tester Email ID should not
+								exceed more than 255 characters length</div>
+					</span></td>
+
+					<td><label class="control-lable">Start Date:</label></td>
+					<td>
+						<!-- <md-datepicker ng-model="myDate" md-placeholder="Enter date"
+        md-date-filter="onlyWeekendsPredicate"></md-datepicker> --> <input
+						type="text" id="datepicker" size="7" ng-model="startDate"
+						maxlength="10" class="form-control input-sm clearable "
+						style="width: 95%;" autocomplete="off">
+					</td>
+					<td><label class="control-lable">Time:</label></td>
+					<td><span><input type="text" size="10"
+							ng-model="startTime" maxlength="8" name="startTime" minlength="8"
+							class="form-control input-sm"
+							ng-pattern="/^([0-2]|0[0-9]|1[0-9]|2[0-3]):?[0-5][0-9]:?[0-5][0-9]$/"
+							placeholder="HH:MM:SS" autocomplete="off" /></span> <span
+						ng-messages="reviewTestActivityform.startTime.$error"
+						ng-class="{ 'has-error':reviewTestActivityform.startTime.$touched && reviewTestActivityform.startTime.$invalid}"
+						ng-if="reviewTestActivityform.startTime.$touched">
+							<div ng-message="pattern">Invalid Start Time</div>
+							<div ng-message="minlength,maxlength">Invalid Start Time</div>
+
+					</span></td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td><label class="control-lable">Component:</label></td>
+					<td ng-if="isAdmin || isRegnAdmin"><select
+						ng-model="$parent.component" name="componentType"
+						style="width: 95%;" class="form-control input-sm">
+							<option value="">All</option>
+							<option value="ACS">ACS</option>
+							<!-- <option value="ACS_REQUIRED">ACS Required</option> -->
+							<option value="MPI">3DS Server</option>
+							<!-- <option value="PARES BATCH">CRES BATCH</option> -->
+							<!-- <option value="MPI_REQUIRED">MPI Required</option> -->
+					</select></td>
+					<!-- <td ng-if="!isAdmin && comlen=='1'">{{comptype}}</td> -->
+					<td ng-if="!isAdmin && comlen=='1' && component=='ACS'">
+						<!-- <select ng-model="$parent.component"
+						name="componentType" style="width: 95%;"
+						class="form-control input-sm">
+							<option value=""></option>
+							<option value="ACS">ACS</option>
+							<option value="ACS_REQUIRED">ACS Required</option>
+							<option value="PARES BATCH">PARES BATCH</option>
+					</select> --> {{component}}
+					</td>
+					<td
+						ng-if="!isAdmin && !isRegnAdmin && comlen=='1' && component=='MPI'">
+						<!-- <select ng-model="$parent.component"
+						name="componentType" style="width: 95%;"
+						class="form-control input-sm">
+							<option value=""></option>
+							<option value="MPI">MPI</option>
+							<option value="MPI_REQUIRED">MPI Required</option>
+							<option value="PARES BATCH">PARES BATCH</option>
+					</select> -->{{threeDSServer}}
+					</td>
+					<td ng-if="!isAdmin && !isRegnAdmin && comlen=='2'"><select
+						class="form-control input-sm" ng-model="$parent.component"
+						name="componentType" style="width: 95%;">
+							<option value="">All</option>
+							<option value="ACS">ACS</option>
+							<!-- <option value="ACS_REQUIRED">ACS Required</option> -->
+							<option value="MPI">3DS Server</option>
+							<!-- <option value="MPI_REQUIRED">MPI Required</option> -->
+							<!-- <option value="PARES BATCH">PARES BATCH</option> -->
+					</select></td>
+					<td><label class="control-lable">End Date:</label></td>
+					<td><input type="text" id="datepickerEnd" size="7"
+						ng-model="endDate" maxlength="10" autocomplete="off"
+						class="form-control input-sm clearable" style="width: 95%;"></td>
+
+					<td><label class="control-lable">Time:</label></td>
+					<td><span><input type="text" size="10"
+							autocomplete="off" class="form-control input-sm"
+							ng-model="endTime" maxlength="8" name="endTime"
+							ng-pattern="/^([0-2]|0[0-9]|1[0-9]|2[0-3]):?[0-5][0-9]:?[0-5][0-9]$/"
+							placeholder="HH:MM:SS" autocomplete="off"></span> <span
+						ng-messages="reviewTestActivityform.endTime.$error"
+						ng-class="{ 'has-error':reviewTestActivityform.endTime.$touched && reviewTestActivityform.endTime.$invalid}"
+						ng-if="reviewTestActivityform.endTime.$touched">
+							<div ng-message="pattern">Invalid End Time</div>
+							<div ng-message="minlength,maxlength">Invalid End Time</div>
+
+					</span></td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td><label class="control-lable">Test Type:</label></td>
+					<td><select ng-model="testType" name="testType"
+						class="form-control input-sm" style="width: 95%;">
+							<option value="Required">Required</option>
+							<option value="Optional">Optional</option>
+							<option value="All">All</option>
+					</select></td>
+					<td><label class="control-lable">Status:</label></td>
+					<td><select ng-model="status" name="status"
+						class="form-control input-sm" style="width: 95%;">
+							<option value="">All</option>
+							<option value="Passed">Passed</option>
+							<option value="Incomplete">Incomplete</option>
+							<option value="Failed">Failed</option>
+					</select></td>
+					<td></td>
+					<!-- <td align="center"><input type="button"
+						class="btn btn-primary btn-sm" value="Filter"
+						ng-disabled="reviewTestActivityform.$invalid"
+						ng-click="getUserTestCases()"></td> -->
+
+					<!-- <td align="center"><input type="button"
+						class="btn btn-default btn-sm" value="Start Auto Reload" id="ssb"
+						ng-click="auto_reload()"></td> -->
+				</tr>
+				<tr></tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td align="center"><input type="button"
+						class="btn btn-primary btn-sm" value="Filter"
+						ng-disabled="reviewTestActivityform.$invalid"
+						ng-click="getUserTestCases()"></td>
+				</tr>
+			</table>
+			<br>
+			<div class="row text-center" ng-show="pageLoading">
+				<img ng-src="./app/images/acss_imgs/wait.gif" name="loading" />
+			</div>
+			<div class="formcontainer" ng-hide="pageLoading">
+				<div ng-show="resLen == 0" align="center">
+					<b>No test activity matches specified criteria</b>
+				</div>
+				<div ng-show="resLen != 0">
+					<table class="table table-bordered table-condensed">
+						<tr>
+							<th>Test Description</th>
+							<th>Status</th>
+							<th>Time (GMT)</th>
+							<th>Component</th>
+							<th>Details</th>
+						</tr>
+						<tr
+							ng-repeat="reviewTestDisplay in resData|pagination: curPage * pageSize | limitTo: pageSize">
+							<td><p ng-bind-html="reviewTestDisplay.Description | htmlvw"></p></td>
+
+							<td ng-if="reviewTestDisplay.Status.indexOf('Failed')==0"><FONT
+								COLOR="red">{{reviewTestDisplay.Status}}</FONT></td>
+							<td ng-if="reviewTestDisplay.Status.indexOf('Passed')==0"><FONT
+								COLOR="green">{{reviewTestDisplay.Status}}</FONT></td>
+							<td ng-if="reviewTestDisplay.Status.indexOf('Incomplete')==0"><FONT
+								COLOR="blue">{{reviewTestDisplay.Status}}</FONT></td>
+							<td>{{reviewTestDisplay.Time}}</td>
+							<td align="center" ng-if = "reviewTestDisplay.Component == 'MPI'">{{threeDSServer}}</td>
+							<td align="center" ng-if = "reviewTestDisplay.Component == 'ACS'">{{reviewTestDisplay.Component}}</td>
+							<td align="center"><a style="text-decoration: none;"  ng-click="testId(reviewTestDisplay.TestId,reviewTestDisplay.Component)">
+									<span class="pointer" data-toggle="tooltip" data-placement="right" title="Click here to view details">Click here</span>
+							</a></td>
+							<!-- <td>{{reviewTestDisplay.Tester}}</td> -->
+						</tr>
+					</table>
+					<div ng-show="resData.length>10">
+					<ul class="pagination-controle pagination pull-right"
+						ng-show="resData.length">
+						<li>
+							<button type="button" class="btn btn-primary btn-sm"
+								ng-disabled="curPage == 0" ng-click="curPage=curPage-1">
+								&lt; PREV</button>
+						</li>
+						<span>Page {{curPage + 1}} of {{noOfPages}} </span>
+						<li>
+							<button type="button" class="btn btn-primary btn-sm"
+								ng-disabled="curPage >= resData.length/pageSize - 1"
+								ng-click="curPage = curPage+1">NEXT &gt;</button>
+						</li>
+					</ul>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

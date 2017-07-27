@@ -1,0 +1,97 @@
+<div class="thumbnail">
+	<div class="panel-heading text-center">
+		<span class="lead"><b>Vendor Administration</b></span>
+	</div>
+	<form name="vendorLogDetailsForm">
+		<div ng-show="isPageLoading">
+			<div class="row text-center">
+				<img ng-src="./app/images/acss_imgs/wait.gif" alt="Loading..."
+					name="loading" />
+			</div>
+		</div>
+		<div ng-show="!isPageLoading && complianceDetails.length > 0"
+			class="table-responsive" style="-ms-overflow-style : scrollbar">
+			<table datatable="ng" dt-options="dtOptions"
+				class="table table-bordered bordered table-striped table-condensed"
+				id="vendorLogTable">
+				<thead>
+					<tr>
+						<th>Tracking #</th>
+						<th>Company Name</th>
+						<th>Product Type</th>
+						<th>Registration Submission Date</th>
+						<th>Registration Status</th>
+						<th>Test Completion Date</th>
+						<th>Testing Status</th>
+						<th>Compliance Letter Status</th>
+						<!-- <th>Compliance Expiry Date</th>
+						<th>Compliance Letter</th>
+						<th>Notes</th> -->
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="complianceData in complianceDetails">
+						<td><a ng-click="getVendorData(complianceData.userEmail);"
+							data-toggle="modal" data-target="#userDetailsDialog"
+							class="pointer">{{complianceData.trackingNumber}}</a></td>
+						<td>{{complianceData.companyName}}</td>
+						<td ng-if = "complianceData.productType == 'ACS' || complianceData.productType == 'NA'">{{complianceData.productType}}</td>
+							<td ng-if = "complianceData.productType == 'MPI'">3DSS</td>
+						<!-- <td>{{complianceData.productType}}</td> -->
+						<td>{{complianceData.regSubmissionDate}}</td>
+						<td><a ng-show="complianceData.regStatus == 'Pending'"
+							ng-click="approveVendorReg(complianceData);" class="pointer">{{complianceData.regStatus}}</a>
+							<output ng-show="complianceData.regStatus != 'Pending'">{{complianceData.regStatus}}</output>
+						</td>
+						<td>{{complianceData.testCompletionDate}}</td>
+						<td>{{complianceData.testingStatus}}</td>
+						<td><a ng-show="complianceData.complLetterStatus != 'NA'"
+							ng-click="approveVendorCompliance(complianceData);" class="pointer">{{complianceData.complLetterStatus}}</a>
+							<output ng-show="complianceData.complLetterStatus == 'NA'">{{complianceData.complLetterStatus}}</output>
+						</td>
+						<!-- <td>{{complianceData.CompExpDate}}</td>
+						<td>{{complianceData.CompLetter}}</td>
+						<td>{{complianceData.Notes}}</td> -->
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+		<div ng-show="!isPageLoading && complianceDetails.length == 0">
+			<h5>No pending records found.</h5>
+		</div>
+	</form>
+</div>
+
+<!-- User details popup when clicked on tracking number -->
+<div class="modal fade" id="userDetailsDialog" tabindex="-1"
+	role="dialog" aria-labelledby="userDetailsModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title text-center">Vendor Details</h4>
+			</div>
+			<div>
+				<br>
+				<div ng-show="vendorDataLoading">
+					<div class="row text-center">
+						<img ng-src="./app/images/acss_imgs/wait.gif" alt="Loading..."
+							name="loading" />
+					</div>
+				</div>
+				<div ng-show="!vendorDataLoading">
+					<ng-include src="'./app/pit2/secure/partials/_vendorDetails.html'"></ng-include>
+				</div>
+				<div class="row text-center">
+					<button type="button" class="btn btn-default btn-sm"
+						data-dismiss="modal">Close</button>
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
+</div>

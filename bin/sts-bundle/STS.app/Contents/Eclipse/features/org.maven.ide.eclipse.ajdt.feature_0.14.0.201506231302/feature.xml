@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.maven.ide.eclipse.ajdt.feature"
+      label="%featureName"
+      version="0.14.0.201506231302"
+      provider-name="%providerName">
+
+   <description url="%descriptionURL">
+      %description
+   </description>
+
+   <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import plugin="org.eclipse.ajdt.core" version="1.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.core"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.m2e.core" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.m2e.maven.runtime" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.m2e.jdt" version="1.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.ajdt" version="1.5" match="greaterOrEqual"/>
+      <import feature="org.eclipse.jdt" version="3.3" match="greaterOrEqual"/>
+      <import feature="org.eclipse.platform" version="3.3" match="greaterOrEqual"/>
+      <import feature="org.eclipse.rcp" version="3.3" match="greaterOrEqual"/>
+      <import feature="org.eclipse.m2e.feature" version="0.14.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="org.maven.ide.eclipse.ajdt"
+         download-size="13"
+         install-size="22"
+         version="0.14.0.201506231302"
+         unpack="false"/>
+
+</feature>

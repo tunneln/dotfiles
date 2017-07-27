@@ -1,0 +1,1 @@
+.clearable{background:#fff url('../../app/images/clearble.gif') no-repeat right -10px center;border:1px solid #999;padding:3px 18px 3px 4px;transition:background .4s}.clearable.x{background-position:right 5px center}.clearable.onX{cursor:pointer}.clearable::-ms-clear{display:none;width:0;height:0}#review_table{border-collapse:collapse}#review_table td{padding-bottom:5px}

@@ -1,0 +1,1 @@
+(function(){var a=function(d,b,c){this.submitReq=function(e,g,f){e=c.trustAsResourceUrl(e);b.$broadcast("form.submit",{url:e,method:g,params:f})}};a.$inject=["$http","$rootScope","$sce"];angular.module("binApp").service("CTHcReqService",a)}());

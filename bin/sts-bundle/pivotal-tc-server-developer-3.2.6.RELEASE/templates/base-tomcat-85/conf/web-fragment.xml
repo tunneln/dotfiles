@@ -1,0 +1,4 @@
+<web-app
+	add:xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	add:xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+    add:version="3.1"/>

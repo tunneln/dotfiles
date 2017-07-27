@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.vmware.vfabric.ide.eclipse.tcserver"
+      label="%featureName"
+      version="3.9.0.201707010859-RELEASE"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseUrl">
+      %license
+   </license>
+
+   <plugin
+         id="com.vmware.vfabric.ide.eclipse.tcserver.core"
+         download-size="105"
+         install-size="228"
+         version="3.9.0.201707010859-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="com.vmware.vfabric.ide.eclipse.tcserver.reloading"
+         download-size="386"
+         install-size="415"
+         version="3.9.0.201707010859-RELEASE"
+         unpack="true"/>
+
+   <plugin
+         id="com.vmware.vfabric.ide.eclipse.tcserver.livegraph"
+         download-size="28"
+         install-size="52"
+         version="3.9.0.201707010859-RELEASE"
+         unpack="true"/>
+
+   <plugin
+         id="com.vmware.vfabric.ide.eclipse.tcserver.ui"
+         download-size="170"
+         install-size="343"
+         version="3.9.0.201707010859-RELEASE"
+         unpack="false"/>
+
+</feature>

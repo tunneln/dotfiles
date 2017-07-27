@@ -1,0 +1,89 @@
+<div class="panel-heading text-center">
+	<span class="lead"><b>Visa 3-D Secure 2.0 Test Suite</b></span><br>
+	<span class="requiredtext"><i>{{requiredText}}</i></span>
+</div>
+
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+
+		<div class="thumbnail">
+			<br>
+			<div class="formcontainer">
+
+				<div data-error-message></div>
+
+				<form name="loginForm" class="form-horizontal"
+					method="post">
+					<div class="row">
+						<div class="form-group col-md-12 required">
+							<label class="col-md-3 control-lable col-md-offset-1"> Email ID </label>
+							<div class="col-md-7">
+								<input type="text" ng-model="username" name="userName" 
+									class="form-control input-sm" ng-required="true" tabindex="1"
+									 ng-pattern="/^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,4})$/"
+									 ng-maxlength="255" autocomplete="off"/>
+								<div class="help-block"
+									ng-messages="loginForm.userName.$error"
+									ng-class="{ 'has-error':loginForm.userName.$touched && loginForm.userName.$invalid}"
+									ng-if="loginForm.userName.$touched">
+									<div ng-message="required">This field is required</div>
+									<div ng-message="pattern">Email ID must be in the form 'user@domain'</div>
+									<div ng-message="maxlength">Email ID should not exceed more than 255 characters length</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-12 required">
+							<label class="col-md-3 control-lable col-md-offset-1">
+								Password </label>
+							<div class="col-md-7">
+								<input type="password" name="password" ng-model="password" tabindex="1" autocomplete="off"
+									class="form-control input-sm" ng-required="true" ng-maxlength="32"/>
+								<div class="help-block" ng-messages="loginForm.password.$error"
+									ng-class="{ 'has-error':loginForm.password.$touched && loginForm.password.$invalid}"
+									ng-if="loginForm.password.$touched">
+									<div ng-message="required">This field is required</div>
+									<div ng-message="maxlength">Password should not exceed more than 32 characters length</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-8 col-md-offset-4">
+							<span>Forgot your password? <a data-toggle="modal"
+								data-target="#resetPwd" class="pointer">Reset your password</a>
+							</span>
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-md-8 col-md-offset-4">
+							Click <a class="pointer" data-ui-sref="userEnrollment">here</a> to enroll for Visa 3-D Secure 2.0 Test Suite
+						</div>
+					</div>
+					<br>
+					<div class="row" ng-if="!loading">
+						<div class="col-md-8 col-md-offset-4">
+							<input type="reset" value="Reset"
+								class="btn btn-default btn-sm" ng-click="clearData()">
+							<input type="submit" value="Login" tabindex="1"
+								class="btn btn-primary btn-sm" ng-disabled="loginForm.$invalid" ng-click="submitLogin()">
+						</div>
+					</div>
+					<div class="row text-center" ng-if="loading"><img ng-src="{{ajaxLoaderPath}}" name="loading" /></div><br>
+					<!-- <div class="row text-center">
+						Click <a class="pointer" ng-click="help()">here</a> for V3DSTS User's Guide
+					</div> -->	
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Password Reset Dialog -->
+<div class="modal fade" id="resetPwd" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" 
+	aria-labelledby="myModalLabel">
+	<div data-reset-password></div>
+</div>

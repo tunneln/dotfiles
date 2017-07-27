@@ -1,0 +1,48 @@
+<div class="thumbnail">
+	<div class="panel-heading text-center">
+		<span class="lead"><b>Request Testing Certificate</b></span>
+	</div>
+	<div ng-show="isPageloading">
+		<div class="row text-center">
+			<img ng-src="./app/images/acss_imgs/wait.gif" alt="Loading..."
+				name="loading" />
+		</div>
+	</div>
+	<div ng-if="!isPageloading">
+		<div class="row">
+			<div class="form-group col-md-12">
+				<a ng-click="requestCertificate();" class="pointer">Request
+					certificates for SSL/TLS Communication</a>
+			</div>
+		</div>
+		<div class="row" ng-if = "showAllReqCerLinks || acsLinks">
+			<div class="form-group col-md-12">
+				<a ng-click="requestCertificate('PbACSSigning');" class="pointer">Request Signing Certificate (PbACS)</a>
+			</div>
+		</div>
+		<!-- <div class="row" ng-if = "showAllReqCerLinks || threeDSLinks">
+			<div class="form-group col-md-12">
+				<a href="./app/certs/pbds_rsa.p7b" class="pointer" download>Download RSA
+					Public Key Certificate (PbDS) for DeviceInfo Encryption <span class="glyphicon glyphicon-download-alt"></span></a>
+			</div>
+		</div>
+		<div class="row" ng-if = "showAllReqCerLinks || threeDSLinks">
+			<div class="form-group col-md-12">
+				<a href="./app/certs/pbds_ec.p7b" class="pointer" download>Download
+					EC Public Key Certificate (PbDS) for DeviceInfo Encryption <span class="glyphicon glyphicon-download-alt"></span></a>
+			</div>
+		</div> -->
+		<!-- <div class="row" ng-if = "showAllReqCerLinks || acsLinks">
+			<div class="form-group col-md-12">
+				<a href="./app/certs/pbacs_rsa.p7b" class="pointer" download>Download
+					RSA Public Key Certificate (PbACS) for signing acsSignedContent <span class="glyphicon glyphicon-download-alt"></span></a>
+			</div>
+		</div>
+		<div class="row" ng-if = "showAllReqCerLinks || acsLinks">
+			<div class="form-group col-md-12">
+				<a href="./app/certs/pbacs_ec.p7b" class="pointer" download>Download
+					EC Public Key Certificate (PbACS) for signing acsSignedContent <span class="glyphicon glyphicon-download-alt"></span></a>
+			</div>
+		</div> -->
+	</div>
+</div>

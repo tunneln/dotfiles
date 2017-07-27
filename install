@@ -100,9 +100,9 @@ echo "Creating symlink of bin in your HOME directory as \"bin\""
 ln -sf $dir/bin ~/bin
 mkdir -p ~/.trash
 
+git submodule update --init --recursive
 
 if [ "$tmux" = true ]; then
-	git submodule update --init --recursive
 	echo "Applying tmux config:"
 	tmux source-file ~/.tmux.conf
 fi

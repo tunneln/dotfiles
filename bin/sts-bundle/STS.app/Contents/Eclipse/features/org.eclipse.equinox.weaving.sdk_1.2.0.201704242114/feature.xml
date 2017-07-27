@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.equinox.weaving.sdk"
+      label="%featureName"
+      version="1.2.0.201704242114"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.eclipse.equinox.weaving.aspectj"
+         download-size="34"
+         install-size="66"
+         version="1.0.400.201704242114"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.equinox.weaving.caching"
+         download-size="24"
+         install-size="41"
+         version="1.1.0.v20161007-1415"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.equinox.weaving.hook"
+         download-size="50"
+         install-size="98"
+         version="1.2.0.v20160929-1449"
+         fragment="true"
+         unpack="false"/>
+
+</feature>

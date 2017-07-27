@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.6.0_30
+Built-By: tesla
+Created-By: Apache Maven
+Archiver-Version: Plexus Archiver
+
+Name: META-INF/maven/org.sonatype.m2e.extras/org.sonatype.m2e.buildhel
+ per.feature/pom.properties
+SHA1-Digest: zeGT8261wyRCLv/6j5KXt331IR0=
+
+Name: META-INF/maven/org.sonatype.m2e.extras/org.sonatype.m2e.buildhel
+ per.feature/pom.xml
+SHA1-Digest: ZUODY9Zomgl7N+OF3u4ZacuzAew=
+
+Name: license.html
+SHA1-Digest: jYDaDJLBJpthCwPMgGFVYASJjIU=
+
+Name: feature.xml
+SHA1-Digest: 2yqdTaBR8l55AZnGYfpbuY2t/FU=
+
+Name: feature.properties
+SHA1-Digest: as33aSM3U2dqy1DwsPPhaBsVvOs=
+

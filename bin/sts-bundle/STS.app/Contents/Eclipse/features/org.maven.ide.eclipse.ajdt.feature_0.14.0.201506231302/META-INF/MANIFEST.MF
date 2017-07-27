@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.7.0_67
+Built-By: bamboo
+Created-By: Apache Maven 3.0.5
+Archiver-Version: Plexus Archiver
+
+Name: META-INF/maven/org.maven.ide.eclipse.ajdt/org.maven.ide.eclipse.
+ ajdt.feature/pom.properties
+SHA1-Digest: mWAfF3OQ/3foHZ9D0lX3BhIqGAc=
+
+Name: license.html
+SHA1-Digest: gDvZFJq7zVmKWUPgIORS17Zr37o=
+
+Name: feature.xml
+SHA1-Digest: O/GM9AvGJpOierB+5chKKh0OCyA=
+
+Name: feature.properties
+SHA1-Digest: XNuiOCwvBucQlTCulaS8k4D/tDw=
+
+Name: META-INF/maven/org.maven.ide.eclipse.ajdt/org.maven.ide.eclipse.
+ ajdt.feature/pom.xml
+SHA1-Digest: Wq8jxmu18xeBCU5r5pgbusxACBc=
+

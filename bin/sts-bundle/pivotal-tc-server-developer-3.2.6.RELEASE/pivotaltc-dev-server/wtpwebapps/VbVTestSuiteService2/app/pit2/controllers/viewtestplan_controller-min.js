@@ -1,0 +1,1 @@
+"use strict";var viewTestPlanModPIT2=angular.module("ViewTestPlanCntrlModPIT2",[]);viewTestPlanModPIT2.controller("ViewTestPlanControllerPIT2",["$window","$scope",function(b,a){a.openFile=function(){b.open("./app/documents/V3DSTS_Test_Plan.pdf")};a.openFile()}]);

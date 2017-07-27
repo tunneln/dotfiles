@@ -1,0 +1,1 @@
+"use strict";acssAResMod.service("ACSSAResServiceInApp",["$http","$rootScope",function(b,a){this.getTestCases=function(c,d){return b.get(a.contextPath+"/pit2/acss/getACSSTestCases",{params:{msgType:c,isInApp:d}})};this.submit=function(c){return b.post(a.contextPath+"/pit2/acss/processTestCase",c)}}]);

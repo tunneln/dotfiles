@@ -1,0 +1,13 @@
+<div ng-messages="$error">
+	<div class="alert alert-danger fade in" ng-if="showErrorAlert"
+		ng-class="{'has-error':$error}">
+		<a class="close" data-dismiss="alert"
+			data-ng-click="switchBool('showErrorAlert')">&times;</a> <strong>Error!&nbsp;</strong>{{errorMessage}}
+	</div>
+</div>
+<div ng-messages="$success">
+	<div class="alert alert-success" ng-if="showSuccessAlert">
+		<a class="close" data-dismiss="alert"
+			data-ng-click="switchBool('showSuccessAlert')">&times;</a> <strong>Success!&nbsp;</strong>{{successMessage}}
+	</div>
+</div>

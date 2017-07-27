@@ -1,0 +1,1 @@
+"use strict";var primaryNavMod=angular.module("PrimaryNavModule",[]);primaryNavMod.directive("primaryNav",[function(){return{restrict:"A",templateUrl:"./app/directives/primaryNav/primaryNav.html",link:function(c,b,a){},controller:"PrimaryNavController"}}]);

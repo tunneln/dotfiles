@@ -1,1 +1,0 @@
-"use strict";manageProfileMod.service("ManageProfileService",["$http","$rootScope",function(c,a){var b=[];this.getUserData=function(d){return c.get(a.contextPath+"/user/editEnrolledUser",{params:{email:d}})};this.updateUser=function(d){return c.post(a.contextPath+"/user/updateEnrolledUser",d)}}]);

@@ -1,1 +1,0 @@
-"use strict";cthModule.service("CTHCResService",["$http","$rootScope",function(b,a){this.getCRes=function(c){return b.get(a.contextPath+"/pit2/getCTHBrowserCRes",{params:{transactionId:c}})};this.submitToVip=function(c){return b.post(a.contextPath+"/pit1/viptest?txnSummaryId="+c,{params:{txnSummaryId:c}}).success(function(e,d){return e})}}]);

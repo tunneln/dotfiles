@@ -1,1 +1,0 @@
-"use strict";var sessionExpiryMod=angular.module("SessionExpiryModule",[]);sessionExpiryMod.controller("SessionExpiredController",["$scope","$rootScope",function(b,a){b.resetData=function(){a.logout()}}]);

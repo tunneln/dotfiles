@@ -1,1 +1,0 @@
-(function(){var a=function(){return{restrict:"A",templateUrl:"./app/directives/errorMessage/errorMessage.html",}};a.$inject=[];angular.module("binApp").directive("errorMessage",a)}());

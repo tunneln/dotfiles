@@ -1,1 +1,0 @@
-complLetterMod.service("ComplianceLetterService",["$http","$rootScope",function(d,a){var b={};var c={};this.getComplianceStatus=function(e){return d.post(a.contextPath+"/pit2/getUserComplianceLetterDetails",e)};this.getPdf=function(f,e){var g={params:{usrId:f,cmpType:e},responseType:"arraybuffer"};return d.get(a.contextPath+"/pit2/getPdf",g)}}]);

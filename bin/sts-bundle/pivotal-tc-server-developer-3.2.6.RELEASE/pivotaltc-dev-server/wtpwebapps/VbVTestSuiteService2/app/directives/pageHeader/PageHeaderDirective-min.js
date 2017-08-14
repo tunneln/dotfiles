@@ -1,1 +1,0 @@
-"use strict";var pageHeaderMod=angular.module("PageHeaderModule",[]);pageHeaderMod.directive("pageHeader",[function(){return{restrict:"A",templateUrl:"./app/directives/pageHeader/pageHeader.html",controller:"PageHeaderController"}}]);

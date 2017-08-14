@@ -1,1 +1,0 @@
-reviewCResMod.controller("ErrorCResController",["$state","$rootScope",function(b,a){a.showErrorAlert=true;b.go("PIT2.errorCRes")}]);

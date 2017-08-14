@@ -1,19 +1,19 @@
 #!/bin/bash
-#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Noel T. Negusse
 # install.sh
 # A simple script to setup a personalized UN*X enviornment in order to make migrating
 # and updating shells more portable
-#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-#Variables+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#Variables++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #CHANGE VARIABLES ACCORDINGLY
 
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}"  )" && pwd  )"   # dotfiles directory
 olddir=$HOME/.old_dotfiles								  	# old dotfiles backup directory
 files=$dir/*												# retrieving given dotfiles
 
-#Do Work+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Do Work+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # A. Create backup dotfiles folder in homedir
 # B. ~ dotsfiles -> $olddir NEXT create soft links to dotfiles in $HOME
 
@@ -35,7 +35,10 @@ vim=false
 for file in $files; do
 	finame=${file##*/}
 	dotfi=$HOME/.$finame
-	if [ "$finame" = "README.md" ] || [ "$finame" = "install" ] || [ "$finame" = "bin" ]; then
+	if [ "$finame" = "README.md" ] || [ "$finame" = "install" ] || [ "$finame" = "bin" ] \
+		|| [ "$finame" = "var" ] || [ "$finame" = "share" ] || [ "$finame" = "lib" ] \
+		|| [ "$finame" = "include" ] || [ "$finame" = "opt"] || [ "$finame" = "etc" ] \
+		|| [ "$finame" = "Cellar" ]; then
 		continue
 	fi
 	echo "############################### NEXT FILE ###############################"
@@ -56,8 +59,8 @@ for file in $files; do
 	if [ -e $dir/$finame ]; then
 		echo "Creating symlink of $finame in your HOME directory as \".$finame\"
 		"
-			rm -rf $dotfi
-			ln -sf $file $dotfi
+		rm -rf $dotfi
+		ln -sf $file $dotfi
 	fi
 
 	# checks if a vim file and if plugins can be installed
@@ -100,6 +103,7 @@ echo "Creating symlink of bin in your HOME directory as \"bin\""
 ln -sf $dir/bin ~/bin
 mkdir -p ~/.trash
 
+# Sourcing and Installing
 git submodule update --init --recursive
 
 if [ "$tmux" = true ]; then
@@ -113,3 +117,5 @@ if [ "$vim" = true ]; then
 	mkdir -p vim/backups
 fi
 
+source ~/.profile
+source ~/.bashrc

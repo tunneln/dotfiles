@@ -1,1 +1,0 @@
-"use strict";vendorLogMod.service("ApprovDenyComplService",["$http","$rootScope",function(b,a){}]);

@@ -1,1 +1,0 @@
-"use strict";reviewCResMod.service("CResService",["$http","$rootScope",function(b,a){this.getCRes=function(c){return b.get(a.contextPath+"/pit2/getBrowserCRes",{params:{transactionId:c}})};this.submitToVip=function(c){return b.post(a.contextPath+"/pit2/viptest?txnSummaryId="+c,{params:{txnSummaryId:c}}).success(function(e,d){return e})}}]);

@@ -1,1 +1,0 @@
-"use strict";var viewUserGuideModPIT2=angular.module("ViewUserGuideCntrlModPIT2",[]);viewUserGuideModPIT2.controller("ViewUsersGuideControllerPIT2",["$window","$scope",function(b,a){a.openFile=function(){b.open("./app/documents/UsersGuide.pdf")};a.openFile()}]);

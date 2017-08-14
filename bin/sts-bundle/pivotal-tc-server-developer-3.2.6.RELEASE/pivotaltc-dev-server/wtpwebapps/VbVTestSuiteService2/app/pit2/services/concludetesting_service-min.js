@@ -1,1 +1,0 @@
-"use strict";concludeTestingMod.service("ConcludeTestingService",["$http","$rootScope",function(b,a){this.getComplianceStatus=function(c){console.log("the input data :: "+c);return b.post(a.contextPath+"/pit2/complianceTestingRequest",c)};this.submitComplLetterReq=function(c){return b.post(a.contextPath+"/pit2/requestComplianceLetter",c)}}]);

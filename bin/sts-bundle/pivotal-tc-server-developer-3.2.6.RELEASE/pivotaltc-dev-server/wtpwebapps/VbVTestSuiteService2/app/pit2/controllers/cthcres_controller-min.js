@@ -1,1 +1,0 @@
-"use strict";cthModule.controller("CTHCResController",["$scope","$state","CTHCResService",function(a,b,c){b.go("PIT2.CTHcRes")}]);

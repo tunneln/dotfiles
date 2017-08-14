@@ -1,1 +1,0 @@
-"use strict";var concludeTestingResMod=angular.module("ConcludeTestingResMod",[]);concludeTestingResMod.controller("ConcludeTestingResponseController",["$scope","ConcludeTestingService","$state","$rootScope",function(b,d,c,a){b.service=d;b.successMessage="Testing is complete."}]);

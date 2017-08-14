@@ -1,1 +1,0 @@
-"use strict";vendorLogMod.service("GCTDenialNotesService",["$http","$rootScope",function(b,a){}]);

@@ -1,1 +1,0 @@
-(function(){var a=function(b,c){this.sendEmail=function(){return c.get(b.contextPath+"/pit1/concludeTesting")}};a.$inject=["$rootScope","$http"];angular.module("binApp").service("ConcludeTestingService",a)}());

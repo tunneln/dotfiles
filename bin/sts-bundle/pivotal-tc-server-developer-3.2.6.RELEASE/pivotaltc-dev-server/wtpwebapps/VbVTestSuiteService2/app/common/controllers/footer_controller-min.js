@@ -1,1 +1,0 @@
-"use strict";footerMod.controller("FooterCtrl",["$scope","FooterService",function(b,a){b.getCopyright=function(){a.getCopyright().then(function c(e){b.buildNo=e.data},function d(e){b.buildNo="0.0.0, Dec 31, 2000"})};b.getCopyright()}]);

@@ -1,1 +1,0 @@
-"use strict";pageHeaderMod.controller("PageHeaderController",["$scope","VersionChangeService","$rootScope",function(c,b,a){c.marqueeMessage="This is 3DS 2.0 Iteration 9. This Iteration has User Enrollment, ACS-3DS Server(Browser and InApp)Test Cases, Administer Tests, Testing History and Testing Status."}]);

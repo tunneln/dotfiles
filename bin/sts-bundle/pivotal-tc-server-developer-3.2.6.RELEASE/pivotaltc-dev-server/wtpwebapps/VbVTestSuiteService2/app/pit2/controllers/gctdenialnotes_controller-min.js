@@ -1,1 +1,0 @@
-"use strict";vendorLogMod.controller("GCTDenialNotesCtrl",["$scope","$rootScope","$state","$localStorage","GCTDenialNotesService","ApprovDenyComplService","$window",function(b,a,d,c,g,e,f){b.success=false;b.saveDenialNotes=function(){console.log("Denial reason saved.");b.success=true};b.backtoVendorLog=function(){d.go("PIT2.vendorLog")}}]);

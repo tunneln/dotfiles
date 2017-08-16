@@ -101,6 +101,7 @@ fi
 
 echo "Creating symlink of bin in your HOME directory as \"bin\""
 ln -sf $dir/bin ~/bin
+
 mkdir -p ~/.trash
 
 # Sourcing and Installing

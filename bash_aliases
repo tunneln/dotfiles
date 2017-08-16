@@ -29,7 +29,7 @@ fi
 alias gcc='gcc -Wall -g'
 alias g++='g++ -Wall -g'
 
-export GREP_OPTIONS='--color=always'
+alias grep='grep --color=always'
 
 # Add an "alert" alias for long running commands.  Use like so:
 # sleep 10; alert

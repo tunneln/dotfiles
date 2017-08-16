@@ -37,7 +37,7 @@ for file in $files; do
 	dotfi=$HOME/.$finame
 	if [ "$finame" = "README.md" ] || [ "$finame" = "install" ] || [ "$finame" = "bin" ] \
 		|| [ "$finame" = "var" ] || [ "$finame" = "share" ] || [ "$finame" = "lib" ] \
-		|| [ "$finame" = "include" ] || [ "$finame" = "opt"] || [ "$finame" = "etc" ] \
+		|| [ "$finame" = "include" ] || [ "$finame" = "opt" ] || [ "$finame" = "etc" ] \
 		|| [ "$finame" = "Cellar" ]; then
 		continue
 	fi

@@ -7,6 +7,14 @@
 #define t_fg_highlight #B6B7BB
 #define t_fg_ceiling   #FEFFFF
 
+Xft.lcdfilter: lcddefault
+Xft.antialias: true
+Xft.autohint: 0
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.rgba: rgb
+Xft.dpi: 96
+
 URxvt.perl-ext-common: selection-to-clipboard
 
 URxvt.urgentOnBell: true

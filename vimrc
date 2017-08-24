@@ -85,13 +85,13 @@ set pastetoggle=<F2>
 
 " Map Ctrl+y/C to copy text to clipboard/pimary buffers
 " Map Ctrl+p/P to paste text from clipboard/pimary buffers
-:noremap <C-y> "+y
-:noremap <C-p> "+p
+noremap <C-y> "+y
+noremap <C-p> "+p
 
 " Prevent d, x and dd from putting text into a register
-:nnoremap x "_x
-:noremap d "_d<ESC>
-:noremap dd "_dd
+nnoremap x "_x
+noremap d "_d<ESC>
+noremap dd "_dd
 
 set tabstop=4
 set shiftwidth=4
@@ -153,7 +153,7 @@ nnoremap <F10> zR
 nmap <F8> :TagbarToggle<CR>
 
 " Ignore searching type case
-:set ignorecase
+set ignorecase
 
 " Adds BASED line numbers
 set nu

@@ -38,7 +38,7 @@ for file in $files; do
 	if [ "$finame" = "README.md" ] || [ "$finame" = "install" ] || [ "$finame" = "bin" ] \
 		|| [ "$finame" = "var" ] || [ "$finame" = "share" ] || [ "$finame" = "lib" ] \
 		|| [ "$finame" = "include" ] || [ "$finame" = "opt" ] || [ "$finame" = "etc" ] \
-		|| [ "$finame" = "Cellar" ]; then
+		|| [ "$finame" = "Cellar" ] || [ "$finame" = "themes" ]; then
 		continue
 	fi
 	echo "############################### NEXT FILE ###############################"
@@ -66,6 +66,7 @@ for file in $files; do
 	# checks if a vim file and if plugins can be installed
 	if [ "$finame" = "vim" ] && [ -a $file/bundle ]; then
 		vim=true
+		ln -sf $file $HOME/.vrapperc # for eclipse's vrapper plugin
 	fi
 
 	# Applies tmux config if added

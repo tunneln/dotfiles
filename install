@@ -61,12 +61,18 @@ for file in $files; do
 		"
 		rm -rf $dotfi
 		ln -sf $file $dotfi
+
+		# Checks for vimrc to source for eclipse's vrapper plugin
+		if [ "$finame" = "vimrc" ]; then
+			echo "*Also creating symlink of $finame in your HOME directory as \".vrapperrc\"
+			"
+			ln -sf $file $HOME/.vrapperrc
+		fi
 	fi
 
 	# checks if a vim file and if plugins can be installed
 	if [ "$finame" = "vim" ] && [ -a $file/bundle ]; then
 		vim=true
-		ln -sf $file $HOME/.vrapperc # for eclipse's vrapper plugin
 	fi
 
 	# Applies tmux config if added

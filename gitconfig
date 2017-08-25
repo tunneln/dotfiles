@@ -5,3 +5,6 @@
 	helper = cache
 [core]
 	editor = vim
+	autocrlf = input
+[http]
+	sslVerify = false

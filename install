@@ -38,7 +38,11 @@ for file in $files; do
 	if [ "$finame" = "README.md" ] || [ "$finame" = "install" ] || [ "$finame" = "bin" ] \
 		|| [ "$finame" = "var" ] || [ "$finame" = "share" ] || [ "$finame" = "lib" ] \
 		|| [ "$finame" = "include" ] || [ "$finame" = "opt" ] || [ "$finame" = "etc" ] \
+<<<<<<< HEAD
 		|| [ "$finame" = "Cellar" ] || [ "$finame" = "themes" ]; then
+=======
+		|| [ "$finame" = "Cellar" ]; then
+>>>>>>> master
 		continue
 	fi
 	echo "############################### NEXT FILE ###############################"
@@ -61,6 +65,7 @@ for file in $files; do
 		"
 		rm -rf $dotfi
 		ln -sf $file $dotfi
+<<<<<<< HEAD
 
 		# Checks for vimrc to source for eclipse's vrapper plugin
 		if [ "$finame" = "vimrc" ]; then
@@ -68,6 +73,8 @@ for file in $files; do
 			"
 			ln -sf $file $HOME/.vrapperrc
 		fi
+=======
+>>>>>>> master
 	fi
 
 	# checks if a vim file and if plugins can be installed

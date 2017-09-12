@@ -89,6 +89,8 @@ else
 	PS1='\[\e[0;34m\][\u@\h \W]\$\[\e[0m\] '
 fi
 
+export PS1="$(tput bold)$(tput setb 5)$PS1$(tput sgr0)"
+
 # Alias definitions.
 if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases
@@ -105,7 +107,7 @@ if ! shopt -oq posix; then
 	fi
 fi
 
-# Visa Proxy Setting Definitions
+# Proxy Setting Definitions
 if [ -f ~/.bash_proxy ]; then
 	. ~/.bash_proxy
 fi

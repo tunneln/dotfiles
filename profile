@@ -7,19 +7,6 @@ export PATH=$PATH:/usr/lib/gcc:/usr/bin/gcc:/usr/bin/g++
 export PATH=$PATH:/usr/lib/gcc:/usr/bin/gcc:/usr/bin/g++
 export PATH
 
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-	# include .bashrc if it exists
-	if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-	fi
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-	PATH="$HOME/bin:$PATH"
-fi
-
 # Load profiles from /etc/profile.d
 if test -d /etc/profile.d/; then
 	for profile in /etc/profile.d/*.sh; do
@@ -31,6 +18,19 @@ fi
 # Source global bash config
 if test "$PS1" && test "$BASH" && test -r /etc/bash.bashrc; then
 	. /etc/bash.bashrc
+fi
+
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+	# include .bashrc if it exists
+	if [ -f "$HOME/.bashrc" ]; then
+	. "$HOME/.bashrc"
+	fi
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+	PATH="$HOME/bin:$PATH"
 fi
 
 # Termcap is outdated, old, and crusty, kill it.

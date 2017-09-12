@@ -1,8 +1,8 @@
 #
-# ~/.bash_profile
+# ~/.bash_aliases
 #
 
-# enable color support of ls and also add handy aliases
+# enable color support of ls and some handy aliases
 if [ -x /usr/bin/dircolors ]; then
 	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 	alias ls='ls --color=auto'

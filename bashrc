@@ -89,6 +89,8 @@ else
 	PS1='\[\e[0;34m\][\u@\h \W]\$\[\e[0m\] '
 fi
 
+export PS1="$(tput bold)$(tput setb 5)$PS1$(tput sgr0)"
+
 # enable color support of ls and also add handy aliases
 # Alias definitions.
 if [ -f ~/.bash_aliases ]; then

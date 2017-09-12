@@ -1,1 +1,0 @@
-../../../bin/homebrew/manpages/README.md

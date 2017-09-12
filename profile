@@ -2,7 +2,7 @@
 umask 022
 
 # Set our default paths
-export PATH=~/bin/:/usr/lib/ccache/:$PATH
+export PATH=~/Documents/Apps/homebrew/bin/:~/bin/:/usr/lib/ccache/:$PATH
 export PATH=$PATH:/usr/lib/gcc:/usr/bin/gcc:/usr/bin/g++
 export PATH=$PATH:/usr/lib/gcc:/usr/bin/gcc:/usr/bin/g++
 export PATH

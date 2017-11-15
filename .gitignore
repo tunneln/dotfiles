@@ -12,3 +12,4 @@ vim/bundle/*
 tmux/plugins/*
 !tmux/plugins/tpm
 .DS_Store
+bin/apache-maven-3.5.0

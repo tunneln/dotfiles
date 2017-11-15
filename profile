@@ -2,7 +2,7 @@
 umask 022
 
 # Set our default paths
-export PATH=~/Documents/Apps/homebrew/bin/:~/bin/:/usr/lib/ccache/:$PATH
+export PATH=/Users/nnegusse/bin/apache-maven-3.5.0/bin:~/Documents/Apps/homebrew/bin/:~/bin/:/usr/lib/ccache/:$PATH
 export PATH=$PATH:/usr/lib/gcc:/usr/bin/gcc:/usr/bin/g++
 export PATH=$PATH:/usr/lib/gcc:/usr/bin/gcc:/usr/bin/g++
 export PATH

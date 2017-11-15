@@ -1,80 +1,3 @@
-set nocompatible			" be iMproved, required
-filetype off				" required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-" call vundle#begin('~/some/path/here')
-
-Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'chriskempson/vim-tomorrow-theme'
-
-Plugin 'tpope/vim-fugitive'
-
-Plugin 'scrooloose/nerdtree'
-"Toggle nerd tree with CTRL + n
-map <C-n> :NERDTreeToggle<CR>
-
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-
-Plugin 'jalcine/cmake.vim'
-
-Plugin 'scrooloose/syntastic'
-"C++
-"let g:syntastic_cpp_remove_include_errors = 1
-let g:syntastic_cpp_check_header = 1
-let g:syntastic_cpp_auto_refresh_includes = 1
-"C
-let g:syntastic_c_check_header = 1
-let g:syntastic_c_auto_refresh_includes = 1
-
-Plugin 'xolox/vim-session'
-let g:session_autosave = 'yes'
-
-Plugin 'xolox/vim-misc'
-let g:session_autoload = 'no'
-
-Plugin 'scrooloose/nerdcommenter'
-filetype plugin on
-
-Plugin 'lervag/vimtex'
-
-Plugin 'jiangmiao/auto-pairs'
-let g:AutoPairs = {'{':'}'}
-" let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"'}
-
-Plugin 'majutsushi/tagbar'
-
-Plugin 'Yggdroot/indentLine'
-let g:indentLine_char = '•'
-let g:indentLine_color_term = 239 " Vim
-let g:indentLine_color_gui = '#A4E57E' " GVim
-" none X terminal
-let g:indentLine_color_tty_light = 7 " (default: 4)
-let g:indentLine_color_dark = 1 " (default: 2)
-
-Plugin 'christoomey/vim-tmux-navigator'
-
-call vundle#end()			" required
-filetype plugin indent on	" required
-
-colorscheme Colorscheme
-
-if v:progname =~? "evim"
-	finish
-endif
-
-" Fixing really weird issue with and home, end and F keys
-map [7~ <HOME>
-map [8~ <END>
-map [11~ <F1>
-map [12~ <F2>
-map [13~ <F3>
-
 " Insert a new line after the current line w/o entering insert mode
 nmap <CR> o<Esc>
 
@@ -93,13 +16,12 @@ nnoremap x "_x
 noremap d "_d<ESC>
 noremap dd "_dd
 
+" tabstop is size of indent
+" shiftwidth is size of reindent ops and
+" expandtab converts tabs to spaces
 set tabstop=4
 set shiftwidth=4
-autocmd BufNewFile,BufRead *.py setlocal expandtab "python convention
-
-" Display vertical lines for TABBED indent levels
-set list    " Display unprintable characters f12 - switches
-set listchars=tab:•\ ,trail:•,extends:»,precedes:«   " Unprintable chars mapping
+set expandtab
 
 " Remove trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
@@ -213,8 +135,8 @@ set incsearch   " do incremental searching
 map Q gq
 
 " Map CTRL-a and CTRL-e to the first and last char of a line
-"map <C-a> ^
-"map <C-e> g_
+map <C-a> ^
+map <C-e> g_
 
 " Map home and end to the first and last char of a line
 map <HOME> ^

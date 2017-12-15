@@ -11,10 +11,14 @@ set pastetoggle=<F2>
 noremap <C-y> "+y
 noremap <C-p> "+p
 
-" Prevent d, x and dd from putting text into a register
+" Prevent d, x anrom putting text into a register
 nnoremap x "_x
+vnoremap x "_x<ESC>
 noremap d "_d<ESC>
 noremap dd "_dd
+
+" cc without leaving normal mode and removing line
+nnoremap cd Vx
 
 " tabstop is size of indent
 " shiftwidth is size of reindent ops and
@@ -54,9 +58,9 @@ set smartindent
 set cindent
 
 " Defines folds automatically based on the languages syntax, if defined
-au BufNewFile,BufRead *.c,*.h,*.cc,*.cpp,*.hpp,*.java setlocal foldmethod=syntax foldnestmax=1
-au BufNewFile,BufRead *.py,*.js setlocal foldmethod=indent foldnestmax=2
-au BufNewFile,BufRead *.html setlocal foldmethod=indent foldnestmax=2 foldlevel=2
+"au BufNewFile,BufRead *.c,*.h,*.cc,*.cpp,*.hpp,*.java setlocal foldmethod=syntax foldnestmax=1
+"au BufNewFile,BufRead *.py,*.js setlocal foldmethod=indent foldnestmax=2
+"au BufNewFile,BufRead *.html setlocal foldmethod=indent foldnestmax=2 foldlevel=2
 
 " Small tweaks in C/C++ for what gets folded
 au BufNewFile,BufRead main.c,main.cc,main.cpp setlocal foldmethod=manual
@@ -87,9 +91,6 @@ imap jj <Esc>
 imap jJ <Esc>
 imap Jj <Esc>
 imap JJ <Esc>
-
-" cc without leaving normal mode and removing line
-nnoremap cd Vx
 
 " Added capital maps for save & quit & undo
 :command WQ wq
@@ -154,6 +155,7 @@ inoremap <C-U> <C-G>u<C-U>
 set mouse+=a
 if &term =~ '^screen'
 	" tmux knows the extended mouse mode
+    "
 	set ttymouse=xterm2
 endif
 

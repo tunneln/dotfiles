@@ -12,3 +12,5 @@ if test -d /etc/profile.d/; then
 	done
 	unset profile
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"

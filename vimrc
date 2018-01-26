@@ -1,3 +1,80 @@
+set nocompatible			" be iMproved, required
+filetype off				" required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+" call vundle#begin('~/some/path/here')
+
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'chriskempson/vim-tomorrow-theme'
+
+Plugin 'tpope/vim-fugitive'
+
+Plugin 'scrooloose/nerdtree'
+"Toggle nerd tree with CTRL + n
+map <C-n> :NERDTreeToggle<CR>
+
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+Plugin 'jalcine/cmake.vim'
+
+Plugin 'scrooloose/syntastic'
+"C++
+"let g:syntastic_cpp_remove_include_errors = 1
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_auto_refresh_includes = 1
+"C
+let g:syntastic_c_check_header = 1
+let g:syntastic_c_auto_refresh_includes = 1
+
+Plugin 'xolox/vim-session'
+let g:session_autosave = 'yes'
+
+Plugin 'xolox/vim-misc'
+let g:session_autoload = 'no'
+
+Plugin 'scrooloose/nerdcommenter'
+filetype plugin on
+
+Plugin 'lervag/vimtex'
+
+Plugin 'jiangmiao/auto-pairs'
+let g:AutoPairs = {'{':'}'}
+" let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"'}
+
+Plugin 'majutsushi/tagbar'
+
+Plugin 'Yggdroot/indentLine'
+let g:indentLine_char = '•'
+let g:indentLine_color_term = 239 " Vim
+let g:indentLine_color_gui = '#A4E57E' " GVim
+" none X terminal
+let g:indentLine_color_tty_light = 7 " (default: 4)
+let g:indentLine_color_dark = 1 " (default: 2)
+
+Plugin 'christoomey/vim-tmux-navigator'
+
+call vundle#end()			" required
+filetype plugin indent on	" required
+
+colorscheme Colorscheme
+
+if v:progname =~? "evim"
+	finish
+endif
+
+" Fixing really weird issue with and home, end and F keys
+map [7~ <HOME>
+map [8~ <END>
+map [11~ <F1>
+map [12~ <F2>
+map [13~ <F3>
+
 " Insert a new line after the current line w/o entering insert mode
 nmap <CR> o<Esc>
 
@@ -11,13 +88,13 @@ set pastetoggle=<F2>
 noremap <C-y> "+y
 noremap <C-p> "+p
 
-" Prevent d, x anrom putting text into a register
+" Prevent x, d an c from putting text into a register
 nnoremap x "_x
-vnoremap x "_x<ESC>
 noremap d "_d<ESC>
 noremap dd "_dd
+vnoremap c "_c
 
-" cc without leaving normal mode and removing line
+" cd without leaving normal mode and removing line
 nnoremap cd Vx
 
 " tabstop is size of indent
@@ -25,7 +102,13 @@ nnoremap cd Vx
 " expandtab converts tabs to spaces
 set tabstop=4
 set shiftwidth=4
-set expandtab
+
+" Use spaces instead of tabs in python
+autocmd BufNewFile,BufRead *.py setlocal expandtab "python convention
+
+" Display vertical lines for TABBED indent levels
+"set list    " Display unprintable characters f12 - switches
+"set listchars=tab:•\ ,trail:•,extends:»,precedes:«   " Unprintable chars mapping
 
 " Remove trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
@@ -67,13 +150,13 @@ au BufNewFile,BufRead main.c,main.cc,main.cpp setlocal foldmethod=manual
 let c_no_comment_fold = 1
 
 " Maps F9 for toggling individual folds
-inoremap <F9> <C-O>za
-nnoremap <F9> za
-onoremap <F9> <C-C>za
-vnoremap <F9> zf
+"inoremap <F9> <C-O>za
+"nnoremap <F9> za
+"onoremap <F9> <C-C>za
+"vnoremap <F9> zf
 
 " Maps F10 to open all folds
-nnoremap <F10> zR
+"nnoremap <F10> zR
 
 " Hotkey for toggling the tagbar plugin
 nmap <F8> :TagbarToggle<CR>
@@ -100,8 +183,8 @@ imap JJ <Esc>
 
 " TODO: Fix colorcolumn color despite colorshceme
 " Highlights character when line goes over 80-characters
-hi ColorColumn ctermfg=lightblue ctermbg=lightblue
-call matchadd('ColorColumn', '\%82v', 100)
+"hi ColorColumn ctermfg=lightblue ctermbg=lightblue
+"call matchadd('ColorColumn', '\%82v', 100)
 
 " Set cursor line
 set cursorline
@@ -155,7 +238,6 @@ inoremap <C-U> <C-G>u<C-U>
 set mouse+=a
 if &term =~ '^screen'
 	" tmux knows the extended mouse mode
-    "
 	set ttymouse=xterm2
 endif
 
@@ -180,7 +262,7 @@ if has("autocmd")
 	au!
 
 " For all text files set 'textwidth' to 80 characters.
-	autocmd FileType text setlocal textwidth=80
+"	autocmd FileType text setlocal textwidth=80
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler

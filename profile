@@ -2,10 +2,9 @@
 umask 022
 
 # Set our default paths
-export PATH=~/bin/:/usr/lib/ccache/:$PATH
-export PATH=$PATH:/usr/lib/gcc:/usr/bin/gcc:/usr/bin/g++
-export PATH=$PATH:/usr/lib/gcc:/usr/bin/gcc:/usr/bin/g++
-export PATH
+export PATH=~/bin/:/usr/lib/ccache/:$PATH:/usr/lib/gcc:/usr/bin/gcc:/usr/bin/g++
+
+export FIGNORE=$FIGNORE:DS_Store
 
 # Load profiles from /etc/profile.d
 if test -d /etc/profile.d/; then

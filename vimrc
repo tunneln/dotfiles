@@ -68,7 +68,7 @@ if v:progname =~? "evim"
 	finish
 endif
 
-" Fixing really weird issue with and home, end and F keys
+" Fixing weird issue with and home, end and F keys on Arch Linux Thinkpad
 map [7~ <HOME>
 map [8~ <END>
 map [11~ <F1>
@@ -88,18 +88,27 @@ set pastetoggle=<F2>
 noremap <C-y> "+y
 noremap <C-p> "+p
 
-" Prevent d, x and dd from putting text into a register
+" Prevent x, d an c from putting text into a register
 nnoremap x "_x
 noremap d "_d<ESC>
 noremap dd "_dd
+vnoremap c "_c
 
+" cd without leaving normal mode and removing line
+nnoremap cd Vx
+
+" tabstop is size of indent
+" shiftwidth is size of reindent ops and
+" expandtab converts tabs to spaces
 set tabstop=4
 set shiftwidth=4
+
+" Use spaces instead of tabs in python
 autocmd BufNewFile,BufRead *.py setlocal expandtab "python convention
 
 " Display vertical lines for TABBED indent levels
-set list    " Display unprintable characters f12 - switches
-set listchars=tab:•\ ,trail:•,extends:»,precedes:«   " Unprintable chars mapping
+"set list    " Display unprintable characters f12 - switches
+"set listchars=tab:•\ ,trail:•,extends:»,precedes:«   " Unprintable chars mapping
 
 " Remove trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
@@ -132,22 +141,22 @@ set smartindent
 set cindent
 
 " Defines folds automatically based on the languages syntax, if defined
-au BufNewFile,BufRead *.c,*.h,*.cc,*.cpp,*.hpp,*.java setlocal foldmethod=syntax foldnestmax=1
-au BufNewFile,BufRead *.py,*.js setlocal foldmethod=indent foldnestmax=2
-au BufNewFile,BufRead *.html setlocal foldmethod=indent foldnestmax=2 foldlevel=2
+"au BufNewFile,BufRead *.c,*.h,*.cc,*.cpp,*.hpp,*.java setlocal foldmethod=syntax foldnestmax=1
+"au BufNewFile,BufRead *.py,*.js setlocal foldmethod=indent foldnestmax=2
+"au BufNewFile,BufRead *.html setlocal foldmethod=indent foldnestmax=2 foldlevel=2
 
 " Small tweaks in C/C++ for what gets folded
 au BufNewFile,BufRead main.c,main.cc,main.cpp setlocal foldmethod=manual
 let c_no_comment_fold = 1
 
 " Maps F9 for toggling individual folds
-inoremap <F9> <C-O>za
-nnoremap <F9> za
-onoremap <F9> <C-C>za
-vnoremap <F9> zf
+"inoremap <F9> <C-O>za
+"nnoremap <F9> za
+"onoremap <F9> <C-C>za
+"vnoremap <F9> zf
 
 " Maps F10 to open all folds
-nnoremap <F10> zR
+"nnoremap <F10> zR
 
 " Hotkey for toggling the tagbar plugin
 nmap <F8> :TagbarToggle<CR>
@@ -166,9 +175,6 @@ imap jJ <Esc>
 imap Jj <Esc>
 imap JJ <Esc>
 
-" cc without leaving normal mode and removing line
-nnoremap cd Vx
-
 " Added capital maps for save & quit & undo
 :command WQ wq
 :command Wq wq
@@ -177,8 +183,8 @@ nnoremap cd Vx
 
 " TODO: Fix colorcolumn color despite colorshceme
 " Highlights character when line goes over 80-characters
-hi ColorColumn ctermfg=lightblue ctermbg=lightblue
-call matchadd('ColorColumn', '\%82v', 100)
+"hi ColorColumn ctermfg=lightblue ctermbg=lightblue
+"call matchadd('ColorColumn', '\%82v', 100)
 
 " Set cursor line
 set cursorline
@@ -213,8 +219,8 @@ set incsearch   " do incremental searching
 map Q gq
 
 " Map CTRL-a and CTRL-e to the first and last char of a line
-"map <C-a> ^
-"map <C-e> g_
+map <C-a> ^
+map <C-e> g_
 
 " Map home and end to the first and last char of a line
 map <HOME> ^
@@ -256,7 +262,7 @@ if has("autocmd")
 	au!
 
 " For all text files set 'textwidth' to 80 characters.
-	autocmd FileType text setlocal textwidth=80
+"	autocmd FileType text setlocal textwidth=80
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler

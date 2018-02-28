@@ -68,12 +68,12 @@ if v:progname =~? "evim"
 	finish
 endif
 
-" Fixing really weird issue with and home, end and F keys
-map [7~ <HOME>
-map [8~ <END>
-map [11~ <F1>
-map [12~ <F2>
-map [13~ <F3>
+" Fixing weird issue with home, end and Function keys on X1 Carbon
+"map [7~ <HOME>
+"map [8~ <END>
+"map [11~ <F1>
+"map [12~ <F2>
+"map [13~ <F3>
 
 " Insert a new line after the current line w/o entering insert mode
 nmap <CR> o<Esc>
@@ -88,9 +88,10 @@ set pastetoggle=<F2>
 noremap <C-y> "+y
 noremap <C-p> "+p
 
-" Prevent x, d an c from putting text into a register
+" Prevent x, d and c from putting text into a register
 nnoremap x "_x
 noremap d "_d<ESC>
+vnoremap d "_d<ESC>h
 noremap dd "_dd
 vnoremap c "_c
 
@@ -103,8 +104,8 @@ nnoremap cd Vx
 set tabstop=4
 set shiftwidth=4
 
-" Use spaces instead of tabs in python
-autocmd BufNewFile,BufRead *.py setlocal expandtab "python convention
+" Use spaces instead of tabs in python (python convention)
+autocmd BufNewFile,BufRead *.py setlocal expandtab
 
 " Display vertical lines for TABBED indent levels
 "set list    " Display unprintable characters f12 - switches

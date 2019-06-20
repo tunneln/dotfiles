@@ -24,13 +24,11 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'jalcine/cmake.vim'
 
 Plugin 'scrooloose/syntastic'
-"C++
 "let g:syntastic_cpp_remove_include_errors = 1
-let g:syntastic_cpp_check_header = 1
-let g:syntastic_cpp_auto_refresh_includes = 1
-"C
 let g:syntastic_c_check_header = 1
+let g:syntastic_cpp_check_header = 1
 let g:syntastic_c_auto_refresh_includes = 1
+let g:syntastic_cpp_auto_refresh_includes = 1
 
 Plugin 'xolox/vim-session'
 let g:session_autosave = 'yes'
@@ -44,16 +42,16 @@ filetype plugin on
 Plugin 'lervag/vimtex'
 
 Plugin 'jiangmiao/auto-pairs'
-let g:AutoPairs = {'{':'}'}
-" let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"'}
+"let g:AutoPairs = {'{':'}'}
+let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"'}
 
 Plugin 'majutsushi/tagbar'
 
 Plugin 'Yggdroot/indentLine'
-let g:indentLine_char = '•'
+let g:indentLine_char = '|'
 let g:indentLine_color_term = 239 " Vim
 let g:indentLine_color_gui = '#A4E57E' " GVim
-" none X terminal
+" non-X terminal
 let g:indentLine_color_tty_light = 7 " (default: 4)
 let g:indentLine_color_dark = 1 " (default: 2)
 
@@ -95,6 +93,9 @@ vnoremap d "_d<ESC>h
 noremap dd "_dd
 vnoremap c "_c
 
+" Prevent visual pastes from copying the selection
+vnoremap p dp
+
 " cd without leaving normal mode and removing line
 nnoremap cd Vx
 
@@ -108,8 +109,8 @@ set shiftwidth=4
 autocmd BufNewFile,BufRead *.py setlocal expandtab
 
 " Display vertical lines for TABBED indent levels
-"set list    " Display unprintable characters f12 - switches
-"set listchars=tab:•\ ,trail:•,extends:»,precedes:«   " Unprintable chars mapping
+set list    " Display unprintable characters f12 - switches
+set listchars=tab:•\ ,trail:•,extends:»,precedes:«   " Unprintable chars mapping
 
 " Remove trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
@@ -128,7 +129,15 @@ au BufNewFile,BufRead *.txt setlocal spelllang=en_us
 "Syntax highlighting
 syntax on
 
+" TODO: Fix colorcolumn color despite colorshceme
+" Highlights character when line goes over 80-characters
+"hi ColorColumn ctermfg=lightblue ctermbg=lightblue
+"call matchadd('ColorColumn', '\%122v', 100)
 " autosave when focus is lost from window
+
+" To highlight all search matches
+set hlsearch
+
 au FocusLost * :wa
 
 " Set utf-8 encodings
@@ -181,11 +190,6 @@ imap JJ <Esc>
 :command Wq wq
 :command W w
 :command Q q
-
-" TODO: Fix colorcolumn color despite colorshceme
-" Highlights character when line goes over 80-characters
-"hi ColorColumn ctermfg=lightblue ctermbg=lightblue
-"call matchadd('ColorColumn', '\%82v', 100)
 
 " Set cursor line
 set cursorline

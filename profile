@@ -3,7 +3,7 @@ umask 022
 
 # Set our default paths
 export FIGNORE=$FIGNORE:DS_Store
-export PATH=/Users/nnegusse/bin/apache-maven-3.5.0/bin:~/Documents/Apps/homebrew/bin/:~/bin/:/usr/lib/ccache/:$PATH:/usr/lib/gcc:/usr/bin/gcc:/usr/bin/g++
+export PATH=/usr/lib/ccache/:$PATH:/usr/lib/gcc:/usr/bin/gcc:/usr/bin/g++
 
 # Load profiles from /etc/profile.d
 if test -d /etc/profile.d/; then

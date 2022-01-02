@@ -21,6 +21,10 @@ alias l='ls -CF'
 
 alias vi='vim'
 
+if [ ! -x /opt/homebrew/bin/trash ]; then
+	alias trash='rmtrash'
+fi
+
 alias sudo='sudo -E'
 if [ -x /usr/bin/pacaur ]; then
 	alias pacman='pacaur'

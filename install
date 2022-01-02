@@ -35,10 +35,10 @@ vim=false
 for file in $files; do
 	finame=${file##*/}
 	dotfi=$HOME/.$finame
-	if [ "$finame" = "README.md" ] || [ "$finame" = "install" ] || [ "$finame" = "bin" ] \
+	if [ "$finame" = "README.md" ] || [ "$finame" = "install" ] || [ "$finame" = "themes" ] \
 		|| [ "$finame" = "var" ] || [ "$finame" = "share" ] || [ "$finame" = "lib" ] \
 		|| [ "$finame" = "include" ] || [ "$finame" = "opt" ] || [ "$finame" = "etc" ] \
-		|| [ "$finame" = "Cellar" ] || [ "$finame" = "themes" ]; then
+		|| [ "$finame" = "Cellar" ] || [ "$finame" = "bin" ] || [ "$finame" = "Bin" ]; then
 		continue
 	fi
 	echo "############################### NEXT FILE ###############################"
@@ -94,20 +94,20 @@ for file in $files; do
 done
 
 echo "############################### NEXT FILE ###############################"
-if [ -e ~/bin ] && [ ! -L ~/bin ]; then
-	echo "Merging ~/bin and $dir/bin folders"
-	cp -r $dir/bin/* ~/bin/ 2> /dev/null
-	rm -rf $dir/bin/ 2> /dev/null
-	mv ~/bin $dir
+if [ -e ~/Bin ] && [ ! -L ~/Bin ]; then
+	echo "Merging ~/Bin and $dir/Bin folders"
+	cp -r $dir/Bin/* ~/Bin/ 2> /dev/null
+	rm -rf $dir/Bin/ 2> /dev/null
+	mv ~/Bin $dir
 	echo "...done"
 fi
 
-if [ -e ~/bin ] && [ -L ~/bin ]; then
-	rm ~/bin 2> /dev/null
+if [ -e ~/Bin ] && [ -L ~/Bin ]; then
+	rm ~/Bin 2> /dev/null
 fi
 
-echo "Creating symlink of bin in your HOME directory as \"bin\""
-ln -sf $dir/bin ~/bin
+echo "Creating symlink of Bin in your HOME directory as \"Bin\""
+ln -sf $dir/Bin ~/Bin
 
 mkdir -p ~/.trash
 
@@ -125,5 +125,4 @@ if [ "$vim" = true ]; then
 	mkdir -p vim/backups
 fi
 
-source ~/.profile
-source ~/.bashrc
+source ~/.bash_profile

@@ -1,0 +1,25 @@
+{
+  "title": "Left Ctrl + Semicolon to Forward Delete",
+  "rules": [
+    {
+      "description": "Left Ctrl + Semicolon to Forward Delete",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "semicolon",
+            "modifiers": {
+              "mandatory": [ "left_control" ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "delete_forward"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+

@@ -21,7 +21,7 @@ alias l='ls -CF'
 
 alias vi='vim'
 
-if [ ! -x /opt/homebrew/bin/trash ]; then
+if [ ! -x /opt/homebrew/bin/trash ] && [ ! -x /usr/local/Cellar/trash ]; then
 	alias trash='rmtrash'
 fi
 
@@ -34,6 +34,8 @@ alias gcc='gcc -Wall -g'
 alias g++='g++ -Wall -g'
 
 alias grep='grep --color=always'
+
+alias gpf='git push --force-with-lease'
 
 # Add an "alert" alias for long running commands.  Use like so:
 # sleep 10; alert

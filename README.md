@@ -19,14 +19,14 @@ If you just want to use these dotfiles on your system, simply type
 # The Installation Script
 The installation script is a bash sript called 'install'
 
-##What it does
+## What it does
 **First** The script will start off by making a backup directory to store your current - and subsequent - dotfiles.
 
 **Next** the script will clean up any old symlinks/dotfiles by individually moving all of them into the backup folder ('~/.old_dotfiles/')
 
 **Lastly** the script will create soft links in your home directory that point to the new dotfiles folder
 
-##Running the script
+## Running the script
 Finally, to 'install' the dotfiles into your system
 
 Type `chmod +x install`
@@ -35,7 +35,7 @@ and then `./install` to run the script
 
 or simply run `bash install`
 
-#Adding your own dotfiles
+# Adding your own dotfiles
 To add or modify the dot files, simply copy over any given dot file from your home directory into the dotfiles folder and run the install script. Your personal dotfiles should all now be updated and symlinked.
 
 **Be sure to cp the file over without a dot**

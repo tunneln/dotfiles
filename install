@@ -125,4 +125,6 @@ if [ "$vim" = true ]; then
 	mkdir -p vim/backups
 fi
 
+sleep 6
+
 source ~/.bash_profile

@@ -129,12 +129,6 @@ au BufNewFile,BufRead *.txt setlocal spelllang=en_us
 "Syntax highlighting
 syntax on
 
-" TODO: Fix colorcolumn color despite colorshceme
-" Highlights character when line goes over 80-characters
-"hi ColorColumn ctermfg=lightblue ctermbg=lightblue
-"call matchadd('ColorColumn', '\%122v', 100)
-" autosave when focus is lost from window
-
 " To highlight all search matches
 set hlsearch
 
@@ -246,7 +240,7 @@ if &term =~ '^screen'
 	set ttymouse=xterm2
 endif
 
-set guifont=Monaco:h16
+set guifont=Monaco:h15
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -281,11 +275,11 @@ if has("autocmd")
 		\	exe "normal! g`\"" |
 		\ endif
 
-augroup END
+	augroup END
 
-else
+	else
 
-endif " has("autocmd")
+	endif " has("autocmd")
 
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
@@ -294,3 +288,8 @@ if !exists(":DiffOrig")
 	command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
 		\ | wincmd p | diffthis
 endif
+
+" TODO: Fix colorcolumn color despite colorshceme
+" Highlights character when line goes over 120-characters
+hi ColorColumn ctermfg=magenta ctermbg=magenta
+call matchadd('ColorColumn', '\%120v', 100)

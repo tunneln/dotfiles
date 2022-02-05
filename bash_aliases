@@ -30,8 +30,8 @@ if [ -x /usr/bin/pacaur ]; then
 	alias pacman='pacaur'
 fi
 
-alias gcc='gcc -Wall -g'
-alias g++='g++ -Wall -g'
+alias gcc='gcc -Wall'
+alias g++='g++ -Wall'
 
 alias grep='grep --color=always'
 

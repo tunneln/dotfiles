@@ -20,7 +20,7 @@ If you just want to use these dotfiles on your system, simply type
 The installation script is a bash sript called 'install'
 
 ## What it does
-**First** The script will start off by making a backup directory to store your current - and subsequent - dotfiles.
+**First** The script will start off by making a backup directory to store your current dotfiles.
 
 **Next** the script will clean up any old symlinks/dotfiles by individually moving all of them into the backup folder ('~/.old_dotfiles/')
 

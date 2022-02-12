@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AllowClipboardAccess</key>
+	<true/>
 	<key>Control</key>
 	<integer>1</integer>
 	<key>Custom Color Presets</key>
@@ -584,6 +586,8 @@
 			<integer>1</integer>
 			<key>Idle Code</key>
 			<integer>0</integer>
+			<key>Initial Text</key>
+			<string></string>
 			<key>Jobs to Ignore</key>
 			<array>
 				<string>rlogin</string>

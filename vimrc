@@ -42,7 +42,6 @@ filetype plugin on
 Plugin 'lervag/vimtex'
 
 Plugin 'jiangmiao/auto-pairs'
-"let g:AutoPairs = {'{':'}'}
 let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"'}
 
 Plugin 'majutsushi/tagbar'
@@ -56,6 +55,13 @@ let g:indentLine_color_tty_light = 7 " (default: 4)
 let g:indentLine_color_dark = 1 " (default: 2)
 
 Plugin 'christoomey/vim-tmux-navigator'
+
+Plugin 'artur-shaik/vim-javacomplete2'
+
+let g:JavaComplete_LibsPath = '/Users/noelnegusse/Development/playground/target/'
+let g:JavaComplete_CompletionResultSort = 0
+let g:JavaComplete_ClosingBrace = 0
+let g:JavaComplete_UseFQN = 1
 
 call vundle#end()			" required
 filetype plugin indent on	" required
@@ -72,6 +78,20 @@ endif
 "map [11~ <F1>
 "map [12~ <F2>
 "map [13~ <F3>
+
+" Java Complete 2 Configuration
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+inoremap <C-@> <C-x><C-o>
+
+"nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+"imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+"nmap <F5> <Plug>(JavaComplete-Imports-Add)
+"imap <F5> <Plug>(JavaComplete-Imports-Add)
+"nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+"imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+"nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+"imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 
 " Insert a new line after the current line w/o entering insert mode
 nmap <CR> o<Esc>

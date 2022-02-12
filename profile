@@ -19,9 +19,10 @@ export HOMEBREW_FORCE_BREWED_GIT=1
 
 export FIGNORE=$FIGNORE:DS_Store
 
-export PATH="/usr/lib/ccache/:$PATH"
-export PATH="/opt/homebrew/bin:$PATH"
-export PATH="$PATH:/usr/lib/gcc"
+export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+
+export PATH="/opt/homebrew/bin:/usr/lib/ccache/:$PATH"
+export PATH="$PATH:$JAVA_HOME:/usr/lib/gcc"
 
 if command -v pyenv 1>/dev/null 2>&1; then
 	export PYENV_ROOT="$HOME/.pyenv"

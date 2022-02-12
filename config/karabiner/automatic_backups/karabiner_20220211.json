@@ -16,7 +16,7 @@
                 },
                 "rules": [
                     {
-                        "description": "Left Control + h/j/k/l to arrow keys Vim",
+                        "description": "Left ctrl + hjkl to arrow keys Vim",
                         "manipulators": [
                             {
                                 "from": {
@@ -97,14 +97,35 @@
                         ]
                     },
                     {
-                        "description": "Left Control + Tab to Application Switcher",
+                        "description": "Left Ctrl + Semicolon to Forward Delete",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "semicolon",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_forward"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Ctrl+Tab => Cmd+Tab (Switch application)",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "tab",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control"
+                                            "option"
                                         ],
                                         "optional": [
                                             "any"
@@ -126,7 +147,7 @@
                                     "key_code": "tab",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control",
+                                            "option",
                                             "left_shift"
                                         ],
                                         "optional": [
@@ -148,32 +169,11 @@
                         ]
                     },
                     {
-                        "description": "Left Control + ' to Forward Delete",
+                        "description": "L_Control + u/o to pageup/pagedown",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "quote",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "delete_forward"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Left Control + u/o to Page Down & Up",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "o",
+                                    "key_code": "u",
                                     "modifiers": {
                                         "mandatory": [
                                             "left_control"
@@ -192,7 +192,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "u",
+                                    "key_code": "o",
                                     "modifiers": {
                                         "mandatory": [
                                             "left_control"

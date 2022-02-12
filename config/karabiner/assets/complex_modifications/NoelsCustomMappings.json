@@ -87,7 +87,7 @@
 			}]
 		}]
 	}, {
-		"description": "Left Control + ' to Forward Delete",
+		"description": "Left Control + Quote to Forward Delete",
 		"manipulators": [{
 			"type": "basic",
 			"from": {
@@ -101,14 +101,14 @@
 			}]
 		}]
 	}, {
-		"description": "Left Control + Tab to Application Switcher",
+		"description": "Left Option + Tab to Application Switcher",
 		"manipulators": [{
 			"type": "basic",
 			"from": {
 				"key_code": "tab",
 				"modifiers": {
 					"mandatory": [
-						"left_control"
+						"left_option"
 					],
 					"optional": [
 						"any"
@@ -127,7 +127,7 @@
 				"key_code": "tab",
 				"modifiers": {
 					"mandatory": [
-						"left_control",
+						"left_option",
 						"left_shift"
 					],
 					"optional": [
@@ -140,6 +140,50 @@
 				"modifiers": [
 					"left_command",
 					"left_shift"
+				]
+			}]
+		}]
+	}, {
+		"description": "Left Control + Backtick to Next Window",
+		"manipulators": [{
+			"type": "basic",
+			"from": {
+				"key_code": "grave_accent_and_tilde",
+				"modifiers": {
+					"mandatory": [
+						"left_control"
+					],
+					"optional": [
+						"any"
+					]
+				}
+			},
+			"to": [{
+				"key_code": "grave_accent_and_tilde",
+				"modifiers": [
+					"left_command"
+				]
+			}]
+		}]
+	}, {
+		"description": "Left Option + Backtick to Mission Control",
+		"manipulators": [{
+			"type": "basic",
+			"from": {
+				"key_code": "grave_accent_and_tilde",
+				"modifiers": {
+					"mandatory": [
+						"left_option"
+					],
+					"optional": [
+						"any"
+					]
+				}
+			},
+			"to": [{
+				"key_code": "up_arrow",
+				"modifiers": [
+					"left_control"
 				]
 			}]
 		}]

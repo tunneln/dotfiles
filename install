@@ -35,7 +35,7 @@ vim=false
 for file in $files; do
 	finame=${file##*/}
 	dotfi=$HOME/.$finame
-	if [ "$finame" = "README.md" ] || [ "$finame" = "install" ] || [ "$finame" = "themes" ] \
+	if [ "$finame" = "README.md" ] || [ "$finame" = "install" ] || [ "$finame" = "app_imports" ] \
 		|| [ "$finame" = "var" ] || [ "$finame" = "share" ] || [ "$finame" = "lib" ] \
 		|| [ "$finame" = "include" ] || [ "$finame" = "opt" ] || [ "$finame" = "etc" ] \
 		|| [ "$finame" = "Cellar" ] || [ "$finame" = "bin" ] || [ "$finame" = "Bin" ]; then

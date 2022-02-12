@@ -1,0 +1,1 @@
+mvn install -q -Dmaven.test.skip -DskipTests -Dmaven.javadoc.skip=true && java -cp target/playground-1.0-SNAPSHOT.jar com.negusse.playground.Playground

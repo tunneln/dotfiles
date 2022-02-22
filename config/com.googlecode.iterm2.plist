@@ -1146,6 +1146,8 @@
 	<integer>3</integer>
 	<key>TabViewType</key>
 	<integer>1</integer>
+	<key>TimeBetweenTips</key>
+	<real>86400</real>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
 </dict>

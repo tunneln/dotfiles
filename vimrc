@@ -12,7 +12,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'chriskempson/vim-tomorrow-theme'
 
-"Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 
 Plugin 'scrooloose/nerdtree'
 "Toggle nerd tree with CTRL + n

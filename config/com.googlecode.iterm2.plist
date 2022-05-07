@@ -1030,11 +1030,11 @@
 			<key>Name</key>
 			<string>Noel's Profile</string>
 			<key>Non Ascii Font</key>
-			<string>Monaco 12</string>
+			<string>Monaco 13</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Monaco 12</string>
+			<string>Monaco 13</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -1138,8 +1138,12 @@
 	</dict>
 	<key>Print In Black And White</key>
 	<true/>
+	<key>Size Changes Affect Profile</key>
+	<true/>
 	<key>SoundForEsc</key>
 	<false/>
+	<key>SplitPaneDimmingAmount</key>
+	<real>0.4039604824029126</real>
 	<key>StatusBarPosition</key>
 	<integer>1</integer>
 	<key>TabStyleWithAutomaticOption</key>
@@ -1148,6 +1152,10 @@
 	<integer>1</integer>
 	<key>TimeBetweenTips</key>
 	<real>86400</real>
+	<key>ToolbeltTools</key>
+	<array>
+		<string>Profiles</string>
+	</array>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
 </dict>

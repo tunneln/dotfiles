@@ -32,7 +32,6 @@ envfile="$HOME/.gnupg/gpg-agent.env"
 if ( [[ ! -e "$HOME/.gnupg/S.gpg-agent" ]] && \
 	[[ ! -e "/var/run/user/$(id -u)/gnupg/S.gpg-agent" ]] );
 then
-	echo test
 	killall pinentry > /dev/null 2>&1
 	gpgconf --reload scdaemon > /dev/null 2>&1
 	pkill -x -INT gpg-agent > /dev/null 2>&1

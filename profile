@@ -13,35 +13,22 @@ unset MANPATH
 
 
 # Set default configurations and paths
+
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export HOMEBREW_FORCE_BREWED_CURL=1
 export HOMEBREW_FORCE_BREWED_GIT=1
+
+export GIT_REPOS_ROOT="$HOME/git"
 
 export FIGNORE=$FIGNORE:DS_Store
 
 export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 
-export PATH="/opt/homebrew/bin:/usr/lib/ccache/:$PATH"
+export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh"  ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+export PATH="$(brew --prefix)/bin:/usr/lib/ccache/:$(brew --prefix)/opt/make/libexec/gnubin:$PATH"
 export PATH="$PATH:$JAVA_HOME:/usr/lib/gcc"
-
-if [ -d "/usr/local/MacGPG2/bin" ] ; then
-	export PATH="/usr/local/MacGPG2/bin:$PATH"
-fi
-
-envfile="$HOME/.gnupg/gpg-agent.env"
-if ( [[ ! -e "$HOME/.gnupg/S.gpg-agent" ]] && \
-	[[ ! -e "/var/run/user/$(id -u)/gnupg/S.gpg-agent" ]] );
-then
-	killall pinentry > /dev/null 2>&1
-	gpgconf --reload scdaemon > /dev/null 2>&1
-	pkill -x -INT gpg-agent > /dev/null 2>&1
-	gpg-agent --daemon --enable-ssh-support > $envfile
-fi
-
-# Wake up smartcard to avoid races
-gpg --card-status > /dev/null 2>&1
-
-source "$envfile"
 
 if command -v pyenv 1>/dev/null 2>&1; then
 	export PYENV_ROOT="$HOME/.pyenv"
@@ -49,9 +36,9 @@ if command -v pyenv 1>/dev/null 2>&1; then
 	eval "$(pyenv init --path)"
 fi
 
-# Set PATH so it includes user's private bin if it exists
+# Set PATH so it includes user's local bin if it exists
 if [ -d "$HOME/Bin" ] ; then
-	PATH="$HOME/Bin:$PATH"
+	PATH="$PATH:$HOME/Bin"
 elif [ -d "$HOME/bin" ] ; then
-	PATH="$HOME/bin:$PATH"
+	PATH="$PATH:$HOME/bin"
 fi

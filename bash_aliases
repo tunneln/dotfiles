@@ -21,7 +21,7 @@ alias l='ls -CF'
 
 alias vi='vim'
 
-if [ ! -x /opt/homebrew/bin/trash ] && [ ! -x /usr/local/Cellar/trash ]; then
+if [ ! -x $(brew --prefix)/bin/trash ] && [ ! -x /usr/local/Cellar/trash ]; then
 	alias trash='rmtrash'
 fi
 
@@ -36,6 +36,9 @@ alias g++='g++ -Wall'
 alias grep='grep --color=always'
 
 alias gpf='git push --force-with-lease'
+
+# Alias for 'git up' command
+git config --global alias.up '!git remote update -p; git merge --ff-only @{u}'
 
 # Add an "alert" alias for long running commands.  Use like so:
 # sleep 10; alert

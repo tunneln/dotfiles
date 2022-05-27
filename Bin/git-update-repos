@@ -1,0 +1,38 @@
+#!/bin/bash
+
+#########################################################################################
+# Noel negusse
+# git-update-repos
+# Simple script to update the primary branche and remote refs for each repository in $GIT_REPOS_ROOT
+#########################################################################################
+
+ORIGINAL_DIR=$PWD
+
+cd $GIT_REPOS_ROOT
+
+for repo in */ ; do
+	cd "${repo}"
+	if [ -d .git ] ; then
+		echo "Updating ${repo}..."
+
+		GIT_DEPLOY_STASH=$(git stash create 2>/dev/null)
+		if [ `git branch --list develop` ] ; then
+			git checkout develop
+		else
+			git checkout master
+		fi
+
+		git up
+		git checkout -
+
+		if [ -n "${GIT_DEPLOY_STASH}" ] ; then
+			git stash apply ${GIT_DEPLOY_STASH}
+		fi
+
+		echo "Successfully updated ${repo}"
+	fi
+
+	cd $GIT_REPOS_ROOT
+done
+
+cd $ORIGINAL_DIR

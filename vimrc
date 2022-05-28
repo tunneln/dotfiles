@@ -56,12 +56,12 @@ let g:indentLine_color_dark = 1 " (default: 2)
 
 Plugin 'christoomey/vim-tmux-navigator'
 
-Plugin 'artur-shaik/vim-javacomplete2'
+" Plugin 'artur-shaik/vim-javacomplete2'
 
-let g:JavaComplete_LibsPath = '/Users/noelnegusse/Development/playground/target/'
-let g:JavaComplete_CompletionResultSort = 0
-let g:JavaComplete_ClosingBrace = 0
-let g:JavaComplete_UseFQN = 1
+" let g:JavaComplete_LibsPath = '/Users/noelnegusse/Development/playground/target/'
+" let g:JavaComplete_CompletionResultSort = 0
+" let g:JavaComplete_ClosingBrace = 0
+" let g:JavaComplete_UseFQN = 1
 
 call vundle#end()			" required
 filetype plugin indent on	" required

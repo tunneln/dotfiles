@@ -1,14 +1,22 @@
 #!/bin/bash
 
 #########################################################################################
-# Noel negusse
+# Noel Negusse
 # git-update-repos
-# Simple script to update the primary branche and remote refs for each repository in $GIT_REPOS_ROOT
+# Simple script to update the head branch and remote refs for each repository in $GIT_REPOS_ROOT
+# If $GIT_REPOS_ROOT is not set, simply run the script wherever you store your git repos
 #########################################################################################
 
+git config --global alias.up '!git remote update -p; git merge --ff-only @{u}'
+
+REPO_DIR=$GIT_REPOS_ROOT
 ORIGINAL_DIR=$PWD
 
-cd $GIT_REPOS_ROOT
+if [ -z "$REPO_DIR" ]; then
+	REPO_DIR=$ORIGINAL_DIR
+fi
+
+cd "${REPO_DIR}"
 
 for repo in */ ; do
 	cd "${repo}"
@@ -30,9 +38,11 @@ for repo in */ ; do
 		fi
 
 		echo "Successfully updated ${repo}"
+	else
+		echo "No git repository found in directory - $PWD"
 	fi
 
-	cd $GIT_REPOS_ROOT
+	cd "${REPO_DIR}"
 done
 
 cd $ORIGINAL_DIR

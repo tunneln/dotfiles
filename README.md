@@ -38,6 +38,5 @@ or simply run `bash install`
 # Adding your own dotfiles
 To add or modify the dot files, simply copy over any given dot file from your home directory into the dotfiles folder and run the install script. Your personal dotfiles should all now be updated and symlinked.
 
-**Be sure to cp the file over without a dot**
-e.g.` cp ~/.urxvt ~/dotfiles/urxvt `
+**Be sure to copy the file or folder over exactly as shown here - **` cp -a ~/.dotfile/. path/to/repo/dotfiles/dotfile `
 

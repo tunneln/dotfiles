@@ -13,8 +13,6 @@ unset MANPATH
 
 
 # Set default configurations and paths
-
-export BASH_SILENCE_DEPRECATION_WARNING=1
 export HOMEBREW_FORCE_BREWED_CURL=1
 export HOMEBREW_FORCE_BREWED_GIT=1
 

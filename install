@@ -43,7 +43,7 @@ for file in $files; do
 	fi
 	echo "############################### NEXT FILE ###############################"
 
-	# checks if to-be-backed-up file exists and is not a symlink
+	# Checks if to-be-backed-up file exists and is not a symlink
 	if [ -e $dotfi ] && [ ! \( -L $dotfi \) ]; then
 		echo "Attempting to backup $dotfi to $olddir ..."
 		rm -rf $olddir/$finame
@@ -55,7 +55,7 @@ for file in $files; do
 		"
 	fi
 
-	# checks if to-be-linked file exists
+	# Checks if to-be-linked file exists
 	if [ -e $dir/$finame ]; then
 		echo "Creating symlink of $finame in your HOME directory as \".$finame\"
 		"
@@ -77,7 +77,7 @@ for file in $files; do
 
 	# Applies tmux config if added
 	if [ "$finame" = "tmux" ]; then
-		if [ -a /usr/bin/tmux ] || [ -a /usr/local/bin/tmux ]; then
+		if [ -a /usr/bin/tmux ] || [ -a /usr/local/bin/tmux ] || [ -a $(brew --prefix)/bin/tmux ]; then
 			tmux=true
 		fi
 	fi
@@ -94,10 +94,12 @@ for file in $files; do
 done
 
 echo "############################### NEXT FILE ###############################"
+
+# Local binaries set up
 if [ -e ~/Bin ] && [ ! -L ~/Bin ]; then
 	echo "Merging ~/Bin and $dir/Bin folders"
-	cp -r $dir/Bin/* ~/Bin/ 2> /dev/null
-	rm -rf $dir/Bin/ 2> /dev/null
+	cp -a $dir/Bin/* ~/Bin/ 2> /dev/null
+	rm -af $dir/Bin/ 2> /dev/null
 	mv ~/Bin $dir
 	echo "...done"
 fi
@@ -109,16 +111,19 @@ fi
 echo "Creating symlink of Bin in your HOME directory as \"Bin\""
 ln -sf $dir/Bin ~/Bin
 
+# Creating trash bin
 mkdir -p ~/.trash
 
-# Sourcing and Installing
+# Sourcing and installing plugins
 git submodule update --init --recursive
 
+# Applying tmux configs
 if [ "$tmux" = true ]; then
 	echo "Applying tmux config:"
 	tmux source-file ~/.tmux.conf
 fi
 
+# Applying vim configs
 if [ "$vim" = true ]; then
 	echo "Updating and installing all vim plugins and adding 'backups' folder"
 	vim +PluginInstall +qall
@@ -127,4 +132,6 @@ fi
 
 sleep 6
 
+# Apply root bash config
+echo "Re-applying bash profile config..."
 source ~/.bash_profile

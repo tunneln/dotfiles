@@ -24,7 +24,7 @@ for repo in */ ; do
 		echo "Updating ${repo}..."
 
 		GIT_DEPLOY_STASH=$(git stash create 2>/dev/null)
-		if [ `git branch --list develop` ] ; then
+		if [[ $(git branch --list develop) = *master* ]]; then
 			git checkout develop
 		else
 			git checkout master

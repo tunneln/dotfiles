@@ -18,6 +18,11 @@ export HOMEBREW_FORCE_BREWED_GIT=1
 
 export GIT_REPOS_ROOT="$HOME/git"
 
+export BREW_PREFIX_PATH="/opt/homebrew"
+if command -v pyenv 1>/dev/null 2>&1; then
+	export BREW_PREFIX_PATH=$(brew --prefix)
+fi
+
 export FIGNORE=$FIGNORE:DS_Store
 
 export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
@@ -25,7 +30,7 @@ export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh"  ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
-export PATH="$(brew --prefix)/bin:/usr/lib/ccache/:$(brew --prefix)/opt/make/libexec/gnubin:$PATH"
+export PATH="$BREW_PREFIX_PATH/bin:/usr/lib/ccache/:$BREW_PREFIX_PATH/opt/make/libexec/gnubin:$PATH"
 export PATH="$PATH:$JAVA_HOME:/usr/lib/gcc"
 
 if command -v pyenv 1>/dev/null 2>&1; then

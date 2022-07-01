@@ -21,7 +21,7 @@ alias l='ls -CF'
 
 alias vi='vim'
 
-if [ ! -x $(brew --prefix)/bin/trash ] && [ ! -x /usr/local/Cellar/trash ]; then
+if [ ! -x $BREW_PREFIX_PATH/bin/trash ] && [ ! -x /usr/local/Cellar/trash ]; then
 	alias trash='rmtrash'
 fi
 

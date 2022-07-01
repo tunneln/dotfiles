@@ -112,33 +112,34 @@ if [ -f ~/.bash_proxy ]; then
 	. ~/.bash_proxy
 fi
 
+# Commented out until gpg agent is setup on laptop
 # Setup gpg-agent for ssh use
-ENVFILE="$HOME/.gnupg/gpg-agent.env"
-
-if ( [[ ! -e "$HOME/.gnupg/S.gpg-agent" ]] && \
-     [[ ! -e "/var/run/user/$(id -u)/gnupg/S.gpg-agent" ]] ) ||
-   ( [[ ! -s "$ENVFILE" ]] );
-then
-  if [[ ! -d "$HOME/.gnupg" ]]; then
-    echo 'Create ~/.gnupg directory'
-    mkdir -m 700 "$HOME/.gnupg"
-  fi
-  if [[ ! -f "$HOME/.gnupg/gpg-agent.conf" ]]; then
-    echo 'Set pinentry-mac to default gpg pinentry in ~/.gnupg/gpg-agent.conf'
-    echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" > "$HOME/.gnupg/gpg-agent.conf"
-  fi
-
-  echo "Reloading scdaemon and gpg-agent, creating .env file: $ENVFILE"
-  killall pinentry > /dev/null 2>&1
-  gpgconf --reload scdaemon > /dev/null 2>&1
-  killall -9 gpg-agent > /dev/null 2>&1
-  gpg-agent --daemon --enable-ssh-support > "$ENVFILE"
-fi
-
-# Wake up smartcard to avoid races
-gpg --card-status > /dev/null 2>&1
-
-source "$ENVFILE"
+#ENVFILE="$HOME/.gnupg/gpg-agent.env"
+#
+#if ( [[ ! -e "$HOME/.gnupg/S.gpg-agent" ]] && \
+#     [[ ! -e "/var/run/user/$(id -u)/gnupg/S.gpg-agent" ]] ) ||
+#   ( [[ ! -s "$ENVFILE" ]] );
+#then
+#  if [[ ! -d "$HOME/.gnupg" ]]; then
+#    echo 'Create ~/.gnupg directory'
+#    mkdir -m 700 "$HOME/.gnupg"
+#  fi
+#  if [[ ! -f "$HOME/.gnupg/gpg-agent.conf" ]]; then
+#    echo 'Set pinentry-mac to default gpg pinentry in ~/.gnupg/gpg-agent.conf'
+#    echo "pinentry-program $BREW_PREFIX_PATH/bin/pinentry-mac" > "$HOME/.gnupg/gpg-agent.conf"
+#  fi
+#
+#  echo "Reloading scdaemon and gpg-agent, creating .env file: $ENVFILE"
+#  killall pinentry > /dev/null 2>&1
+#  gpgconf --reload scdaemon > /dev/null 2>&1
+#  killall -9 gpg-agent > /dev/null 2>&1
+#  gpg-agent --daemon --enable-ssh-support > "$ENVFILE"
+#fi
+#
+## Wake up smartcard to avoid races
+#gpg --card-status > /dev/null 2>&1
+#
+#source "$ENVFILE"
 
 # Load NVM script
 export NVM_DIR="$HOME/.nvm"

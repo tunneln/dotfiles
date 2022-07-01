@@ -9,7 +9,7 @@
 
 git config --global alias.up '!git remote update -p; git merge --ff-only @{u}'
 
-REPO_DIR=$GIT_REPOS_ROOT
+REPO_DIR=$GIT_REPOS_PATH
 ORIGINAL_DIR=$PWD
 
 if [ -z "$REPO_DIR" ]; then

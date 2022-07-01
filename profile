@@ -15,8 +15,9 @@ unset MANPATH
 # Set default configurations and paths
 export HOMEBREW_FORCE_BREWED_CURL=1
 export HOMEBREW_FORCE_BREWED_GIT=1
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
-export GIT_REPOS_ROOT="$HOME/git"
+export GIT_REPOS_PATH="$HOME/git"
 
 export BREW_PREFIX_PATH="/opt/homebrew"
 if command -v pyenv 1>/dev/null 2>&1; then

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#########################################################################################
+# Noel Negusse
+# auto_crop
+# Auto crop batch images in folder using imageMagick
+#########################################################################################
+#
+#
+mkdir ../done/
+
+for FILE in *; do
+	convert $FILE -crop $(convert $FILE -morphology Dilate:3 Diamond:3,5 -fuzz 10% -trim -format '%wx%h%O' info:-) ../done/$FILE
+done
+

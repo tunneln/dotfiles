@@ -13,7 +13,6 @@ tmux/plugins/*
 !tmux/plugins/tpm
 .DS_Store
 bin/apache-maven-3.5.0
-gitconfig
 config/containers/*
 config/configstore/update-notifier-npm.json
 config/yarn/*
